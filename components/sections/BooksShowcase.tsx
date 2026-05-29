@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { books } from "@/data/books";
-import { booksIntro } from "@/data/content";
+import { booksIntro, payments } from "@/data/content";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import CTAButton from "@/components/CTAButton";
@@ -40,9 +40,10 @@ export default function BooksShowcase() {
                     </div>
                     <div>
                       <h3 className="text-h3 md:text-h3-lg text-forest">{b.title}</h3>
-                      <div className="mt-1 flex items-baseline gap-2">
+                      <div className="mt-1 flex items-baseline gap-2 flex-wrap">
                         <span className="text-ink/40 line-through text-sm">₹{b.oldPrice.toLocaleString("en-IN")}</span>
                         <span className="text-2xl font-heading font-bold text-forest">₹{b.price.toLocaleString("en-IN")}</span>
+                        <span className="text-xs font-semibold text-cta bg-cta/10 rounded-full px-2 py-0.5">Save {Math.round((1 - b.price / b.oldPrice) * 100)}%</span>
                       </div>
                     </div>
                   </div>
@@ -73,9 +74,7 @@ export default function BooksShowcase() {
           <p className="mt-8 text-center small text-ink/70">
             Both backed by the 14-day money-back guarantee · Most parents choose the Complete Toolkit.
           </p>
-          <p className="mt-2 text-center text-2xl tracking-wide" aria-label="Accepted payments">
-            💳 🏦 📱 UPI
-          </p>
+          <p className="mt-2 text-center small text-ink/60">Pay with {payments}</p>
         </Reveal>
       </div>
     </section>

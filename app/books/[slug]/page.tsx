@@ -12,6 +12,7 @@ import Reveal from "@/components/Reveal";
 import SocialProof from "@/components/sections/SocialProof";
 import TrustBadges from "@/components/sections/TrustBadges";
 import ResultsTimeline from "@/components/sections/ResultsTimeline";
+import HowToGet from "@/components/sections/HowToGet";
 import Guarantee from "@/components/sections/Guarantee";
 import FAQ from "@/components/sections/FAQ";
 import { BookJsonLd } from "@/components/JsonLd";
@@ -179,6 +180,8 @@ export default async function BookPage({ params }: { params: Promise<{ slug: str
             </div>
           </section>
         )}
+
+        <HowToGet />
 
         <FAQ items={book.faqs} heading={`${book.title} — FAQ`} />
         <Guarantee />

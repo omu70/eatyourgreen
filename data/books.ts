@@ -77,10 +77,6 @@ export const books: Book[] = [
         q: "How do I get it?",
         a: "It's an instant digital download — the PDF starts downloading automatically right after checkout, and we email you a copy as backup. You can start tonight.",
       },
-      {
-        q: "What if it doesn't help?",
-        a: "You're covered by our 14-day money-back guarantee, no questions asked.",
-      },
     ],
     ctaLabel: "Get the Guide",
     metaTitle: "The Eat Your Green Guide — End Mealtime Battles Gently",
@@ -133,10 +129,6 @@ export const books: Book[] = [
       {
         q: "How do I get it?",
         a: "Instant digital download — your files start downloading automatically right after checkout, with an email backup. Start tonight.",
-      },
-      {
-        q: "What if it doesn't help?",
-        a: "Same 14-day money-back guarantee as the Guide — no questions asked.",
       },
     ],
     ctaLabel: "Get the Complete Toolkit",

@@ -10,105 +10,127 @@ export const nav = [
   { label: "Contact", href: "/contact" },
 ];
 
+// Indian payment + delivery trust
+export const payments = "UPI · Google Pay · PhonePe · Paytm · Cards";
+export const whatsapp = {
+  number: "+91 00000 00000", // TODO: add your real WhatsApp number
+  link: "https://wa.me/910000000000", // TODO: real wa.me link
+};
+
 export const hero = {
-  h1: "End the Dinner-Table Battles — Without Tears, Bribes, or Guilt.",
+  h1: "Get your fussy child to happily eat greens — without fights, bribes or tears.",
   subhead:
-    'The gentle, pressure-free method 500+ moms are using to turn "yuck" into "yes" — and get their picky eater curious about greens in as little as 7 days.',
-  ctaPrimary: "Explore the Books",
-  trust: "★ 4.8/5 from 500+ parents · Instant download · 14-day money-back guarantee",
+    "A simple, gentle way for Indian parents to get fussy kids (age 2–12) to start eating greens — no shouting, no bribing, no drama. It works with the everyday meals you already cook.",
+  ctaPrimary: "See the books →",
+  trust: "★ 4.8/5 · Loved by 500+ Indian parents · Instant download",
 };
 
 export const trustBadges = [
-  { icon: "Download", label: "Instant digital download" },
-  { icon: "ShieldCheck", label: "14-day money-back guarantee" },
-  { icon: "Lock", label: "Secure checkout" },
-  { icon: "Users", label: "Loved by 500+ parents" },
-  { icon: "Star", label: "Rated 4.8 / 5" },
+  { icon: "Download", label: "Instant download — also sent on WhatsApp & email" },
+  { icon: "Lock", label: "Pay safely by UPI, Google Pay, PhonePe, Paytm or card" },
+  { icon: "ShieldCheck", label: "14-day money-back promise" },
+  { icon: "Users", label: "Trusted by Indian parents" },
+  { icon: "Star", label: "Easy to read on any phone" },
 ];
+
+// Self-explanatory "how you get it" — 1, 2, 3
+export const howToGet = {
+  heading: "Getting it is simple",
+  sub: "From payment to your first calm dinner — in minutes.",
+  steps: [
+    { icon: "CreditCard", title: "1. Pay safely", body: "Pay with UPI, Google Pay, PhonePe, Paytm or any card. Safe and secure." },
+    { icon: "Download", title: "2. Get it instantly", body: "Your book downloads right away. We also send it to your WhatsApp and email — so you never lose it." },
+    { icon: "Smile", title: "3. Start tonight", body: "Open it on your phone and try the first easy step at dinner today." },
+  ],
+};
+
+export const madeForIndia = {
+  heading: "Made for Indian families",
+  body:
+    "No fancy or foreign ingredients. The steps fit the everyday Indian meals you already cook — dal, sabzi, roti and more. Simple words, simple steps, made for busy Indian parents.",
+};
 
 export const booksIntro = {
   heading: "Two books. One calmer dinner table.",
-  sub: "Start with the method, or go all-in with the Complete Toolkit — both are gentle and pressure-free.",
+  sub: "Start with the book that teaches the method, or get the full toolkit with games and trackers. Both are simple and gentle.",
 };
 
 export const pain = {
   heading: "Does this sound like your dinner table?",
   items: [
-    "Every meal turns into a battle of wills.",
-    "You bribe, negotiate, and beg — and still the greens come back untouched.",
-    'You cook a separate "safe" meal just to avoid the tears.',
-    "You're running behind them with a spoon while dinner goes cold.",
-    'And quietly, you wonder: "Am I messing this up?"',
+    "Every meal turns into a fight.",
+    "You beg, bribe and bargain — and the greens still come back untouched.",
+    "You cook a separate plain meal just to stop the crying.",
+    "You run behind them with a spoon while the food goes cold.",
+    'And quietly you wonder: "Am I doing something wrong?"',
   ],
   closing:
-    "It's exhausting. And the harder you push, the more they dig in — because pressure makes greens the enemy.",
+    "It's tiring. And the harder you push, the more they refuse — because pushing makes greens feel like the enemy.",
 };
 
 export const empathy = {
-  heading: "You're not a bad mom. You've just been handed the wrong playbook.",
+  heading: "You're not a bad parent. You were just given the wrong way.",
   body:
-    'Force, bribes and "two more bites" don\'t fail because you\'re not trying hard enough — they fail because they teach kids that vegetables are something to be survived, not enjoyed. There\'s a calmer way. And it starts tonight.',
+    'Forcing, bribing and "just two more bites" don\'t fail because you aren\'t trying hard enough. They fail because they teach kids that vegetables are something to fear, not enjoy. There is a calmer way — and it can start at tonight\'s dinner.',
 };
 
 export const method = {
-  heading: "Introducing the 4C Method — how gentle moms raise green-eaters.",
+  heading: "A simple 4-step way to raise a happy green-eater.",
   steps: [
-    { title: "Curiosity", icon: "Sparkles", body: "Small, no-pressure ways to make greens interesting." },
-    { title: "Comfort", icon: "Heart", body: "Removing the fear and the fight." },
-    { title: "Confidence", icon: "TrendingUp", body: "Letting your child lead, one tiny win at a time." },
-    { title: "Connection", icon: "Users", body: "Turning the table into a place you bond, not battle." },
+    { title: "Curiosity", icon: "Sparkles", body: "Easy, no-pressure ways to make greens look interesting." },
+    { title: "Comfort", icon: "Heart", body: "Take away the fear and the fight." },
+    { title: "Confidence", icon: "TrendingUp", body: "Let your child lead, one small win at a time." },
+    { title: "Connection", icon: "Users", body: "Make the dinner table a happy place, not a battle." },
   ],
 };
 
-// "How it works in real life" — image gallery (replace images with your photos)
 export const howItWorks = {
-  heading: "What it looks like in real life",
-  sub: "Gentle, playful moments — not a battle plan.",
+  heading: "What it looks like at home",
+  sub: "Gentle, playful moments — not a fight.",
   items: [
-    { img: "/images/how-curiosity.jpg", alt: "Mom and child exploring leaves with a magnifying glass", caption: "Spark curiosity with playful exploration" },
-    { img: "/images/how-play.jpg", alt: "Mom and child playing a vegetable game with cards and dice", caption: "Turn trying greens into a game" },
-    { img: "/images/how-cook.jpg", alt: "Mom and child cooking vegetables together", caption: "Cook together — no pressure to eat" },
-    { img: "/images/how-eat.jpg", alt: "Child happily eating a green veggie snack", caption: "Involve them — washing, sorting, choosing" },
+    { img: "/images/how-curiosity.jpg", alt: "Mother and child looking at leaves with a magnifying glass", caption: "Make greens fun to explore" },
+    { img: "/images/how-play.jpg", alt: "Mother and child playing a vegetable game with cards and dice", caption: "Turn trying greens into a game" },
+    { img: "/images/how-cook.jpg", alt: "Mother and child cooking vegetables together", caption: "Cook together — no pressure to eat" },
+    { img: "/images/how-eat.jpg", alt: "Child helping wash vegetables at the sink", caption: "Let them help — washing and choosing" },
   ],
 };
 
 export const beforeAfter = {
-  heading: "From battleground to dinner table",
+  heading: "From daily fights to a calm table",
   rows: [
-    { before: "Tears, bribes, and standoffs", after: "Calm meals and willing tries" },
+    { before: "Crying, bribes and stubborn fights", after: "Calm meals and happy little tries" },
     { before: "Cooking two separate dinners", after: "One meal the whole family eats" },
     { before: "Guilt and self-doubt", after: "Confidence that you've got this" },
-    { before: '"My kid will never eat greens"', after: '"My kid asked for the green smoothie"' },
+    { before: '"My child will never eat greens"', after: '"My child asked for the green smoothie!"' },
   ],
 };
 
-// What changes, and when
 export const results = {
-  heading: "What changes — and how fast",
-  sub: "Most families notice a calmer table within the first week.",
+  heading: "What changes — and how soon",
+  sub: "Most parents see a calmer dinner table in the very first week.",
   steps: [
-    { when: "Tonight", title: "The pressure drops", body: "You swap the begging and bribing for one calm shift — and the tension at the table eases right away." },
-    { when: "Days 2–7", title: "Curiosity returns", body: "Using the 4C steps, your child starts to explore greens on their own terms — touching, smelling, a tiny taste." },
-    { when: "Week 2", title: "Willing tries become normal", body: "Trying a green stops being a fight. Many parents report their first unprompted “can I try that?” moment." },
+    { when: "Tonight", title: "The pressure goes away", body: "You make one small change — and the tension at the table eases the same evening." },
+    { when: "Days 2–7", title: "Curiosity comes back", body: "Using the simple steps, your child starts to explore greens on their own — touching, smelling, a tiny taste." },
+    { when: "Week 2", title: "Trying greens feels normal", body: "Trying a green stops being a fight. Many parents hear their first happy “can I try that?”." },
   ],
 };
 
 export const stats = [
-  { value: 500, suffix: "+", label: "families using the method" },
-  { value: 90, suffix: "%", label: "report reduced mealtime stress within weeks" },
-  { value: 95, suffix: "%", label: "of children feel safe exploring greens" },
+  { value: 500, suffix: "+", label: "families using this method" },
+  { value: 90, suffix: "%", label: "say dinner stress dropped within weeks" },
+  { value: 95, suffix: "%", label: "of kids feel safe trying greens" },
 ];
 
 export const guarantee = {
-  heading: "Your First Win in 14 Days — or Your Money Back.",
+  heading: "Your first win in 14 days — or your money back.",
   body:
-    "Try it for two weeks. If you don't see your child more curious and calmer around greens, email us and we'll refund every rupee. The only risk is another month of cold, untouched dinners.",
+    "Try it for two weeks. If your child isn't calmer and more curious about greens, just email us and we'll return your full money — no questions asked. The only risk is another month of cold, untouched dinners.",
 };
 
 export const finalCta = {
   heading: "Tonight's dinner can be different.",
-  cta: "Explore the Books",
-  urgency: "Launch price ends soon.",
+  cta: "See the Books",
+  urgency: "Special launch price — for a short time only.",
 };
 
 export const about = {
@@ -116,23 +138,27 @@ export const about = {
   authorName: "Prerna Sultania",
   authorTitle: "Author & gentle-feeding coach",
   authorBio:
-    "Prerna Sultania is the author of Eat Your Green and the creator of the gentle 4C Method — a calm, pressure-free approach to helping picky eaters fall for greens, built from years of real dinner-table experience with fussy eaters of her own.",
+    "Prerna Sultania is the author of Eat Your Green. She created this gentle, no-pressure way to help fussy kids enjoy greens — built from years of real dinner-table experience with her own fussy eaters.",
   body: [
-    "Eat Your Green started at a real dinner table — with cold food, hot tempers, and a parent who'd tried everything.",
-    "The breakthrough wasn't a new recipe or a stricter rule. It was lowering the pressure. When greens stopped being a battle, curiosity had room to grow.",
-    "These two books are that approach, written down: the gentle method, and the printable toolkit that makes it stick. No force. No bribes. No guilt.",
+    "Eat Your Green started at a real dinner table — with cold food, short tempers, and a parent who had tried everything.",
+    "The change wasn't a new recipe or a stricter rule. It was simply removing the pressure. When greens stopped being a fight, curiosity had room to grow.",
+    "These two books are that simple approach, written down: the method, and the toolkit that makes it easy to follow every day. No force. No bribes. No guilt.",
   ],
 };
 
 export const contact = {
   heading: "We're here to help",
-  body: "Questions about the books, your download, or a refund? Send us a message and we'll get back to you within 1–2 business days.",
+  body: "Questions about the books, your download, or a refund? Message us and we'll reply within 1–2 working days.",
   email: "support@eatyourgreen.com", // TODO: real email
+  whatsapp: whatsapp.link,
+  whatsappNumber: whatsapp.number,
   instagram: "https://instagram.com/eatyourgreen", // TODO: real handle
 };
 
 export const footer = {
   contact: "support@eatyourgreen.com", // TODO: real email
+  whatsapp: whatsapp.link,
   instagram: "https://instagram.com/eatyourgreen", // TODO: real handle
-  secureNote: "Secure checkout · Instant digital delivery",
+  secureNote: "Safe payment · Instant delivery on WhatsApp & email",
+  payments,
 };
