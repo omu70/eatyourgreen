@@ -10,7 +10,7 @@ export default function EmpathyReframe() {
           <div className="relative aspect-[5/4] rounded-card overflow-hidden shadow-card border border-mist">
             {/* TODO: soft, reassuring photo */}
             <Image
-              src="/images/empathy.png"
+              src="/images/empathy.jpg"
               alt="A parent sharing a calm, gentle moment with their child"
               fill
               sizes="(max-width: 768px) 100vw, 50vw"

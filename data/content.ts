@@ -65,10 +65,10 @@ export const howItWorks = {
   heading: "What it looks like in real life",
   sub: "Gentle, playful moments — not a battle plan.",
   items: [
-    { img: "/images/how-curiosity.png", alt: "Mom and child exploring leaves with a magnifying glass", caption: "Spark curiosity with playful exploration" },
-    { img: "/images/how-play.png", alt: "Mom and child playing a vegetable game with cards and dice", caption: "Turn trying greens into a game" },
-    { img: "/images/how-cook.png", alt: "Mom and child cooking vegetables together", caption: "Cook together — no pressure to eat" },
-    { img: "/images/how-eat.png", alt: "Child happily eating a green veggie snack", caption: "Willing tries, on their terms" },
+    { img: "/images/how-curiosity.jpg", alt: "Mom and child exploring leaves with a magnifying glass", caption: "Spark curiosity with playful exploration" },
+    { img: "/images/how-play.jpg", alt: "Mom and child playing a vegetable game with cards and dice", caption: "Turn trying greens into a game" },
+    { img: "/images/how-cook.jpg", alt: "Mom and child cooking vegetables together", caption: "Cook together — no pressure to eat" },
+    { img: "/images/how-eat.jpg", alt: "Child happily eating a green veggie snack", caption: "Involve them — washing, sorting, choosing" },
   ],
 };
 

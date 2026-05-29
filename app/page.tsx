@@ -1,4 +1,5 @@
 import Hero from "@/components/sections/Hero";
+import Banner from "@/components/sections/Banner";
 import TrustBadges from "@/components/sections/TrustBadges";
 import BooksShowcase from "@/components/sections/BooksShowcase";
 import PainChecklist from "@/components/sections/PainChecklist";
@@ -20,11 +21,13 @@ export default function Home() {
       <main>
         <Hero />
         <TrustBadges />
+        <Banner src="/images/banner-no-pressure.jpg" alt="No pressure. No bribing. No food fights. Subtle shifts for lasting habits." />
         <BooksShowcase />
         <PainChecklist />
         <EmpathyReframe />
         <MethodSteps />
         <HowItWorks />
+        <Banner src="/images/banner-toolkit.jpg" alt="End food struggles without forcing — games, trackers and gentle routines parents actually use." />
         <ResultsTimeline />
         <BeforeAfter />
         <SocialProof />

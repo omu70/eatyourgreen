@@ -33,9 +33,9 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="relative aspect-[4/3] rounded-card overflow-hidden shadow-card border border-mist"
         >
-          {/* TODO: replace /images/hero.png with your warm lifestyle photo (mom + child over greens) */}
+          {/* TODO: replace /images/hero.jpg with your warm lifestyle photo (mom + child over greens) */}
           <Image
-            src="/images/hero.png"
+            src="/images/hero.jpg"
             alt="A mom and her child laughing together while preparing greens"
             fill
             priority

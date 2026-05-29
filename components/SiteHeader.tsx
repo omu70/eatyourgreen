@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { nav, CHECKOUT } from "@/data/content";
@@ -29,9 +30,10 @@ export default function SiteHeader() {
       }`}
     >
       <div className="container-page flex items-center justify-between py-3">
-        <Link href="/" className="flex items-center gap-2 font-heading font-bold text-forest text-lg">
-          <span aria-hidden className="text-xl">🌱</span>
-          Eat Your Green
+        <Link href="/" aria-label="Eat Your Green — home" className="inline-flex items-center">
+          <span className="inline-flex items-center rounded-lg bg-forest px-2.5 py-1.5">
+            <Image src="/images/logo.png" alt="Eat Your Green" width={90} height={80} priority className="h-8 w-auto" />
+          </span>
         </Link>
 
         {/* desktop nav */}

@@ -20,8 +20,8 @@ export default function AboutPage() {
           <Reveal>
             <div className="flex flex-col sm:flex-row items-center gap-6 bg-white rounded-card border border-mist shadow-card p-6 md:p-8">
               <div className="relative h-28 w-28 md:h-36 md:w-36 shrink-0 rounded-full overflow-hidden border-2 border-leaf">
-                {/* TODO: replace /images/author.png with a real photo of Prerna */}
-                <Image src="/images/author.png" alt={`${about.authorName}, ${about.authorTitle}`} fill sizes="144px" className="object-cover" />
+                {/* TODO: replace /images/author.jpg with a real photo of Prerna */}
+                <Image src="/images/author.jpg" alt={`${about.authorName}, ${about.authorTitle}`} fill sizes="144px" className="object-cover" />
               </div>
               <div className="text-center sm:text-left">
                 <p className="font-heading font-semibold text-brand text-lg">{about.authorName}</p>
