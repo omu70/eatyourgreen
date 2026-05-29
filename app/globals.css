@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --green-900: #0F3D26;
+  --green-700: #1F6B3D;
+  --green-500: #5FAE5F;
+  --green-100: #EEF6EE;
+  --cta: #FF6B4A;
+  --cta-hover: #E85636;
+  --cream: #FBF8F1;
+  --ink: #1D2B22;
+  --gold: #F5B83D;
+}
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: var(--cream);
+    color: var(--ink);
+    font-family: var(--font-inter), system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4 { font-family: var(--font-poppins), system-ui, sans-serif; color: var(--green-900); }
+  @media (min-width: 768px) { body { font-size: 17px; } }
+  :focus-visible { outline: 3px solid var(--green-700); outline-offset: 2px; border-radius: 4px; }
+}
+
+@layer components {
+  .section { padding-top: 64px; padding-bottom: 64px; }
+  @media (min-width: 768px) { .section { padding-top: 96px; padding-bottom: 96px; } }
+  .container-page { width: 100%; max-width: 1120px; margin: 0 auto; padding-left: 20px; padding-right: 20px; }
+  .prose-measure { max-width: 64ch; }
+  .small { font-size: 13px; }
+}
+
+/* respect safe-area for sticky bottom bar */
+.safe-bottom { padding-bottom: env(safe-area-inset-bottom, 0px); }

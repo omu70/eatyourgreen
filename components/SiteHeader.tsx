@@ -1,0 +1,92 @@
+"use client";
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { Menu, X } from "lucide-react";
+import { nav, CHECKOUT } from "@/data/content";
+import { Button } from "@/components/ui/button";
+
+export default function SiteHeader() {
+  const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
+
+  return (
+    <header
+      className={`fixed inset-x-0 top-0 z-50 transition-all ${
+        scrolled ? "bg-cream/95 backdrop-blur shadow-card" : "bg-cream/70 backdrop-blur-sm"
+      }`}
+    >
+      <div className="container-page flex items-center justify-between py-3">
+        <Link href="/" className="flex items-center gap-2 font-heading font-bold text-forest text-lg">
+          <span aria-hidden className="text-xl">🌱</span>
+          Eat Your Green
+        </Link>
+
+        {/* desktop nav */}
+        <nav className="hidden md:flex items-center gap-6">
+          {nav.map((item) => {
+            const active = pathname === item.href;
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`text-sm font-medium hover:text-brand transition-colors ${
+                  active ? "text-brand" : "text-ink/80"
+                }`}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
+          <Button asChild size="pill">
+            <Link href="/books/the-eat-your-green-guide">Get the Guide ₹399</Link>
+          </Button>
+        </nav>
+
+        {/* mobile toggle */}
+        <button
+          className="md:hidden h-11 w-11 -mr-2 flex items-center justify-center text-forest"
+          aria-label={open ? "Close menu" : "Open menu"}
+          aria-expanded={open}
+          onClick={() => setOpen((v) => !v)}
+        >
+          {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+        </button>
+      </div>
+
+      {/* mobile menu */}
+      {open && (
+        <div className="md:hidden border-t border-mist bg-cream/98 backdrop-blur">
+          <nav className="container-page py-4 flex flex-col gap-1">
+            {nav.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`py-3 text-base font-medium ${
+                  pathname === item.href ? "text-brand" : "text-ink/90"
+                }`}
+              >
+                {item.label}
+              </Link>
+            ))}
+            <Button asChild className="mt-3 w-full">
+              <Link href="/books/the-eat-your-green-guide">Get the Guide ₹399</Link>
+            </Button>
+          </nav>
+        </div>
+      )}
+    </header>
+  );
+}

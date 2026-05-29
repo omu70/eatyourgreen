@@ -1,0 +1,49 @@
+"use client";
+import Image from "next/image";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { hero } from "@/data/content";
+import { Button } from "@/components/ui/button";
+
+export default function Hero() {
+  return (
+    <section id="hero" className="pt-24 md:pt-28 pb-12 md:pb-20 bg-cream">
+      <div className="container-page grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <h1 className="text-h1 md:text-h1-lg text-forest">{hero.h1}</h1>
+          <p className="mt-4 text-ink/80 prose-measure">{hero.subhead}</p>
+          <div className="mt-6 flex flex-col sm:flex-row gap-3">
+            <Button asChild size="lg" className="w-full sm:w-auto">
+              <Link href="/#books">{hero.ctaPrimary}</Link>
+            </Button>
+            <Button asChild variant="outline" size="lg" className="w-full sm:w-auto">
+              <Link href="/books/the-eat-your-green-guide">Start with the Guide ₹399</Link>
+            </Button>
+          </div>
+          <p className="mt-4 small text-ink/70">{hero.trust}</p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.97 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="relative aspect-[3/2] rounded-card overflow-hidden shadow-card border border-mist"
+        >
+          {/* TODO: replace with a real warm lifestyle photo + book covers */}
+          <Image
+            src="/images/two-books.png"
+            alt="The Eat Your Green Guide and The Green Plate Recipe Book"
+            fill
+            priority
+            sizes="(max-width: 768px) 100vw, 50vw"
+            className="object-cover"
+          />
+        </motion.div>
+      </div>
+    </section>
+  );
+}
