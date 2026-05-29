@@ -7,7 +7,7 @@ import { about } from "@/data/content";
 
 export const metadata: Metadata = {
   title: "About",
-  description: "Why Eat Your Green exists — the gentle, pressure-free approach behind the books.",
+  description: "Why Eat Your Green exists — the gentle, pressure-free approach behind the books, by Prerna Sultania.",
   alternates: { canonical: "/about" },
 };
 
@@ -20,11 +20,12 @@ export default function AboutPage() {
           <Reveal>
             <div className="flex flex-col sm:flex-row items-center gap-6 bg-white rounded-card border border-mist shadow-card p-6 md:p-8">
               <div className="relative h-28 w-28 md:h-36 md:w-36 shrink-0 rounded-full overflow-hidden border-2 border-leaf">
-                {/* TODO: real author photo */}
-                <Image src="/images/author.png" alt="Author portrait" fill sizes="144px" className="object-cover" />
+                {/* TODO: replace /images/author.png with a real photo of Prerna */}
+                <Image src="/images/author.png" alt={`${about.authorName}, ${about.authorTitle}`} fill sizes="144px" className="object-cover" />
               </div>
               <div className="text-center sm:text-left">
-                <p className="font-heading font-semibold text-brand">{about.authorName}</p>
+                <p className="font-heading font-semibold text-brand text-lg">{about.authorName}</p>
+                <p className="small text-ink/60">{about.authorTitle}</p>
                 <p className="mt-2 text-ink/80">{about.authorBio}</p>
               </div>
             </div>

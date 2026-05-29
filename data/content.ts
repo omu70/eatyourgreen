@@ -4,24 +4,31 @@ export { CHECKOUT };
 export const nav = [
   { label: "Home", href: "/" },
   { label: "The Guide", href: "/books/the-eat-your-green-guide" },
-  { label: "Recipe Book", href: "/books/the-green-plate-recipe-book" },
+  { label: "Complete Toolkit", href: "/books/the-eat-your-green-complete-toolkit" },
   { label: "About", href: "/about" },
   { label: "FAQ", href: "/faq" },
   { label: "Contact", href: "/contact" },
 ];
 
-// Home brand hero
 export const hero = {
   h1: "End the Dinner-Table Battles — Without Tears, Bribes, or Guilt.",
   subhead:
-    'Two gentle, pressure-free digital books that help moms turn "yuck" into "yes" — the method that calms mealtimes, and the recipes that make greens fun.',
+    'The gentle, pressure-free method 500+ moms are using to turn "yuck" into "yes" — and get their picky eater curious about greens in as little as 7 days.',
   ctaPrimary: "Explore the Books",
   trust: "★ 4.8/5 from 500+ parents · Instant download · 14-day money-back guarantee",
 };
 
+export const trustBadges = [
+  { icon: "Download", label: "Instant digital download" },
+  { icon: "ShieldCheck", label: "14-day money-back guarantee" },
+  { icon: "Lock", label: "Secure checkout" },
+  { icon: "Users", label: "Loved by 500+ parents" },
+  { icon: "Star", label: "Rated 4.8 / 5" },
+];
+
 export const booksIntro = {
   heading: "Two books. One calmer dinner table.",
-  sub: "Start with the method, add the recipes — or grab both and save.",
+  sub: "Start with the method, or go all-in with the Complete Toolkit — both are gentle and pressure-free.",
 };
 
 export const pain = {
@@ -53,6 +60,18 @@ export const method = {
   ],
 };
 
+// "How it works in real life" — image gallery (replace images with your photos)
+export const howItWorks = {
+  heading: "What it looks like in real life",
+  sub: "Gentle, playful moments — not a battle plan.",
+  items: [
+    { img: "/images/how-curiosity.png", alt: "Mom and child exploring leaves with a magnifying glass", caption: "Spark curiosity with playful exploration" },
+    { img: "/images/how-play.png", alt: "Mom and child playing a vegetable game with cards and dice", caption: "Turn trying greens into a game" },
+    { img: "/images/how-cook.png", alt: "Mom and child cooking vegetables together", caption: "Cook together — no pressure to eat" },
+    { img: "/images/how-eat.png", alt: "Child happily eating a green veggie snack", caption: "Willing tries, on their terms" },
+  ],
+};
+
 export const beforeAfter = {
   heading: "From battleground to dinner table",
   rows: [
@@ -63,20 +82,22 @@ export const beforeAfter = {
   ],
 };
 
+// What changes, and when
+export const results = {
+  heading: "What changes — and how fast",
+  sub: "Most families notice a calmer table within the first week.",
+  steps: [
+    { when: "Tonight", title: "The pressure drops", body: "You swap the begging and bribing for one calm shift — and the tension at the table eases right away." },
+    { when: "Days 2–7", title: "Curiosity returns", body: "Using the 4C steps, your child starts to explore greens on their own terms — touching, smelling, a tiny taste." },
+    { when: "Week 2", title: "Willing tries become normal", body: "Trying a green stops being a fight. Many parents report their first unprompted “can I try that?” moment." },
+  ],
+};
+
 export const stats = [
   { value: 500, suffix: "+", label: "families using the method" },
   { value: 90, suffix: "%", label: "report reduced mealtime stress within weeks" },
   { value: 95, suffix: "%", label: "of children feel safe exploring greens" },
 ];
-
-export const bundle = {
-  heading: "Get both books and save",
-  body: "The method + the recipes, together. The complete gentle system for calmer, greener dinners.",
-  oldPrice: 898,
-  price: 799,
-  cta: "Get the Complete Pack",
-  href: CHECKOUT.bundle,
-};
 
 export const guarantee = {
   heading: "Your First Win in 14 Days — or Your Money Back.",
@@ -92,14 +113,14 @@ export const finalCta = {
 
 export const about = {
   heading: "Why Eat Your Green exists",
-  // TODO: client supplies real author name, photo, and bio
-  authorName: "TODO: Author Name",
+  authorName: "Prerna Sultania",
+  authorTitle: "Author & gentle-feeding coach",
   authorBio:
-    "TODO: 2–3 line credibility blurb. e.g. A certified gentle-parenting coach and mom of two former picky eaters, who built the 4C Method after years of dinner-table standoffs of her own.",
+    "Prerna Sultania is the author of Eat Your Green and the creator of the gentle 4C Method — a calm, pressure-free approach to helping picky eaters fall for greens, built from years of real dinner-table experience with fussy eaters of her own.",
   body: [
     "Eat Your Green started at a real dinner table — with cold food, hot tempers, and a parent who'd tried everything.",
     "The breakthrough wasn't a new recipe or a stricter rule. It was lowering the pressure. When greens stopped being a battle, curiosity had room to grow.",
-    "These two books are that approach, written down: the gentle method, and the meals that make it stick. No force. No bribes. No guilt.",
+    "These two books are that approach, written down: the gentle method, and the printable toolkit that makes it stick. No force. No bribes. No guilt.",
   ],
 };
 

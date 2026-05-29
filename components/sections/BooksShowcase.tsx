@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { books } from "@/data/books";
-import { booksIntro, bundle } from "@/data/content";
+import { booksIntro } from "@/data/content";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import CTAButton from "@/components/CTAButton";
@@ -17,71 +17,65 @@ export default function BooksShowcase() {
           <p className="mt-3 text-center text-ink/75 prose-measure mx-auto">{booksIntro.sub}</p>
         </Reveal>
 
-        <div className="mt-10 grid md:grid-cols-2 gap-6 items-stretch max-w-4xl mx-auto">
-          {books.map((b, i) => (
-            <Reveal key={b.slug} delay={i * 0.08} className="h-full">
-              <Card className="p-6 h-full flex flex-col">
-                <div className="flex gap-4">
-                  <div className="relative w-24 h-32 shrink-0 rounded-lg overflow-hidden shadow-card border border-mist">
-                    <Image src={b.cover} alt={`${b.title} cover`} fill sizes="96px" className="object-cover" />
-                  </div>
-                  <div>
-                    {b.badge && (
-                      <Badge variant={b.accent === "gold" ? "gold" : "default"}>{b.badge}</Badge>
-                    )}
-                    <h3 className="mt-2 text-h3 md:text-h3-lg text-forest">{b.title}</h3>
-                    <div className="mt-1 flex items-baseline gap-2">
-                      <span className="text-ink/40 line-through text-sm">₹{b.oldPrice}</span>
-                      <span className="text-2xl font-heading font-bold text-forest">₹{b.price}</span>
+        <div className="mt-12 grid md:grid-cols-2 gap-6 items-stretch max-w-4xl mx-auto">
+          {books.map((b, i) => {
+            const popular = b.accent === "gold";
+            return (
+              <Reveal key={b.slug} delay={i * 0.08} className="h-full">
+                <Card
+                  className={`relative p-6 h-full flex flex-col ${
+                    popular ? "border-gold border-2 md:scale-[1.03] shadow-lg" : ""
+                  }`}
+                >
+                  {b.badge && (
+                    <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                      <Badge variant={popular ? "gold" : "default"} className="shadow-card whitespace-nowrap">
+                        {popular ? "★ " : ""}{b.badge}
+                      </Badge>
+                    </div>
+                  )}
+                  <div className="flex gap-4 mt-2">
+                    <div className="relative w-24 h-32 shrink-0 rounded-lg overflow-hidden shadow-card border border-mist">
+                      <Image src={b.cover} alt={`${b.title} cover`} fill sizes="96px" className="object-cover" />
+                    </div>
+                    <div>
+                      <h3 className="text-h3 md:text-h3-lg text-forest">{b.title}</h3>
+                      <div className="mt-1 flex items-baseline gap-2">
+                        <span className="text-ink/40 line-through text-sm">₹{b.oldPrice.toLocaleString("en-IN")}</span>
+                        <span className="text-2xl font-heading font-bold text-forest">₹{b.price.toLocaleString("en-IN")}</span>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <p className="mt-4 text-ink/80 text-sm flex-1">{b.tagline}</p>
-                <div className="mt-5 flex flex-col sm:flex-row gap-3">
-                  <CTAButton
-                    href={b.checkout}
-                    value={b.price}
-                    contentId={b.slug}
-                    contentName={b.title}
-                    label={b.ctaLabel}
-                    className="w-full sm:flex-1"
-                  />
-                  <Link
-                    href={`/books/${b.slug}`}
-                    className="inline-flex items-center justify-center gap-1 text-brand font-semibold text-sm min-h-[48px] px-2 hover:underline"
-                  >
-                    Learn more <ArrowRight className="h-4 w-4" />
-                  </Link>
-                </div>
-              </Card>
-            </Reveal>
-          ))}
+                  <p className="mt-4 text-ink/80 text-sm flex-1">{b.tagline}</p>
+                  <div className="mt-5 flex flex-col sm:flex-row gap-3">
+                    <CTAButton
+                      href={b.checkout}
+                      value={b.price}
+                      contentId={b.slug}
+                      contentName={b.title}
+                      label={b.ctaLabel}
+                      className="w-full sm:flex-1"
+                    />
+                    <Link
+                      href={`/books/${b.slug}`}
+                      className="inline-flex items-center justify-center gap-1 text-brand font-semibold text-sm min-h-[48px] px-2 hover:underline"
+                    >
+                      Learn more <ArrowRight className="h-4 w-4" />
+                    </Link>
+                  </div>
+                </Card>
+              </Reveal>
+            );
+          })}
         </div>
 
-        {/* Bundle */}
         <Reveal>
-          <div className="mt-8 max-w-4xl mx-auto rounded-card bg-forest text-white shadow-card p-6 md:p-8 md:flex md:items-center md:gap-8">
-            <div className="md:flex-1">
-              <Badge variant="gold" className="shadow-card">★ Best value</Badge>
-              <h3 className="mt-3 text-h3 md:text-h3-lg text-white">{bundle.heading}</h3>
-              <p className="mt-2 text-white/85">{bundle.body}</p>
-            </div>
-            <div className="mt-5 md:mt-0 text-center shrink-0">
-              <div className="flex items-baseline gap-2 justify-center">
-                <span className="text-white/50 line-through">₹{bundle.oldPrice}</span>
-                <span className="text-3xl font-heading font-bold text-white">₹{bundle.price}</span>
-              </div>
-              <CTAButton
-                href={bundle.href}
-                value={bundle.price}
-                contentId="bundle"
-                contentName="Complete Pack (both books)"
-                label={bundle.cta}
-                size="lg"
-                className="mt-3 w-full"
-              />
-            </div>
-          </div>
+          <p className="mt-8 text-center small text-ink/70">
+            Both backed by the 14-day money-back guarantee · Most parents choose the Complete Toolkit.
+          </p>
+          <p className="mt-2 text-center text-2xl tracking-wide" aria-label="Accepted payments">
+            💳 🏦 📱 UPI
+          </p>
         </Reveal>
       </div>
     </section>

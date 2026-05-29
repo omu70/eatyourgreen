@@ -17,7 +17,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     quote:
-      "The Weekend Activities section made all the difference. Instead of arguments, we now have curiosity and play. My child actually talks about vegetables now.",
+      "The Weekend Games section made all the difference. Instead of arguments, we now have curiosity and play. My child actually talks about vegetables now.",
     name: "Neha K.",
     role: "working mom",
     stars: 5,
@@ -38,5 +38,21 @@ export const testimonials: Testimonial[] = [
     role: "first-time mom",
     stars: 5,
     avatar: "/images/avatar-4.png",
+  },
+  {
+    quote:
+      "By the second week my son asked to help wash the spinach. I genuinely never thought I'd see that. The trackers kept him excited the whole time.",
+    name: "Pooja R.",
+    role: "mom of a 6-year-old",
+    stars: 5,
+    avatar: "/images/avatar-5.png",
+  },
+  {
+    quote:
+      "Dinner used to end in tears most nights. Now it's calm. We haven't cooked a separate 'safe' meal in weeks.",
+    name: "Sneha T.",
+    role: "mom of two",
+    stars: 5,
+    avatar: "/images/avatar-6.png",
   },
 ];

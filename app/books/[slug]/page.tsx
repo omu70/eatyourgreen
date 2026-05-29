@@ -10,6 +10,8 @@ import CTAButton from "@/components/CTAButton";
 import StickyCTA from "@/components/StickyCTA";
 import Reveal from "@/components/Reveal";
 import SocialProof from "@/components/sections/SocialProof";
+import TrustBadges from "@/components/sections/TrustBadges";
+import ResultsTimeline from "@/components/sections/ResultsTimeline";
 import Guarantee from "@/components/sections/Guarantee";
 import FAQ from "@/components/sections/FAQ";
 import { BookJsonLd } from "@/components/JsonLd";
@@ -93,6 +95,8 @@ export default async function BookPage({ params }: { params: Promise<{ slug: str
           </div>
         </section>
 
+        <TrustBadges />
+
         {/* Who it's for */}
         <section className="section bg-mist">
           <div className="container-page max-w-3xl text-center">
@@ -145,6 +149,8 @@ export default async function BookPage({ params }: { params: Promise<{ slug: str
             </ul>
           </div>
         </section>
+
+        <ResultsTimeline />
 
         <SocialProof />
 

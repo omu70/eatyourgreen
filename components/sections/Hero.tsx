@@ -31,12 +31,12 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.97 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="relative aspect-[3/2] rounded-card overflow-hidden shadow-card border border-mist"
+          className="relative aspect-[4/3] rounded-card overflow-hidden shadow-card border border-mist"
         >
-          {/* TODO: replace with a real warm lifestyle photo + book covers */}
+          {/* TODO: replace /images/hero.png with your warm lifestyle photo (mom + child over greens) */}
           <Image
-            src="/images/two-books.png"
-            alt="The Eat Your Green Guide and The Green Plate Recipe Book"
+            src="/images/hero.png"
+            alt="A mom and her child laughing together while preparing greens"
             fill
             priority
             sizes="(max-width: 768px) 100vw, 50vw"

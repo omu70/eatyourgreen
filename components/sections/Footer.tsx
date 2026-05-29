@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Instagram, Lock } from "lucide-react";
 import { footer } from "@/data/content";
 
@@ -9,7 +10,7 @@ export default function Footer() {
       <div className="container-page">
         <div className="flex flex-col md:flex-row gap-8 md:items-start md:justify-between">
           <div>
-            <div className="font-heading font-bold text-white text-lg">🌱 Eat Your Green</div>
+            <Image src="/images/logo.png" alt="Eat Your Green" width={180} height={52} className="h-12 w-auto" />
             <p className="mt-2 small max-w-xs">
               Two gentle, pressure-free books to help picky eaters fall for greens.
             </p>

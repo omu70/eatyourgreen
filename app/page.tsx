@@ -1,8 +1,11 @@
 import Hero from "@/components/sections/Hero";
+import TrustBadges from "@/components/sections/TrustBadges";
 import BooksShowcase from "@/components/sections/BooksShowcase";
 import PainChecklist from "@/components/sections/PainChecklist";
 import EmpathyReframe from "@/components/sections/EmpathyReframe";
 import MethodSteps from "@/components/sections/MethodSteps";
+import HowItWorks from "@/components/sections/HowItWorks";
+import ResultsTimeline from "@/components/sections/ResultsTimeline";
 import BeforeAfter from "@/components/sections/BeforeAfter";
 import SocialProof from "@/components/sections/SocialProof";
 import Guarantee from "@/components/sections/Guarantee";
@@ -16,10 +19,13 @@ export default function Home() {
       <HomeJsonLd />
       <main>
         <Hero />
+        <TrustBadges />
         <BooksShowcase />
         <PainChecklist />
         <EmpathyReframe />
         <MethodSteps />
+        <HowItWorks />
+        <ResultsTimeline />
         <BeforeAfter />
         <SocialProof />
         <Guarantee />

@@ -11,12 +11,12 @@ export type Book = {
   oldPrice: Money;
   checkout: string;
   cover: string;
-  pdf: string;       // path under /public/downloads/ — TODO: replace placeholder with real file
-  accent: "brand" | "gold"; // visual accent
+  pdf: string;            // path under /public/downloads/ — TODO: replace placeholder with real file
+  accent: "brand" | "gold";
   badge?: string;
   forWho: string;
-  pages: string;          // e.g. "60 pages"
-  format: string;         // e.g. "Instant PDF download"
+  pages: string;
+  format: string;
   whatsInside: InsideItem[];
   outcomes: string[];
   faqs: { q: string; a: string }[];
@@ -25,13 +25,10 @@ export type Book = {
   metaDescription: string;
 };
 
-// Shared checkout links
+// Systeme.io checkout links
 export const CHECKOUT = {
   guide: "https://eatyourgreen.systeme.io/checkout",
-  // TODO: replace with the real Systeme.io checkout URL for the recipe book
-  recipeBook: "https://eatyourgreen.systeme.io/recipebook",
-  // Buy-both bundle
-  bundle: "https://eatyourgreen.systeme.io/bundlepack",
+  toolkit: "https://eatyourgreen.systeme.io/bundlepack",
 };
 
 export const books: Book[] = [
@@ -65,79 +62,87 @@ export const books: Book[] = [
     ],
     faqs: [
       {
-        q: "Will this work for my picky eater?",
-        a: 'Built for the toughest "no greens ever" kids aged 2–12 — it works by lowering pressure, which is exactly what strong-willed eaters respond to.',
+        q: "Will this really work for my fussy eater?",
+        a: 'It\'s built for the toughest "no greens ever" kids aged 2–12. It works by lowering pressure — which is exactly what strong-willed eaters respond to. Most parents see a first willing try within the first week.',
       },
       {
         q: "I have no time. Is it complicated?",
-        a: "No. Steps are 5 minutes and fit into meals you already cook. No special recipes or shopping.",
+        a: "No. The steps take about 5 minutes and fit into meals you already cook. There are no special recipes, ingredients, or shopping trips.",
+      },
+      {
+        q: "My child is extremely stubborn — is it too late?",
+        a: "It's not too late. The method doesn't rely on willpower or rules; it slowly rebuilds your child's trust around food, which works at any age in the 2–12 range.",
       },
       {
         q: "How do I get it?",
-        a: "Instant digital download right after checkout — start tonight.",
+        a: "It's an instant digital download — the PDF starts downloading automatically right after checkout, and we email you a copy as backup. You can start tonight.",
       },
       {
         q: "What if it doesn't help?",
-        a: "14-day money-back guarantee, no questions asked.",
+        a: "You're covered by our 14-day money-back guarantee, no questions asked.",
       },
     ],
     ctaLabel: "Get the Guide",
-    metaTitle: "The Eat Your Green Guide — End Mealtime Battles Gently | Eat Your Green",
+    metaTitle: "The Eat Your Green Guide — End Mealtime Battles Gently",
     metaDescription:
       "The gentle, pressure-free 4C Method 500+ moms use to get picky eaters (2–12) curious about greens — without tears, bribes, or guilt. Instant download.",
   },
   {
-    slug: "the-green-plate-recipe-book",
-    title: "The Green Plate Recipe Book",
-    tagline: "50 fuss-free, kid-approved ways to get greens onto the plate — and keep them there.",
+    slug: "the-eat-your-green-complete-toolkit",
+    title: "The Eat Your Green Complete Toolkit",
+    tagline: "Activities, games, trackers & checklists — gentle, ready-to-use tools that make greens feel like play.",
     subhead:
-      "The recipe companion to the 4C Method: simple, playful, low-pressure meals built around how kids actually eat — so trying something green feels like fun, not a fight.",
-    // TODO: confirm pricing for the recipe book
-    price: 499,
-    oldPrice: 799,
-    checkout: CHECKOUT.recipeBook,
-    cover: "/images/cover-recipe-book.png",
-    pdf: "/downloads/the-green-plate-recipe-book.pdf",
+      "The done-for-you companion to the 4C Method: 25+ printable activities, games and trackers that turn “eat your greens” into something kids actually want to do — no pressure, no nagging.",
+    price: 799,
+    oldPrice: 1995,
+    checkout: CHECKOUT.toolkit,
+    cover: "/images/cover-complete-toolkit.png",
+    pdf: "/downloads/the-eat-your-green-complete-toolkit.pdf",
     accent: "gold",
-    badge: "New",
-    forWho: "Parents who have the method down and now want done-for-you meals kids will actually try.",
-    pages: "~80 pages",
+    badge: "Most Popular",
+    forWho: "Parents who want a calmer table now — with done-for-you games, trackers and activities that make trying greens fun.",
+    pages: "25+ printable pages",
     format: "Instant PDF download",
     whatsInside: [
-      { name: "50 kid-approved recipes", desc: "Breakfasts, lunches, snacks and dinners — every one with a gentle green in it." },
-      { name: "5-minute 'first taste' bites", desc: "Tiny, no-pressure ways to introduce a new green without a standoff." },
-      { name: "Weekend Games Pack recipes", desc: "Playful cook-together activities that spark curiosity, not lessons.", value: "₹399 value" },
-      { name: "Swap-it shopping list", desc: "Easy greens to keep on hand and what to swap when they say no." },
-      { name: "BONUS: Lunchbox & smoothie cards", desc: "Grab-and-go ideas for busy mornings.", value: "₹299 value" },
+      { name: "The full 4C Method Guide", desc: "Everything in The Guide — the complete gentle system, included." },
+      { name: "Printable Trackers & Charts", desc: "Turn progress into a game kids want to win.", value: "₹399 value" },
+      { name: "Weekend Games Pack", desc: "Playful activities that spark curiosity, not lessons.", value: "₹399 value" },
+      { name: "4C Quick-Start Cards", desc: "Exactly what to say and do at the table.", value: "₹299 value" },
+      { name: "Exploration & Activity Sheets", desc: "Leaf hunts, sorting games and colour-ins that build curiosity." },
+      { name: "BONUS: Fussy-Eater SOS Cheat Sheet", desc: "Phrases that defuse a meltdown in seconds.", value: "₹299 value" },
     ],
     outcomes: [
-      "A week of meals planned without the 'what do I cook?' panic",
-      "Greens hidden in plain sight — in food kids already love",
-      "Cooking that becomes play, not a battle of wills",
-      '"My kid asked for the green smoothie" moments',
+      "A grab-and-go activity for any tricky mealtime",
+      "Kids racing to fill in their tracker instead of resisting",
+      "Cooking and play that build curiosity, not pressure",
+      "The complete system in one place — nothing left to guess",
     ],
     faqs: [
       {
-        q: "Are the recipes complicated?",
-        a: "No — most use everyday ingredients and take 20 minutes or less. No fancy equipment.",
+        q: "What's the difference between the Guide and the Toolkit?",
+        a: "The Guide gives you the method. The Complete Toolkit includes the full method plus the printables, games, trackers and activity sheets that make it stick day-to-day — most parents choose the Toolkit.",
       },
       {
-        q: "Do I need the Guide first?",
-        a: "Not at all. The recipes stand alone, but they work best paired with the gentle 4C Method in the Guide.",
+        q: "Do I need a printer?",
+        a: "A printer helps for the trackers, games and activity cards, but everything can also be used on a tablet or screen. The method itself needs nothing extra.",
       },
       {
-        q: "Are they suitable for allergies / vegetarian diets?",
-        a: "Most recipes are vegetarian-friendly with simple swap notes. Always check ingredients for your child's specific allergies.",
+        q: "Are the activities age-appropriate?",
+        a: "Yes — the games and sheets are designed for ages 2–12, with simpler and more advanced options so they grow with your child.",
       },
       {
         q: "How do I get it?",
-        a: "Instant digital download right after checkout.",
+        a: "Instant digital download — your files start downloading automatically right after checkout, with an email backup. Start tonight.",
+      },
+      {
+        q: "What if it doesn't help?",
+        a: "Same 14-day money-back guarantee as the Guide — no questions asked.",
       },
     ],
-    ctaLabel: "Get the Recipe Book",
-    metaTitle: "The Green Plate Recipe Book — 50 Kid-Approved Veggie Meals | Eat Your Green",
+    ctaLabel: "Get the Complete Toolkit",
+    metaTitle: "The Eat Your Green Complete Toolkit — Activities, Games & Trackers",
     metaDescription:
-      "50 fuss-free, kid-approved recipes that get greens onto the plate — the recipe companion to the gentle 4C Method. Instant PDF download.",
+      "25+ printable activities, games, trackers and checklists — the complete gentle system that makes greens feel like play. Includes the full 4C Method. Instant download.",
   },
 ];
 
@@ -148,19 +153,21 @@ export function getBook(slug: string): Book | undefined {
 export type DownloadItem = { title: string; file: string; price: number };
 
 // Resolve which PDF(s) to deliver after payment, keyed by the ?plan query value.
-// plan can be a book slug, "bundle", or "guide"/"toolkit" legacy values.
+// The Toolkit is the complete pack, so it delivers BOTH PDFs.
 export function getDownloads(plan?: string): DownloadItem[] {
   const key = (plan || "").toLowerCase();
-  if (key === "bundle" || key === "both" || key === "complete" || key === "toolkit") {
-    return books.map((b) => ({ title: b.title, file: b.pdf, price: b.price }));
+  const guide = books.find((b) => b.slug.includes("guide"))!;
+  const toolkit = books.find((b) => b.slug.includes("toolkit"))!;
+
+  const isToolkit =
+    key.includes("toolkit") ||
+    key.includes("complete") ||
+    key.includes("bundle") ||
+    key === toolkit.slug;
+
+  if (isToolkit) {
+    return [guide, toolkit].map((b) => ({ title: b.title, file: b.pdf, price: b.price }));
   }
-  // try exact slug match, then loose contains (e.g. "guide", "recipe")
-  const exact = books.find((b) => b.slug === key);
-  const loose =
-    exact ||
-    books.find((b) => key && (b.slug.includes(key) || key.includes(b.slug))) ||
-    books.find((b) => key.includes("recipe") && b.slug.includes("recipe")) ||
-    books.find((b) => key.includes("guide") && b.slug.includes("guide"));
-  const book = exact || loose || books[0]; // default to the Guide
-  return [{ title: book.title, file: book.pdf, price: book.price }];
+  // default: just the Guide
+  return [{ title: guide.title, file: guide.pdf, price: guide.price }];
 }
