@@ -31,9 +31,7 @@ export default function SiteHeader() {
     >
       <div className="container-page flex items-center justify-between py-3">
         <Link href="/" aria-label="Eat Your Green — home" className="inline-flex items-center">
-          <span className="inline-flex items-center rounded-lg bg-forest px-2.5 py-1.5">
-            <Image src="/images/logo.png" alt="Eat Your Green" width={90} height={80} priority className="h-8 w-auto" />
-          </span>
+          <Image src="/images/logo.png" alt="Eat Your Green" width={150} height={56} priority className="h-11 md:h-12 w-auto" />
         </Link>
 
         {/* desktop nav */}
@@ -53,7 +51,7 @@ export default function SiteHeader() {
             );
           })}
           <Button asChild size="pill">
-            <Link href="/books/the-eat-your-green-guide">Get the Guide ₹399</Link>
+            <Link href="/books/the-eat-your-green-complete-toolkit">Get the Toolkit ₹799</Link>
           </Button>
         </nav>
 
@@ -84,7 +82,7 @@ export default function SiteHeader() {
               </Link>
             ))}
             <Button asChild className="mt-3 w-full">
-              <Link href="/books/the-eat-your-green-guide">Get the Guide ₹399</Link>
+              <Link href="/books/the-eat-your-green-complete-toolkit">Get the Toolkit ₹799</Link>
             </Button>
           </nav>
         </div>

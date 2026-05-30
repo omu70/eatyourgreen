@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { hero } from "@/data/content";
+import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function Hero() {
@@ -16,6 +17,15 @@ export default function Hero() {
         >
           <h1 className="text-h1 md:text-h1-lg text-forest">{hero.h1}</h1>
           <p className="mt-4 text-ink/80 prose-measure">{hero.subhead}</p>
+          <p className="mt-5 font-heading font-semibold text-forest text-sm">{hero.discover.heading}</p>
+          <ul className="mt-2 space-y-2">
+            {hero.discover.items.map((d, i) => (
+              <li key={i} className="flex items-start gap-2 text-ink/85 text-sm md:text-base">
+                <Check className="h-5 w-5 text-leaf shrink-0 mt-0.5" />
+                <span>{d}</span>
+              </li>
+            ))}
+          </ul>
           <div className="mt-6 flex flex-col sm:flex-row gap-3">
             <Button asChild size="lg" className="w-full sm:w-auto">
               <Link href="/#books">{hero.ctaPrimary}</Link>

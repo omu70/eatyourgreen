@@ -17,6 +17,7 @@ import Guarantee from "@/components/sections/Guarantee";
 import FAQ from "@/components/sections/FAQ";
 import { BookJsonLd } from "@/components/JsonLd";
 import BookView from "@/components/BookView";
+import CountdownTimer from "@/components/CountdownTimer";
 
 export function generateStaticParams() {
   return books.map((b) => ({ slug: b.slug }));
@@ -87,10 +88,12 @@ export default async function BookPage({ params }: { params: Promise<{ slug: str
                   className="w-full sm:w-auto"
                 />
               </div>
+              <p className="mt-4 small font-semibold text-cta uppercase tracking-wide">Special launch price — ends soon:</p>
+              <CountdownTimer className="mt-2 justify-start" />
               <p className="mt-4 small text-ink/70 flex flex-wrap gap-x-4 gap-y-1">
                 <span className="flex items-center gap-1"><Download className="h-4 w-4 text-leaf" /> {book.format}</span>
                 <span className="flex items-center gap-1"><FileText className="h-4 w-4 text-leaf" /> {book.pages}</span>
-                <span>★ 4.8/5 · 14-day guarantee</span>
+                <span>★ 4.8/5 · 28-day guarantee</span>
               </p>
             </Reveal>
           </div>
@@ -165,16 +168,15 @@ export default async function BookPage({ params }: { params: Promise<{ slug: str
                     <Image src={other.cover} alt={`${other.title} cover`} fill sizes="80px" className="object-cover" />
                   </div>
                   <div className="mt-4 md:mt-0 md:flex-1 text-center md:text-left">
-                    <p className="small text-ink/60">Pairs well with</p>
+                    <p className="small text-brand font-semibold">Most parents add this</p>
                     <h3 className="font-heading font-semibold text-forest">{other.title}</h3>
                     <p className="text-ink/75 text-sm mt-1">{other.tagline}</p>
+                    <p className="mt-1"><span className="text-ink/40 line-through text-sm">₹{other.oldPrice.toLocaleString("en-IN")}</span> <span className="font-heading font-bold text-forest">₹{other.price.toLocaleString("en-IN")}</span></p>
                   </div>
-                  <Link
-                    href={`/books/${other.slug}`}
-                    className="mt-4 md:mt-0 inline-flex items-center justify-center min-h-[48px] px-5 rounded-xl border border-brand text-brand font-semibold hover:bg-mist w-full md:w-auto"
-                  >
-                    View book
-                  </Link>
+                  <div className="mt-4 md:mt-0 flex flex-col gap-2 w-full md:w-auto">
+                    <CTAButton href={other.checkout} value={other.price} contentId={other.slug} contentName={other.title} label={`Add — ₹${other.price}`} className="w-full md:w-auto" />
+                    <Link href={`/books/${other.slug}`} className="text-center text-brand text-sm font-medium hover:underline">View details</Link>
+                  </div>
                 </div>
               </Reveal>
             </div>

@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     template: "%s | Eat Your Green",
   },
   description:
-    "Two gentle, pressure-free digital books that help moms get picky eaters (ages 2–12) curious about greens — without tears, bribes, or guilt. Instant download, 14-day money-back guarantee.",
+    "Two gentle, pressure-free digital books that help moms get picky eaters (ages 2–12) curious about greens — without tears, bribes, or guilt. Instant download, 28-day money-back guarantee.",
   keywords: [
     "picky eater",
     "get kids to eat vegetables",
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     siteName: SITE.name,
     title: "End Mealtime Battles — Get Your Child Eating Greens",
     description:
-      "Two gentle, pressure-free books that help moms turn “yuck” into “yes.” Instant download. 14-day money-back guarantee.",
+      "Two gentle, pressure-free books that help moms turn “yuck” into “yes.” Instant download. 28-day money-back guarantee.",
     images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Eat Your Green" }],
   },
   twitter: {

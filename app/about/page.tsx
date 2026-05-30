@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
 import FinalCTA from "@/components/sections/FinalCTA";
-import { about } from "@/data/content";
+import { about, author } from "@/data/content";
 
 export const metadata: Metadata = {
   title: "About",
-  description: "Why Eat Your Green exists — the gentle, pressure-free approach behind the books, by Prerna Sultania.",
+  description: "Why Eat Your Green exists — the gentle, pressure-free approach behind the books.",
   alternates: { canonical: "/about" },
 };
 
@@ -16,27 +16,21 @@ export default function AboutPage() {
     <main>
       <PageHero title={about.heading} />
       <section className="section pt-4 bg-cream">
-        <div className="container-page max-w-3xl">
-          <Reveal>
-            <div className="flex flex-col sm:flex-row items-center gap-6 bg-white rounded-card border border-mist shadow-card p-6 md:p-8">
-              <div className="relative h-28 w-28 md:h-36 md:w-36 shrink-0 rounded-full overflow-hidden border-2 border-leaf">
-                {/* TODO: replace /images/author.jpg with a real photo of Prerna */}
-                <Image src="/images/author.jpg" alt={`${about.authorName}, ${about.authorTitle}`} fill sizes="144px" className="object-cover" />
-              </div>
-              <div className="text-center sm:text-left">
-                <p className="font-heading font-semibold text-brand text-lg">{about.authorName}</p>
-                <p className="small text-ink/60">{about.authorTitle}</p>
-                <p className="mt-2 text-ink/80">{about.authorBio}</p>
-              </div>
-            </div>
-          </Reveal>
-          <div className="mt-8 space-y-4 prose-measure mx-auto">
+        <div className="container-page max-w-2xl">
+          <div className="space-y-4 prose-measure mx-auto">
             {about.body.map((p, i) => (
               <Reveal key={i} delay={i * 0.05}>
                 <p className="text-ink/85">{p}</p>
               </Reveal>
             ))}
           </div>
+          <Reveal>
+            <p className="mt-8 text-center">
+              <Link href="/author" className="text-brand font-semibold underline">
+                Meet the author, {author.name} →
+              </Link>
+            </p>
+          </Reveal>
         </div>
       </section>
       <FinalCTA />

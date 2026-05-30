@@ -8,4 +8,4 @@ export const SITE = {
 
 export const PRICE_INR = 399;
 export const TOOLKIT_PRICE_INR = 799;
-export const RATING = { value: 4.8, count: 500 };
+export const RATING = { value: 4.8, count: 5000 };

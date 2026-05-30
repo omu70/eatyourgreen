@@ -5,35 +5,53 @@ export const nav = [
   { label: "Home", href: "/" },
   { label: "The Guide", href: "/books/the-eat-your-green-guide" },
   { label: "Complete Toolkit", href: "/books/the-eat-your-green-complete-toolkit" },
-  { label: "About", href: "/about" },
+  { label: "Author", href: "/author" },
   { label: "FAQ", href: "/faq" },
   { label: "Contact", href: "/contact" },
 ];
 
-// Indian payment + delivery trust
 export const payments = "UPI · Google Pay · PhonePe · Paytm · Cards";
-export const whatsapp = {
-  number: "+91 00000 00000", // TODO: add your real WhatsApp number
-  link: "https://wa.me/910000000000", // TODO: real wa.me link
+
+// TODO: replace with your real support email. While it starts with "TODO",
+// the email is hidden on the site (we rely on WhatsApp + the contact form).
+export const supportEmail = "TODO-add-your-email";
+
+// WhatsApp community (you'll share a QR code to join)
+export const whatsappCommunity = {
+  label: "Join our free WhatsApp community",
+  link: "", // TODO: community invite link (optional)
+  qr: "/images/whatsapp-qr.png", // TODO: drop your QR image here
 };
+
+// Launch offer deadline — the countdown counts down to this moment (IST).
+// TODO: set your real end date/time. Format: YYYY-MM-DDTHH:MM:SS+05:30
+export const launchDeadline = "2026-06-30T23:59:59+05:30";
 
 export const hero = {
   h1: "Get your fussy child to happily eat greens — without fights, bribes or tears.",
   subhead:
     "A simple, gentle way for Indian parents to get fussy kids (age 2–12) to start eating greens — no shouting, no bribing, no drama. It works with the everyday meals you already cook.",
   ctaPrimary: "See the books →",
-  trust: "★ 4.8/5 · Loved by 500+ Indian parents · Instant download",
+  trust: "★ 4.8/5 · Loved by 5000+ Indian parents · Instant download",
+  // TODO: replace with your exact "what you'll discover" points
+  discover: {
+    heading: "What you'll discover inside:",
+    items: [
+      "The one calm sentence to say when your child refuses a vegetable",
+      'Why "just one more bite" backfires — and the gentle thing to do instead',
+      "A 5-minute dinner habit that slowly builds curiosity about greens",
+    ],
+  },
 };
 
 export const trustBadges = [
   { icon: "Download", label: "Instant download — also sent on WhatsApp & email" },
   { icon: "Lock", label: "Pay safely by UPI, Google Pay, PhonePe, Paytm or card" },
-  { icon: "ShieldCheck", label: "14-day money-back promise" },
-  { icon: "Users", label: "Trusted by Indian parents" },
+  { icon: "ShieldCheck", label: "28-day money-back promise" },
+  { icon: "Users", label: "Trusted by 5000+ Indian parents" },
   { icon: "Star", label: "Easy to read on any phone" },
 ];
 
-// Self-explanatory "how you get it" — 1, 2, 3
 export const howToGet = {
   heading: "Getting it is simple",
   sub: "From payment to your first calm dinner — in minutes.",
@@ -62,6 +80,7 @@ export const pain = {
     "You beg, bribe and bargain — and the greens still come back untouched.",
     "You cook a separate plain meal just to stop the crying.",
     "You run behind them with a spoon while the food goes cold.",
+    "You worry they're not getting enough nutrition — and it keeps you up at night.",
     'And quietly you wonder: "Am I doing something wrong?"',
   ],
   closing:
@@ -74,13 +93,14 @@ export const empathy = {
     'Forcing, bribing and "just two more bites" don\'t fail because you aren\'t trying hard enough. They fail because they teach kids that vegetables are something to fear, not enjoy. There is a calmer way — and it can start at tonight\'s dinner.',
 };
 
+// The 4C method: Curiosity, Connection, Creativity, Consistency
 export const method = {
-  heading: "A simple 4-step way to raise a happy green-eater.",
+  heading: "The simple 4C way to raise a happy green-eater.",
   steps: [
     { title: "Curiosity", icon: "Sparkles", body: "Easy, no-pressure ways to make greens look interesting." },
-    { title: "Comfort", icon: "Heart", body: "Take away the fear and the fight." },
-    { title: "Confidence", icon: "TrendingUp", body: "Let your child lead, one small win at a time." },
     { title: "Connection", icon: "Users", body: "Make the dinner table a happy place, not a battle." },
+    { title: "Creativity", icon: "Palette", body: "Playful ways to explore greens — games, colours and shapes." },
+    { title: "Consistency", icon: "Repeat", body: "Small, gentle repeats that turn trying into a lasting habit." },
   ],
 };
 
@@ -116,29 +136,32 @@ export const results = {
 };
 
 export const stats = [
-  { value: 500, suffix: "+", label: "families using this method" },
+  { value: 5000, suffix: "+", label: "families using this method" },
   { value: 90, suffix: "%", label: "say dinner stress dropped within weeks" },
   { value: 95, suffix: "%", label: "of kids feel safe trying greens" },
 ];
 
+export const leadMagnet = {
+  heading: "Not ready to buy? Start free.",
+  sub: "Get a free sample — 5 gentle phrases that stop a mealtime meltdown in seconds. Sent straight to your inbox.",
+  cta: "Send me the free sample",
+  note: "No spam. Unsubscribe anytime.",
+};
+
 export const guarantee = {
-  heading: "Your first win in 14 days — or your money back.",
+  heading: "Your first win in 28 days — or your money back.",
   body:
-    "Try it for two weeks. If your child isn't calmer and more curious about greens, just email us and we'll return your full money — no questions asked. The only risk is another month of cold, untouched dinners.",
+    "Try it for a full 28 days. If your child isn't calmer and more curious about greens, just email us and we'll return your full money — no questions asked. The only risk is another month of cold, untouched dinners.",
 };
 
 export const finalCta = {
   heading: "Tonight's dinner can be different.",
-  cta: "See the Books",
-  urgency: "Special launch price — for a short time only.",
+  cta: "See the books",
+  urgency: "Special launch price — ends soon:",
 };
 
 export const about = {
   heading: "Why Eat Your Green exists",
-  authorName: "Prerna Sultania",
-  authorTitle: "Author & gentle-feeding coach",
-  authorBio:
-    "Prerna Sultania is the author of Eat Your Green. She created this gentle, no-pressure way to help fussy kids enjoy greens — built from years of real dinner-table experience with her own fussy eaters.",
   body: [
     "Eat Your Green started at a real dinner table — with cold food, short tempers, and a parent who had tried everything.",
     "The change wasn't a new recipe or a stricter rule. It was simply removing the pressure. When greens stopped being a fight, curiosity had room to grow.",
@@ -146,18 +169,26 @@ export const about = {
   ],
 };
 
+// Separate Author page — content & photo to be provided by you.
+export const author = {
+  name: "Prerna Sultania",
+  title: "Author of Eat Your Green",
+  bio: [
+    "TODO: Add Prerna's real bio here (you'll provide this).",
+    "A short, warm 2–3 paragraph story — who she is, why she created Eat Your Green, and what makes the gentle method trustworthy for Indian parents.",
+  ],
+  photo: "/images/author.jpg", // TODO: replace with the real author photo
+};
+
 export const contact = {
   heading: "We're here to help",
   body: "Questions about the books, your download, or a refund? Message us and we'll reply within 1–2 working days.",
-  email: "support@eatyourgreen.com", // TODO: real email
-  whatsapp: whatsapp.link,
-  whatsappNumber: whatsapp.number,
+  email: supportEmail,
   instagram: "https://instagram.com/eatyourgreen", // TODO: real handle
 };
 
 export const footer = {
-  contact: "support@eatyourgreen.com", // TODO: real email
-  whatsapp: whatsapp.link,
+  email: supportEmail,
   instagram: "https://instagram.com/eatyourgreen", // TODO: real handle
   secureNote: "Safe payment · Instant delivery on WhatsApp & email",
   payments,

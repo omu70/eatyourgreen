@@ -1,8 +1,8 @@
-import { Sparkles, Heart, TrendingUp, Users, type LucideIcon } from "lucide-react";
+import { Sparkles, Heart, TrendingUp, Users, Palette, Repeat, type LucideIcon } from "lucide-react";
 import { method } from "@/data/content";
 import Reveal from "@/components/Reveal";
 
-const ICONS: Record<string, LucideIcon> = { Sparkles, Heart, TrendingUp, Users };
+const ICONS: Record<string, LucideIcon> = { Sparkles, Heart, TrendingUp, Users, Palette, Repeat };
 
 export default function MethodSteps() {
   return (

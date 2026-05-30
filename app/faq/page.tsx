@@ -7,7 +7,7 @@ import { books } from "@/data/books";
 
 export const metadata: Metadata = {
   title: "FAQ",
-  description: "Answers about the books, downloads, pricing, and the 14-day money-back guarantee.",
+  description: "Answers about the books, downloads, pricing, and the 28-day money-back guarantee.",
   alternates: { canonical: "/faq" },
 };
 

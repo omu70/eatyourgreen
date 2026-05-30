@@ -32,6 +32,6 @@ export const faqs: FAQ[] = [
   },
   {
     q: "What if it doesn't help us?",
-    a: "You're protected by a 14-day money-back guarantee. If you don't see your child calmer and more curious around greens, email us and we'll refund every rupee — no questions asked.",
+    a: "You're protected by a 28-day money-back guarantee. If you don't see your child calmer and more curious around greens, email us and we'll refund every rupee — no questions asked.",
   },
 ];

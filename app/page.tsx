@@ -7,10 +7,12 @@ import MadeForIndia from "@/components/sections/MadeForIndia";
 import PainChecklist from "@/components/sections/PainChecklist";
 import EmpathyReframe from "@/components/sections/EmpathyReframe";
 import MethodSteps from "@/components/sections/MethodSteps";
+import BeforeAfter from "@/components/sections/BeforeAfter";
 import HowItWorks from "@/components/sections/HowItWorks";
 import ResultsTimeline from "@/components/sections/ResultsTimeline";
-import BeforeAfter from "@/components/sections/BeforeAfter";
+import LeadMagnet from "@/components/sections/LeadMagnet";
 import SocialProof from "@/components/sections/SocialProof";
+import WhatsAppCommunity from "@/components/sections/WhatsAppCommunity";
 import Guarantee from "@/components/sections/Guarantee";
 import FAQ from "@/components/sections/FAQ";
 import FinalCTA from "@/components/sections/FinalCTA";
@@ -29,12 +31,14 @@ export default function Home() {
         <PainChecklist />
         <EmpathyReframe />
         <MethodSteps />
+        <BeforeAfter />
         <MadeForIndia />
         <HowItWorks />
         <Banner src="/images/banner-toolkit.jpg" alt="End food struggles without forcing — games, trackers and gentle routines parents actually use." />
         <ResultsTimeline />
-        <BeforeAfter />
+        <LeadMagnet />
         <SocialProof />
+        <WhatsAppCommunity />
         <Guarantee />
         <FAQ />
         <FinalCTA />

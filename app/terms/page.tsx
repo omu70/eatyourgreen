@@ -15,7 +15,7 @@ export default function Terms() {
       <h2>Payments</h2>
       <p>Payments are processed securely by our checkout provider. Prices are shown in INR.</p>
       <h2>Refunds</h2>
-      <p>See our Refund Policy for our 14-day money-back guarantee.</p>
+      <p>See our Refund Policy for our 28-day money-back guarantee.</p>
     </LegalPage>
   );
 }

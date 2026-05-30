@@ -52,6 +52,7 @@ export const books: Book[] = [
       { name: "The full 4C System", desc: "Curiosity, Comfort, Confidence, Connection — in simple, doable steps." },
       { name: "What to say at the table", desc: "Word-for-word scripts that lower pressure instead of raising it." },
       { name: "The 7-day gentle plan", desc: "A calm day-by-day path to your first willing try." },
+      { name: "Pre-Meal, During-Meal & Post-Meal Ideas", desc: "Simple ways to make food fun and engaging — before, during and after the meal." },
       { name: "BONUS: Fussy-Eater SOS Cheat Sheet", desc: "Phrases that defuse a meltdown in seconds.", value: "₹299 value" },
     ],
     outcomes: [
