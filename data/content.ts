@@ -111,7 +111,7 @@ export const howItWorks = {
     { img: "/images/how-curiosity.jpg", alt: "Mother and child looking at leaves with a magnifying glass", caption: "Make greens fun to explore" },
     { img: "/images/how-play.jpg", alt: "Mother and child playing a vegetable game with cards and dice", caption: "Turn trying greens into a game" },
     { img: "/images/how-cook.jpg", alt: "Mother and child cooking vegetables together", caption: "Cook together — no pressure to eat" },
-    { img: "/images/how-eat.jpg", alt: "Child helping wash vegetables at the sink", caption: "Let them help — washing and choosing" },
+    { img: "/images/how-eat.jpg", alt: "Child helping wash vegetables at the sink", caption: "Explore greens with all the senses" },
   ],
 };
 

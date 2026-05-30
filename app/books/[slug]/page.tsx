@@ -135,6 +135,30 @@ export default async function BookPage({ params }: { params: Promise<{ slug: str
           </div>
         </section>
 
+        {/* Real pages gallery (Toolkit) */}
+        {book.gallery && book.gallery.length > 0 && (
+          <section className="section bg-mist">
+            <div className="container-page max-w-4xl">
+              <Reveal>
+                <h2 className="text-h2 md:text-h2-lg text-forest text-center">A peek inside</h2>
+                <p className="mt-3 text-center text-ink/75 prose-measure mx-auto">Real pages from the pack — printables your child will actually want to fill in.</p>
+              </Reveal>
+              <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
+                {book.gallery.map((g, i) => (
+                  <Reveal key={i} delay={i * 0.06}>
+                    <figure className="rounded-card overflow-hidden border border-mist shadow-card bg-white h-full">
+                      <div className="relative aspect-[2/3] bg-cream">
+                        <Image src={g.img} alt={g.caption} fill sizes="(max-width:640px) 100vw, 33vw" className="object-contain" />
+                      </div>
+                      <figcaption className="p-3 text-sm text-ink/75 text-center">{g.caption}</figcaption>
+                    </figure>
+                  </Reveal>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
         {/* Outcomes */}
         <section className="section bg-forest text-white">
           <div className="container-page max-w-3xl">

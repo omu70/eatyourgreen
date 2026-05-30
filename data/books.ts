@@ -21,6 +21,7 @@ export type Book = {
   outcomes: string[];
   faqs: { q: string; a: string }[];
   ctaLabel: string;
+  gallery?: { img: string; caption: string }[];
   metaTitle: string;
   metaDescription: string;
 };
@@ -131,6 +132,11 @@ export const books: Book[] = [
         q: "How do I get it?",
         a: "Instant digital download — your files start downloading automatically right after checkout, with an email backup. Start tonight.",
       },
+    ],
+    gallery: [
+      { img: "/images/toolkit-sample-2.jpg", caption: "Everything inside the printable pack" },
+      { img: "/images/toolkit-sample-1.jpg", caption: "“My favourite green” progress chart" },
+      { img: "/images/toolkit-sample-3.jpg", caption: "Ready-to-use games, trackers & checklists" },
     ],
     ctaLabel: "Get the Complete Toolkit",
     metaTitle: "The Eat Your Green Complete Toolkit — Activities, Games & Trackers",
