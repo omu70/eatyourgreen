@@ -7,6 +7,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import CTAButton from "@/components/CTAButton";
 import Reveal from "@/components/Reveal";
+import CountdownTimer from "@/components/CountdownTimer";
 
 export default function BooksShowcase() {
   return (
@@ -15,6 +16,8 @@ export default function BooksShowcase() {
         <Reveal>
           <h2 className="text-h2 md:text-h2-lg text-forest text-center">{booksIntro.heading}</h2>
           <p className="mt-3 text-center text-ink/75 prose-measure mx-auto">{booksIntro.sub}</p>
+          <p className="mt-5 text-center small font-semibold text-cta uppercase tracking-wide">Launch offer — save up to 60%. Ends in:</p>
+          <CountdownTimer className="mt-2" />
         </Reveal>
 
         <div className="mt-12 grid md:grid-cols-2 gap-6 items-stretch max-w-4xl mx-auto">

@@ -172,12 +172,17 @@ export const about = {
 // Separate Author page — content & photo to be provided by you.
 export const author = {
   name: "Prerna Sultania",
-  title: "Author of Eat Your Green",
+  title: "Parent · Founder · Children's Food Education Advocate",
+  photo: "/images/author.jpg", // TODO: replace with Prerna's real standing photo
   bio: [
-    "TODO: Add Prerna's real bio here (you'll provide this).",
-    "A short, warm 2–3 paragraph story — who she is, why she created Eat Your Green, and what makes the gentle method trustworthy for Indian parents.",
+    "As a parent, I understand how confusing food and nutrition can feel in today's world.",
+    "Children are surrounded by marketing, ultra-processed foods, screens, and endless messages about what they should eat.",
+    "Like many parents, I found myself searching for practical, realistic ways to help children build healthier habits — without pressure, guilt, or perfection.",
+    "That journey inspired the Eat Your Green Series — a collection of books designed to help families create positive food environments and raise confident eaters.",
+    "My goal is simple: to help parents feel informed, empowered, and supported as they navigate the everyday challenges of feeding children in a modern food world.",
   ],
-  photo: "/images/author.jpg", // TODO: replace with the real author photo
+  quote: "Small changes create lifelong habits.",
+  tagline: "Creator of the Eat Your Green Series — helping families raise confident eaters, one small step at a time.",
 };
 
 export const contact = {

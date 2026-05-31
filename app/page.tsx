@@ -17,6 +17,8 @@ import Guarantee from "@/components/sections/Guarantee";
 import FAQ from "@/components/sections/FAQ";
 import FinalCTA from "@/components/sections/FinalCTA";
 import { HomeJsonLd } from "@/components/JsonLd";
+import StickyCTA from "@/components/StickyCTA";
+import { CHECKOUT } from "@/data/content";
 
 export default function Home() {
   return (
@@ -43,6 +45,15 @@ export default function Home() {
         <FAQ />
         <FinalCTA />
       </main>
+      <StickyCTA
+        price={399}
+        href={CHECKOUT.guide}
+        contentId="the-eat-your-green-guide"
+        contentName="The Eat Your Green Guide"
+        label="Get the Guide"
+        triggerId="hero"
+        hideAtId="books"
+      />
     </>
   );
 }
