@@ -11,6 +11,7 @@ import BeforeAfter from "@/components/sections/BeforeAfter";
 import HowItWorks from "@/components/sections/HowItWorks";
 import ResultsTimeline from "@/components/sections/ResultsTimeline";
 import LeadMagnet from "@/components/sections/LeadMagnet";
+import AuthorStrip from "@/components/sections/AuthorStrip";
 import SocialProof from "@/components/sections/SocialProof";
 import WhatsAppCommunity from "@/components/sections/WhatsAppCommunity";
 import Guarantee from "@/components/sections/Guarantee";
@@ -39,6 +40,7 @@ export default function Home() {
         <Banner src="/images/banner-toolkit.jpg" alt="End food struggles without forcing — games, trackers and gentle routines parents actually use." />
         <ResultsTimeline />
         <LeadMagnet />
+        <AuthorStrip />
         <SocialProof />
         <WhatsAppCommunity />
         <Guarantee />

@@ -5,6 +5,7 @@ export const nav = [
   { label: "Home", href: "/" },
   { label: "The Guide", href: "/books/the-eat-your-green-guide" },
   { label: "Complete Toolkit", href: "/books/the-eat-your-green-complete-toolkit" },
+  { label: "Book 2", href: "/books/raising-kids-in-a-junk-food-world" },
   { label: "Author", href: "/author" },
   { label: "FAQ", href: "/faq" },
   { label: "Contact", href: "/contact" },
@@ -19,13 +20,16 @@ export const supportEmail = "TODO-add-your-email";
 // WhatsApp community (you'll share a QR code to join)
 export const whatsappCommunity = {
   label: "Join our free WhatsApp community",
-  link: "", // TODO: community invite link (optional)
-  qr: "/images/whatsapp-qr.png", // TODO: drop your QR image here
+  number: "+91 89205 69272",
+  link: "https://wa.me/918920569272",
+  qr: "/images/whatsapp-qr.png", // TODO: drop your community QR image here
 };
 
-// Launch offer deadline — the countdown counts down to this moment (IST).
-// TODO: set your real end date/time. Format: YYYY-MM-DDTHH:MM:SS+05:30
-export const launchDeadline = "2026-06-30T23:59:59+05:30";
+// Early-bird scarcity offer (used instead of a countdown timer)
+export const offer = {
+  line: "First 100 moms get ₹200 off",
+  note: "Limited early-bird spots — once they're gone, the price goes back up.",
+};
 
 export const hero = {
   h1: "Get your fussy child to happily eat greens — without fights, bribes or tears.",
@@ -157,7 +161,7 @@ export const guarantee = {
 export const finalCta = {
   heading: "Tonight's dinner can be different.",
   cta: "See the books",
-  urgency: "Special launch price — ends soon:",
+  urgency: "Limited launch offer:",
 };
 
 export const about = {

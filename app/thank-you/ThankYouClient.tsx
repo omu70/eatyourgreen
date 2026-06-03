@@ -3,7 +3,8 @@ import { useEffect, useState } from "react";
 import { Download, CheckCircle2 } from "lucide-react";
 import { track } from "@/lib/analytics";
 import { Button } from "@/components/ui/button";
-import type { DownloadItem } from "@/data/books";
+import Image from "next/image";
+import { books, type DownloadItem } from "@/data/books";
 
 function triggerDownload(file: string, filename: string) {
   const a = document.createElement("a");
@@ -84,6 +85,30 @@ export default function ThankYouClient({
             );
           })}
         </div>
+
+        {(() => {
+          const purchased = new Set(downloads.map((d) => d.file));
+          const others = books.filter((b) => !purchased.has(b.pdf));
+          if (others.length === 0) return null;
+          return (
+            <div className="mt-10 text-left">
+              <h2 className="text-h3 text-forest font-heading text-center">Complete your set</h2>
+              <div className="mt-4 grid sm:grid-cols-2 gap-3">
+                {others.map((o) => (
+                  <a key={o.slug} href={`/books/${o.slug}`} className="rounded-card border border-mist bg-white shadow-card p-3 flex gap-3 items-center hover:border-leaf">
+                    <span className="relative w-12 h-16 shrink-0 rounded overflow-hidden border border-mist">
+                      <Image src={o.cover} alt={o.title} fill sizes="48px" className="object-cover" />
+                    </span>
+                    <span className="leading-tight">
+                      <span className="block font-heading font-semibold text-forest text-sm">{o.title}</span>
+                      <span className="block text-brand text-sm font-bold">₹{o.price.toLocaleString("en-IN")}</span>
+                    </span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          );
+        })()}
 
         <a href="/" className="inline-block mt-8 text-brand font-semibold underline">
           ← Back to home

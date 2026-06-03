@@ -17,7 +17,7 @@ import Guarantee from "@/components/sections/Guarantee";
 import FAQ from "@/components/sections/FAQ";
 import { BookJsonLd } from "@/components/JsonLd";
 import BookView from "@/components/BookView";
-import CountdownTimer from "@/components/CountdownTimer";
+import ScarcityNote from "@/components/ScarcityNote";
 
 export function generateStaticParams() {
   return books.map((b) => ({ slug: b.slug }));
@@ -44,7 +44,7 @@ export default async function BookPage({ params }: { params: Promise<{ slug: str
   const book = getBook(slug);
   if (!book) notFound();
 
-  const other = books.find((b) => b.slug !== book.slug);
+  const others = books.filter((b) => b.slug !== book.slug);
 
   return (
     <>
@@ -88,8 +88,7 @@ export default async function BookPage({ params }: { params: Promise<{ slug: str
                   className="w-full sm:w-auto"
                 />
               </div>
-              <p className="mt-4 small font-semibold text-cta uppercase tracking-wide">Special launch price — ends soon:</p>
-              <CountdownTimer className="mt-2 justify-start" />
+              <ScarcityNote className="mt-4 items-start" />
               <p className="mt-4 small text-ink/70 flex flex-wrap gap-x-4 gap-y-1">
                 <span className="flex items-center gap-1"><Download className="h-4 w-4 text-leaf" /> {book.format}</span>
                 <span className="flex items-center gap-1"><FileText className="h-4 w-4 text-leaf" /> {book.pages}</span>
@@ -183,26 +182,35 @@ export default async function BookPage({ params }: { params: Promise<{ slug: str
         <SocialProof />
 
         {/* Cross-sell */}
-        {other && (
+        {others.length > 0 && (
           <section className="section bg-cream">
-            <div className="container-page max-w-3xl">
+            <div className="container-page max-w-4xl">
               <Reveal>
-                <div className="rounded-card border border-mist shadow-card bg-white p-6 md:flex md:items-center md:gap-6">
-                  <div className="relative w-20 h-28 shrink-0 rounded-lg overflow-hidden border border-mist mx-auto md:mx-0">
-                    <Image src={other.cover} alt={`${other.title} cover`} fill sizes="80px" className="object-cover" />
-                  </div>
-                  <div className="mt-4 md:mt-0 md:flex-1 text-center md:text-left">
-                    <p className="small text-brand font-semibold">Most parents add this</p>
-                    <h3 className="font-heading font-semibold text-forest">{other.title}</h3>
-                    <p className="text-ink/75 text-sm mt-1">{other.tagline}</p>
-                    <p className="mt-1"><span className="text-ink/40 line-through text-sm">₹{other.oldPrice.toLocaleString("en-IN")}</span> <span className="font-heading font-bold text-forest">₹{other.price.toLocaleString("en-IN")}</span></p>
-                  </div>
-                  <div className="mt-4 md:mt-0 flex flex-col gap-2 w-full md:w-auto">
-                    <CTAButton href={other.checkout} value={other.price} contentId={other.slug} contentName={other.title} label={`Add — ₹${other.price}`} className="w-full md:w-auto" />
-                    <Link href={`/books/${other.slug}`} className="text-center text-brand text-sm font-medium hover:underline">View details</Link>
-                  </div>
-                </div>
+                <h2 className="text-h2 md:text-h2-lg text-forest text-center">Most parents also get</h2>
               </Reveal>
+              <div className="mt-8 grid sm:grid-cols-2 gap-4">
+                {others.map((o) => (
+                  <Reveal key={o.slug}>
+                    <div className="rounded-card border border-mist shadow-card bg-white p-5 flex gap-4 h-full">
+                      <div className="relative w-20 h-28 shrink-0 rounded-lg overflow-hidden border border-mist">
+                        <Image src={o.cover} alt={`${o.title} cover`} fill sizes="80px" className="object-cover" />
+                      </div>
+                      <div className="flex flex-col">
+                        <h3 className="font-heading font-semibold text-forest text-sm">{o.title}</h3>
+                        <p className="text-ink/70 text-xs mt-1 flex-1">{o.tagline}</p>
+                        <p className="mt-1">
+                          <span className="text-ink/40 line-through text-xs">₹{o.oldPrice.toLocaleString("en-IN")}</span>{" "}
+                          <span className="font-heading font-bold text-forest">₹{o.price.toLocaleString("en-IN")}</span>
+                        </p>
+                        <div className="mt-2 flex items-center gap-3">
+                          <CTAButton href={o.checkout} value={o.price} contentId={o.slug} contentName={o.title} label={`Add — ₹${o.price}`} size="pill" />
+                          <Link href={`/books/${o.slug}`} className="text-brand text-xs font-medium hover:underline">Details</Link>
+                        </div>
+                      </div>
+                    </div>
+                  </Reveal>
+                ))}
+              </div>
             </div>
           </section>
         )}
