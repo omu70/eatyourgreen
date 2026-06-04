@@ -26,7 +26,7 @@ type Props = ButtonProps & {
 };
 
 export default function CTAButton({
-  href = "",
+  href: _href = "",
   label,
   value = 0,
   contentId = "guide",
@@ -80,7 +80,8 @@ export default function CTAButton({
         }
       }
     }
-    if (href) window.location.href = href;
+    // Razorpay only — no external checkout. If keys aren't configured yet, tell the buyer gently.
+    alert("Payments are being set up. Please try again in a little while, or message us on WhatsApp.");
   }
 
   return (

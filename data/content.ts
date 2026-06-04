@@ -4,7 +4,7 @@ export { CHECKOUT };
 export const nav = [
   { label: "Home", href: "/" },
   { label: "The Guide", href: "/books/the-eat-your-green-guide" },
-  { label: "Complete Toolkit", href: "/books/the-eat-your-green-complete-toolkit" },
+  { label: "Green Explorer Bundle", href: "/books/the-eat-your-green-complete-toolkit" },
   { label: "Book 2", href: "/books/raising-kids-in-a-junk-food-world" },
   { label: "Author", href: "/author" },
   { label: "FAQ", href: "/faq" },
@@ -74,7 +74,7 @@ export const madeForIndia = {
 
 export const booksIntro = {
   heading: "Two books. One calmer dinner table.",
-  sub: "Start with the book that teaches the method, or get the full toolkit with games and trackers. Both are simple and gentle.",
+  sub: "Start with the book that teaches the method, or go all-in with the Green Explorer Bundle. Both are simple and gentle.",
 };
 
 export const pain = {
@@ -120,12 +120,12 @@ export const howItWorks = {
 };
 
 export const beforeAfter = {
-  heading: "From daily fights to a calm table",
+  heading: "What changes for your child",
   rows: [
-    { before: "Crying, bribes and stubborn fights", after: "Calm meals and happy little tries" },
-    { before: "Cooking two separate dinners", after: "One meal the whole family eats" },
-    { before: "Guilt and self-doubt", after: "Confidence that you've got this" },
-    { before: '"My child will never eat greens"', after: '"My child asked for the green smoothie!"' },
+    { before: "Pushes greens away", after: "Touches, smells and explores willingly" },
+    { before: 'Says "I don\'t like it"', after: "Talks about greens with curiosity" },
+    { before: "Refuses to touch new foods", after: "Helps in the kitchen and garden" },
+    { before: "Mealtime becomes stressful", after: "Feels proud of every small achievement" },
   ],
 };
 
@@ -169,7 +169,7 @@ export const about = {
   body: [
     "Eat Your Green started at a real dinner table — with cold food, short tempers, and a parent who had tried everything.",
     "The change wasn't a new recipe or a stricter rule. It was simply removing the pressure. When greens stopped being a fight, curiosity had room to grow.",
-    "These two books are that simple approach, written down: the method, and the toolkit that makes it easy to follow every day. No force. No bribes. No guilt.",
+    "These two books are that simple approach, written down: the method, and the activity bundle that makes it easy to follow every day. No force. No bribes. No guilt.",
   ],
 };
 

@@ -74,7 +74,7 @@ export default function BooksShowcase() {
 
         <Reveal>
           <p className="mt-8 text-center small text-ink/70">
-            Both backed by the 28-day money-back guarantee · Most parents choose the Complete Toolkit.
+            Both backed by the 28-day money-back guarantee · Most parents choose the Green Explorer Bundle.
           </p>
           <p className="mt-2 text-center small text-ink/60">Pay with {payments}</p>
         </Reveal>

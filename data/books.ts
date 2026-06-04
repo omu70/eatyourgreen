@@ -26,9 +26,10 @@ export type Book = {
   metaDescription: string;
 };
 
+// Payments run through Razorpay on-site checkout only.
 export const CHECKOUT = {
-  guide: "https://eatyourgreen.systeme.io/checkout",
-  toolkit: "https://eatyourgreen.systeme.io/bundlepack",
+  guide: "",
+  toolkit: "",
 };
 
 export const books: Book[] = [
@@ -40,7 +41,7 @@ export const books: Book[] = [
       'The pressure-free system 5000+ moms are using to turn "yuck" into "yes" — and get their fussy eater curious about greens in as little as 7 days.',
     price: 399,
     oldPrice: 599,
-    checkout: CHECKOUT.guide,
+    checkout: "",
     cover: "/images/cover-guide.jpg",
     pdf: "/downloads/the-eat-your-green-guide.pdf",
     accent: "brand",
@@ -79,13 +80,13 @@ export const books: Book[] = [
   },
   {
     slug: "the-eat-your-green-complete-toolkit",
-    title: "The Eat Your Green Complete Toolkit",
-    tagline: "Activities, games, trackers & checklists — ready-to-use tools that make greens feel like play.",
+    title: "Green Explorer Bundle (Guide + Activity Adventures)",
+    tagline: "Guide + Activity Adventures — games, creative challenges and progress trackers that make greens fun.",
     subhead:
-      "The done-for-you companion to the 4C method: 25+ printable activities, games and trackers that turn “eat your greens” into something kids actually want to do — no pressure, no nagging.",
+      "A parent-guided system that includes the 4C method, activities and fun games, creative challenges and progress trackers — to help children explore, enjoy and love greens. No pressure, no nagging.",
     price: 799,
     oldPrice: 1995,
-    checkout: CHECKOUT.toolkit,
+    checkout: "",
     cover: "/images/cover-complete-toolkit.jpg",
     pdf: "/downloads/the-eat-your-green-complete-toolkit.pdf",
     accent: "gold",
@@ -98,14 +99,14 @@ export const books: Book[] = [
       { name: "Printable Trackers & Charts", desc: "Turn progress into a game kids want to win.", value: "₹399 value" },
       { name: "Weekend Games Pack", desc: "Playful activities that spark curiosity, not lessons.", value: "₹399 value" },
       { name: "4C Quick-Start Cards", desc: "Exactly what to say and do at the table.", value: "₹299 value" },
-      { name: "Exploration & Activity Sheets", desc: "Leaf hunts, sorting games and colour-ins that build curiosity." },
+      { name: "Activity Adventures", desc: "Leaf hunts, sorting games, creative challenges and colour-ins that build curiosity." },
       { name: "BONUS: Fussy-Eater SOS Cheat Sheet", desc: "Lines that calm a meltdown in seconds.", value: "₹299 value" },
     ],
     outcomes: [
-      "A grab-and-go activity for any tricky mealtime",
-      "Kids racing to fill in their tracker instead of resisting",
-      "Cooking and play that build curiosity, not pressure",
-      "The complete system in one place — nothing left to guess",
+      "Touches, smells and explores new foods willingly",
+      "Talks about greens with curiosity",
+      "Helps in the kitchen and the garden",
+      "Feels proud of every small achievement",
     ],
     gallery: [
       { img: "/images/toolkit-sample-2.jpg", caption: "Everything inside the printable pack" },
@@ -113,15 +114,15 @@ export const books: Book[] = [
       { img: "/images/toolkit-sample-3.jpg", caption: "Ready-to-use games, trackers & checklists" },
     ],
     faqs: [
-      { q: "What's the difference between the Guide and the Toolkit?", a: "The Guide gives you the method. The Complete Toolkit includes the full method plus the printables, games, trackers and activity sheets that make it stick day-to-day — most parents choose the Toolkit." },
+      { q: "What's the difference between the Guide and the Toolkit?", a: "The Guide gives you the method. The Green Explorer Bundle includes the full method plus the activity adventures, games, trackers and creative challenges that make it stick day-to-day — most parents choose the Bundle." },
       { q: "Do I need a printer?", a: "A printer helps for the trackers, games and cards, but everything also works on a tablet or screen. The method itself needs nothing extra." },
       { q: "Are the activities age-appropriate?", a: "Yes — the games and sheets are designed for ages 2–12, with simpler and harder options so they grow with your child." },
       { q: "How do I get it?", a: "Instant digital download — your files arrive right after payment, with a WhatsApp and email backup. Start tonight." },
     ],
-    ctaLabel: "Get the Complete Toolkit",
-    metaTitle: "The Eat Your Green Complete Toolkit — Activities, Games & Trackers",
+    ctaLabel: "Get the Bundle",
+    metaTitle: "Green Explorer Bundle — Guide + Activity Adventures",
     metaDescription:
-      "25+ printable activities, games, trackers and checklists — the complete gentle system that makes greens feel like play. Includes the full 4C method. Instant download.",
+      "A parent-guided system: the 4C method plus activities, fun games, creative challenges and progress trackers — to help children explore, enjoy and love greens. Instant download.",
   },
   {
     slug: "raising-kids-in-a-junk-food-world",
