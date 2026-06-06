@@ -6,7 +6,7 @@ import { hero } from "@/data/content";
 import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-export default function Hero() {
+export default function Hero({ h1, subhead }: { h1?: string; subhead?: string }) {
   return (
     <section id="hero" className="pt-24 md:pt-28 pb-12 md:pb-20 bg-cream">
       <div className="container-page grid md:grid-cols-2 gap-8 md:gap-12 items-center">
@@ -15,8 +15,8 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h1 className="text-h1 md:text-h1-lg text-forest">{hero.h1}</h1>
-          <p className="mt-4 text-ink/80 prose-measure">{hero.subhead}</p>
+          <h1 className="text-h1 md:text-h1-lg text-forest">{h1 || hero.h1}</h1>
+          <p className="mt-4 text-ink/80 prose-measure">{subhead || hero.subhead}</p>
           <p className="mt-5 font-heading font-semibold text-forest text-sm">{hero.discover.heading}</p>
           <ul className="mt-2 grid sm:grid-cols-2 gap-x-5 gap-y-2">
             {hero.discover.items.map((d, i) => (

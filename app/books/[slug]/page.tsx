@@ -3,7 +3,8 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { Check, FileText, Download } from "lucide-react";
-import { books, getBook } from "@/data/books";
+import { books } from "@/data/books";
+import { getProduct, getProducts, getContent } from "@/lib/site-data";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import CTAButton from "@/components/CTAButton";
@@ -29,7 +30,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const book = getBook(slug);
+  const book = await getProduct(slug);
   if (!book) return {};
   return {
     title: book.metaTitle,
@@ -41,10 +42,12 @@ export async function generateMetadata({
 
 export default async function BookPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const book = getBook(slug);
+  const book = await getProduct(slug);
   if (!book) notFound();
 
-  const others = books.filter((b) => b.slug !== book.slug);
+  const allProducts = await getProducts();
+  const others = allProducts.filter((b) => b.slug !== book.slug);
+  const c = await getContent();
 
   return (
     <>
@@ -88,7 +91,7 @@ export default async function BookPage({ params }: { params: Promise<{ slug: str
                   className="w-full sm:w-auto"
                 />
               </div>
-              <ScarcityNote className="mt-4 items-start" />
+              <ScarcityNote className="mt-4 items-start" line={c.offerLine} note={c.offerNote} />
               <p className="mt-4 small text-ink/70 flex flex-wrap gap-x-4 gap-y-1">
                 <span className="flex items-center gap-1"><Download className="h-4 w-4 text-leaf" /> {book.format}</span>
                 <span className="flex items-center gap-1"><FileText className="h-4 w-4 text-leaf" /> {book.pages}</span>

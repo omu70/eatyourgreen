@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { books } from "@/data/books";
+import { books as staticBooks, type Book } from "@/data/books";
 import { booksIntro, payments } from "@/data/content";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -9,14 +9,14 @@ import CTAButton from "@/components/CTAButton";
 import Reveal from "@/components/Reveal";
 import ScarcityNote from "@/components/ScarcityNote";
 
-export default function BooksShowcase() {
+export default function BooksShowcase({ books = staticBooks, offer }: { books?: Book[]; offer?: { line?: string; note?: string } }) {
   return (
     <section id="books" className="section bg-cream scroll-mt-20">
       <div className="container-page">
         <Reveal>
           <h2 className="text-h2 md:text-h2-lg text-forest text-center">{booksIntro.heading}</h2>
           <p className="mt-3 text-center text-ink/75 prose-measure mx-auto">{booksIntro.sub}</p>
-          <ScarcityNote className="mt-5" />
+          <ScarcityNote className="mt-5" line={offer?.line} note={offer?.note} />
         </Reveal>
 
         <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch max-w-5xl mx-auto">

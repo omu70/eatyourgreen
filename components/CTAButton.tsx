@@ -67,7 +67,7 @@ export default function CTAButton({
                 await fetch("/api/razorpay/verify", {
                   method: "POST",
                   headers: { "Content-Type": "application/json" },
-                  body: JSON.stringify(resp),
+                  body: JSON.stringify({ ...resp, plan: contentId, amount: value * 100, title: contentName }),
                 }).catch(() => {});
                 window.location.href = `/thank-you?plan=${encodeURIComponent(contentId)}&value=${value}`;
               },

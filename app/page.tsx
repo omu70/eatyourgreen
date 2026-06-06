@@ -19,14 +19,17 @@ import FinalCTA from "@/components/sections/FinalCTA";
 import StickyCTA from "@/components/StickyCTA";
 import { HomeJsonLd } from "@/components/JsonLd";
 import { CHECKOUT } from "@/data/content";
+import { getProducts, getContent } from "@/lib/site-data";
 
-export default function Home() {
+export default async function Home() {
+  const products = await getProducts();
+  const c = await getContent();
   return (
     <>
       <HomeJsonLd />
       <main>
         {/* 1. Hero (headline + subtitle + what you'll discover) */}
-        <Hero />
+        <Hero h1={c.heroH1} subhead={c.heroSubhead} />
         {/* 1. CTA + trust bar */}
         <TrustBadges />
         {/* 2. Does this sound like your dinner table? */}
@@ -40,7 +43,7 @@ export default function Home() {
         {/* 6. Before and After */}
         <BeforeAfter />
         {/* 7. Show the products */}
-        <BooksShowcase />
+        <BooksShowcase books={products} offer={{ line: c.offerLine, note: c.offerNote }} />
         {/* 8. What changes and how soon */}
         <ResultsTimeline />
         {/* 9. 5000+ families */}

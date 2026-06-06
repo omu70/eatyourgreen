@@ -9,6 +9,7 @@ import GA4 from "@/components/analytics/GA4";
 import GTM from "@/components/analytics/GTM";
 import ConsentBanner from "@/components/analytics/ConsentBanner";
 import { SITE } from "@/lib/seo";
+import HideOnAdmin from "@/components/HideOnAdmin";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
@@ -56,8 +57,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <PageViewTracker />
         <SiteHeader />
         {children}
-        <Footer />
-        <ConsentBanner />
+        <HideOnAdmin>
+          <Footer />
+          <ConsentBanner />
+        </HideOnAdmin>
       </body>
     </html>
   );
