@@ -76,13 +76,17 @@ export async function updateProduct(formData: FormData) {
     updated_at: new Date().toISOString(),
   };
 
-  // Optional list fields (edited as JSON). Only overwrite if valid JSON was provided.
-  const wi = parseJsonOrUndefined(formData.get("whats_inside"));
-  if (wi !== undefined) patch.whats_inside = wi;
-  const oc = parseJsonOrUndefined(formData.get("outcomes"));
-  if (oc !== undefined) patch.outcomes = oc;
-  const fq = parseJsonOrUndefined(formData.get("faqs"));
-  if (fq !== undefined) patch.faqs = fq;
+  // "What's inside" and "FAQs" come from add/remove rows (submitted as JSON).
+  const clean = (v: unknown) =>
+    Array.isArray(v)
+      ? (v as Record<string, unknown>[]).filter((r) => r && Object.values(r).some((x) => String(x ?? "").trim() !== ""))
+      : undefined;
+  const wi = clean(parseJsonOrUndefined(formData.get("whats_inside")));
+  if (wi) patch.whats_inside = wi;
+  const fq = clean(parseJsonOrUndefined(formData.get("faqs")));
+  if (fq) patch.faqs = fq;
+  // "Outcomes" is one item per line.
+  patch.outcomes = String(formData.get("outcomes") ?? "").split(/\r?\n/).map((s) => s.trim()).filter(Boolean);
 
   // Optional cover image upload (replaces cover if a file was chosen).
   const coverUrl = await uploadToMedia(db, slug, formData.get("cover_file"));

@@ -29,16 +29,25 @@ export default async function AdminDashboard() {
 
   return (
     <div>
-      <h1 className="text-xl font-semibold">Dashboard</h1>
+      <h1 className="text-xl font-semibold">Welcome 👋</h1>
+      <p className="mt-1 text-sm text-neutral-500">Here&rsquo;s how your shop is doing. Tap a box to see more.</p>
+
       <div className="mt-6 grid grid-cols-2 md:grid-cols-3 gap-4">
-        <Stat label="Total revenue" value={revenue} href="/admin/orders" />
-        <Stat label="Orders" value={String(orderCount ?? 0)} href="/admin/orders" />
-        <Stat label="Email leads" value={String(leadCount ?? 0)} href="/admin/leads" />
+        <Stat label="Money earned" value={revenue} href="/admin/orders" />
+        <Stat label="Books sold" value={String(orderCount ?? 0)} href="/admin/orders" />
+        <Stat label="Email sign-ups" value={String(leadCount ?? 0)} href="/admin/leads" />
       </div>
-      <p className="mt-6 text-sm text-neutral-500">
-        Manage <Link className="text-emerald-700 underline" href="/admin/products">products</Link> and{" "}
-        <Link className="text-emerald-700 underline" href="/admin/content">site content</Link>.
-      </p>
+
+      <div className="mt-8 rounded-xl border border-neutral-200 bg-white p-5">
+        <h2 className="text-sm font-semibold text-emerald-800">What can I do here?</h2>
+        <ul className="mt-3 space-y-2 text-sm text-neutral-700">
+          <li>• <Link className="text-emerald-700 underline" href="/admin/orders">Sales</Link> — see who bought what and how much you earned.</li>
+          <li>• <Link className="text-emerald-700 underline" href="/admin/leads">Email sign-ups</Link> — everyone who asked for the free sample (download as a list).</li>
+          <li>• <Link className="text-emerald-700 underline" href="/admin/products">Books</Link> — change prices, covers, photos and details.</li>
+          <li>• <Link className="text-emerald-700 underline" href="/admin/content">Website text &amp; photos</Link> — edit any words, image or link on your site.</li>
+        </ul>
+        <p className="mt-3 text-xs text-neutral-400">Tip: after you change something and click Save, your website updates in a few seconds.</p>
+      </div>
     </div>
   );
 }

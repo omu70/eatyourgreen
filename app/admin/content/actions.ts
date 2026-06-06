@@ -17,8 +17,10 @@ const TEXT_KEYS = [
   "instagram", "supportEmail", "payments",
 ] as const;
 
-// Keys edited as JSON (arrays). Empty box => revert to default; invalid JSON => keep existing.
-const JSON_KEYS = ["discover", "stats", "testimonials", "faqs", "authorBio", "aboutBody"] as const;
+// Lists edited as "one item per line".
+const LINE_KEYS = ["discover", "authorBio", "aboutBody"] as const;
+// Lists edited as add/remove rows (the UI submits these as JSON).
+const JSON_KEYS = ["stats", "testimonials", "faqs"] as const;
 
 // Image fields: a file input named `<key>_file`; uploads replace the stored URL.
 const IMAGE_KEYS = ["heroImage", "empathyImage", "authorPhoto", "logo", "waQr"] as const;
@@ -48,14 +50,27 @@ export async function saveContent(formData: FormData) {
     else delete data[k];
   }
 
+  for (const k of LINE_KEYS) {
+    const raw = String(formData.get(k) ?? "");
+    const items = raw.split(/\r?\n/).map((s) => s.trim()).filter(Boolean);
+    if (items.length) data[k] = items;
+    else delete data[k];
+  }
+
   for (const k of JSON_KEYS) {
     const raw = String(formData.get(k) ?? "").trim();
-    if (!raw) { delete data[k]; continue; }
+    if (!raw || raw === "[]") { delete data[k]; continue; }
     try {
       const parsed = JSON.parse(raw);
-      if (Array.isArray(parsed)) data[k] = parsed;
+      if (Array.isArray(parsed)) {
+        const clean = parsed.filter(
+          (row) => row && Object.values(row).some((v) => String(v ?? "").trim() !== "")
+        );
+        if (clean.length) data[k] = clean;
+        else delete data[k];
+      }
     } catch {
-      /* invalid JSON: keep previous value */
+      /* keep previous value */
     }
   }
 

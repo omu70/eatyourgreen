@@ -5,11 +5,11 @@ import { supabaseConfigured } from "@/lib/supabase/config";
 export const metadata: Metadata = { title: "Admin · Eat Your Green", robots: { index: false, follow: false } };
 
 const NAV = [
-  { href: "/admin", label: "Dashboard" },
-  { href: "/admin/orders", label: "Orders" },
-  { href: "/admin/leads", label: "Leads" },
-  { href: "/admin/products", label: "Products" },
-  { href: "/admin/content", label: "Content" },
+  { href: "/admin", label: "Home" },
+  { href: "/admin/orders", label: "Sales" },
+  { href: "/admin/leads", label: "Email sign-ups" },
+  { href: "/admin/products", label: "Books" },
+  { href: "/admin/content", label: "Website text & photos" },
 ];
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
