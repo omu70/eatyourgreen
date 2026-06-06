@@ -16,7 +16,7 @@ export async function POST(req: NextRequest) {
       body: JSON.stringify({
         amount: Math.round(Number(amount)),
         currency: "INR",
-        receipt: `eyg_${plan}_${Date.now()}`,
+        receipt: `eyg_${Date.now()}_${Math.floor(Math.random() * 1e4)}`,
       }),
     });
     const order = await res.json();
