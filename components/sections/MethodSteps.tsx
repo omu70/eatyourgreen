@@ -1,15 +1,17 @@
 import { Sparkles, Heart, TrendingUp, Users, Palette, Repeat, type LucideIcon } from "lucide-react";
 import { method } from "@/data/content";
+import { getContent } from "@/lib/site-data";
 import Reveal from "@/components/Reveal";
 
 const ICONS: Record<string, LucideIcon> = { Sparkles, Heart, TrendingUp, Users, Palette, Repeat };
 
-export default function MethodSteps() {
+export default async function MethodSteps() {
+  const c = await getContent();
   return (
     <section className="section bg-forest text-white">
       <div className="container-page max-w-4xl">
         <Reveal>
-          <h2 className="text-h2 md:text-h2-lg text-white text-center">{method.heading}</h2>
+          <h2 className="text-h2 md:text-h2-lg text-white text-center">{c.methodHeading || method.heading}</h2>
         </Reveal>
         <div className="mt-10 grid gap-5 md:grid-cols-2">
           {method.steps.map((step, i) => {

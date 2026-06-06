@@ -1,7 +1,9 @@
 "use client";
 import { useRef } from "react";
 import { Star, Quote, ChevronLeft, ChevronRight, BadgeCheck } from "lucide-react";
-import { testimonials } from "@/data/testimonials";
+import { testimonials as staticTestimonials } from "@/data/testimonials";
+
+type T = { quote: string; name: string; role: string; stars: number };
 
 function Stars({ n }: { n: number }) {
   return (
@@ -13,7 +15,8 @@ function Stars({ n }: { n: number }) {
   );
 }
 
-export default function TestimonialCarousel() {
+export default function TestimonialCarousel({ items }: { items?: T[] }) {
+  const testimonials: T[] = items && items.length ? items : staticTestimonials;
   const trackRef = useRef<HTMLDivElement>(null);
   const scroll = (dir: 1 | -1) => {
     const el = trackRef.current;

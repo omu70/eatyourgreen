@@ -4,6 +4,7 @@ import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
 import FinalCTA from "@/components/sections/FinalCTA";
 import { author } from "@/data/content";
+import { getContent } from "@/lib/site-data";
 
 export const metadata: Metadata = {
   title: "Meet the Author",
@@ -11,23 +12,27 @@ export const metadata: Metadata = {
   alternates: { canonical: "/author" },
 };
 
-export default function AuthorPage() {
+export default async function AuthorPage() {
+  const c = await getContent();
+  const name = c.authorName || author.name;
+  const title = c.authorTitle || author.title;
+  const photo = c.authorPhoto || author.photo;
+  const bio = c.authorBio && c.authorBio.length ? c.authorBio : author.bio;
   return (
     <main>
-      <PageHero title="Meet the author" subtitle={author.title} />
+      <PageHero title="Meet the author" subtitle={title} />
       <section className="section pt-4 bg-cream">
         <div className="container-page max-w-4xl">
           <Reveal>
             <div className="grid md:grid-cols-[300px_1fr] gap-8 items-start bg-white rounded-card border border-mist shadow-card p-6 md:p-8">
               <div className="relative w-56 md:w-full aspect-[3/4] mx-auto rounded-card overflow-hidden border border-mist bg-mist">
-                {/* TODO: replace /images/author.jpg with Prerna's real standing photo */}
-                <Image src={author.photo} alt={author.name} fill sizes="300px" className="object-cover" />
+                <Image src={photo} alt={name} fill sizes="300px" className="object-cover" />
               </div>
               <div>
-                <h2 className="text-h2 md:text-h2-lg text-brand font-heading">{author.name}</h2>
-                <p className="small text-ink/60">{author.title}</p>
+                <h2 className="text-h2 md:text-h2-lg text-brand font-heading">{name}</h2>
+                <p className="small text-ink/60">{title}</p>
                 <div className="mt-4 space-y-3 text-ink/85">
-                  {author.bio.map((p, i) => (
+                  {bio.map((p, i) => (
                     <p key={i}>{p}</p>
                   ))}
                 </div>

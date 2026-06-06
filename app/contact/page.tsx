@@ -4,6 +4,7 @@ import PageHero from "@/components/PageHero";
 import ContactForm from "@/components/ContactForm";
 import WhatsAppCommunity from "@/components/sections/WhatsAppCommunity";
 import { contact } from "@/data/content";
+import { getContent } from "@/lib/site-data";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -11,8 +12,11 @@ export const metadata: Metadata = {
   alternates: { canonical: "/contact" },
 };
 
-export default function ContactPage() {
-  const showEmail = contact.email && !contact.email.startsWith("TODO");
+export default async function ContactPage() {
+  const c = await getContent();
+  const email = c.supportEmail || contact.email;
+  const instagram = c.instagram || contact.instagram;
+  const showEmail = email && !email.startsWith("TODO");
   return (
     <main>
       <PageHero title={contact.heading} subtitle={contact.body} />
@@ -21,11 +25,11 @@ export default function ContactPage() {
           <ContactForm />
           <div className="mt-8 flex flex-col sm:flex-row flex-wrap gap-4 justify-center text-sm">
             {showEmail && (
-              <a href={`mailto:${contact.email}`} className="inline-flex items-center gap-2 text-brand font-semibold">
-                <Mail className="h-4 w-4" /> {contact.email}
+              <a href={`mailto:${email}`} className="inline-flex items-center gap-2 text-brand font-semibold">
+                <Mail className="h-4 w-4" /> {email}
               </a>
             )}
-            <a href={contact.instagram} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-brand font-semibold">
+            <a href={instagram} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-brand font-semibold">
               <Instagram className="h-4 w-4" /> Instagram
             </a>
           </div>

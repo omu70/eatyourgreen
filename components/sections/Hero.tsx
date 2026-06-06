@@ -6,7 +6,13 @@ import { hero } from "@/data/content";
 import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-export default function Hero({ h1, subhead }: { h1?: string; subhead?: string }) {
+export default function Hero({
+  h1, subhead, trust, image, discoverHeading, discover,
+}: {
+  h1?: string; subhead?: string; trust?: string; image?: string;
+  discoverHeading?: string; discover?: string[];
+}) {
+  const discoverItems = discover && discover.length ? discover : hero.discover.items;
   return (
     <section id="hero" className="pt-24 md:pt-28 pb-12 md:pb-20 bg-cream">
       <div className="container-page grid md:grid-cols-2 gap-8 md:gap-12 items-center">
@@ -17,9 +23,9 @@ export default function Hero({ h1, subhead }: { h1?: string; subhead?: string })
         >
           <h1 className="text-h1 md:text-h1-lg text-forest">{h1 || hero.h1}</h1>
           <p className="mt-4 text-ink/80 prose-measure">{subhead || hero.subhead}</p>
-          <p className="mt-5 font-heading font-semibold text-forest text-sm">{hero.discover.heading}</p>
+          <p className="mt-5 font-heading font-semibold text-forest text-sm">{discoverHeading || hero.discover.heading}</p>
           <ul className="mt-2 grid sm:grid-cols-2 gap-x-5 gap-y-2">
-            {hero.discover.items.map((d, i) => (
+            {discoverItems.map((d, i) => (
               <li key={i} className="flex items-start gap-2 text-ink/85 text-sm md:text-base">
                 <Check className="h-5 w-5 text-leaf shrink-0 mt-0.5" />
                 <span>{d}</span>
@@ -34,7 +40,7 @@ export default function Hero({ h1, subhead }: { h1?: string; subhead?: string })
               <Link href="/books/the-eat-your-green-guide">Start with the Guide ₹399</Link>
             </Button>
           </div>
-          <p className="mt-4 small text-ink/70">{hero.trust}</p>
+          <p className="mt-4 small text-ink/70">{trust || hero.trust}</p>
         </motion.div>
 
         <motion.div
@@ -45,7 +51,7 @@ export default function Hero({ h1, subhead }: { h1?: string; subhead?: string })
         >
           {/* TODO: replace /images/hero.jpg with your warm lifestyle photo (mom + child over greens) */}
           <Image
-            src="/images/hero.jpg"
+            src={image || "/images/hero.jpg"}
             alt="A mom and her child laughing together while preparing greens"
             fill
             priority

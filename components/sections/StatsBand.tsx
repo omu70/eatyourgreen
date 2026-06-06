@@ -1,8 +1,11 @@
-import { stats } from "@/data/content";
+import { stats as staticStats } from "@/data/content";
+import { getContent } from "@/lib/site-data";
 import StatCounter from "@/components/StatCounter";
 import Reveal from "@/components/Reveal";
 
-export default function StatsBand() {
+export default async function StatsBand() {
+  const c = await getContent();
+  const stats = c.stats && c.stats.length ? c.stats : staticStats;
   return (
     <section className="section bg-mist">
       <div className="container-page">
@@ -14,7 +17,7 @@ export default function StatsBand() {
             <Reveal key={i} delay={i * 0.08}>
               <div className="text-center bg-white rounded-card border border-mist shadow-card p-6">
                 <div className="text-4xl md:text-5xl">
-                  <StatCounter value={s.value} suffix={s.suffix} />
+                  <StatCounter value={Number(s.value) || 0} suffix={s.suffix || ""} />
                 </div>
                 <p className="mt-2 text-ink/75 text-sm">{s.label}</p>
               </div>

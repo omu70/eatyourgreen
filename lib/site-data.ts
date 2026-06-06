@@ -1,3 +1,4 @@
+import { cache } from "react";
 import { books as staticBooks, type Book } from "@/data/books";
 import { supabaseConfigured } from "@/lib/supabase/config";
 import { createPublicClient } from "@/lib/supabase/public";
@@ -14,7 +15,7 @@ function rowToBook(r: Row): Book {
     checkout: "",
     cover: String(r.cover ?? ""),
     pdf: String(r.pdf ?? ""),
-    accent: (r.accent === "gold" ? "gold" : "brand"),
+    accent: r.accent === "gold" ? "gold" : "brand",
     badge: (r.badge as string) || undefined,
     forWho: String(r.for_who ?? ""),
     pages: String(r.pages ?? ""),
@@ -29,7 +30,7 @@ function rowToBook(r: Row): Book {
   };
 }
 
-export async function getProducts(): Promise<Book[]> {
+export const getProducts = cache(async (): Promise<Book[]> => {
   if (!supabaseConfigured) return staticBooks;
   try {
     const db = createPublicClient();
@@ -39,26 +40,54 @@ export async function getProducts(): Promise<Book[]> {
   } catch {
     return staticBooks;
   }
-}
+});
 
 export async function getProduct(slug: string): Promise<Book | undefined> {
   return (await getProducts()).find((b) => b.slug === slug);
 }
 
+// Everything editable from /admin -> Content. Every field is optional; the public
+// components fall back to the built-in defaults when a field is absent.
+export type Testimonial = { quote: string; name: string; role: string; stars: number; avatar?: string };
+export type FaqItem = { q: string; a: string };
+export type StatItem = { value: number; suffix: string; label: string };
+
 export type ContentOverrides = Partial<{
-  heroH1: string; heroSubhead: string;
+  // Hero
+  heroH1: string; heroSubhead: string; heroTrust: string; heroImage: string;
+  discoverHeading: string; discover: string[];
+  // Offer
   offerLine: string; offerNote: string;
+  // Empathy
+  empathyHeading: string; empathyBody: string; empathyImage: string;
+  // Method
+  methodHeading: string;
+  // Stats
+  stats: StatItem[];
+  // Lead magnet
+  lmHeading: string; lmSub: string; lmCta: string;
+  // Guarantee + final CTA
   guaranteeHeading: string; guaranteeBody: string;
   finalCtaHeading: string; finalCtaUrgency: string; finalCtaCta: string;
+  // Social proof
+  testimonials: Testimonial[];
+  faqs: FaqItem[];
+  // Author / About
+  authorName: string; authorTitle: string; authorBio: string[]; authorPhoto: string;
+  aboutBody: string[];
+  // WhatsApp community
+  waLabel: string; waLink: string; waQr: string;
+  // Settings / links
+  instagram: string; supportEmail: string; payments: string; logo: string;
 }>;
 
-export async function getContent(): Promise<ContentOverrides> {
+export const getContent = cache(async (): Promise<ContentOverrides> => {
   if (!supabaseConfigured) return {};
   try {
     const db = createPublicClient();
     const { data } = await db.from("site_content").select("data").eq("id", 1).single();
-    return ((data?.data as ContentOverrides) || {});
+    return (data?.data as ContentOverrides) || {};
   } catch {
     return {};
   }
-}
+});

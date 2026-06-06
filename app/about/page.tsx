@@ -4,6 +4,7 @@ import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
 import FinalCTA from "@/components/sections/FinalCTA";
 import { about, author } from "@/data/content";
+import { getContent } from "@/lib/site-data";
 
 export const metadata: Metadata = {
   title: "About",
@@ -11,14 +12,17 @@ export const metadata: Metadata = {
   alternates: { canonical: "/about" },
 };
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  const c = await getContent();
+  const body = c.aboutBody && c.aboutBody.length ? c.aboutBody : about.body;
+  const authorName = c.authorName || author.name;
   return (
     <main>
       <PageHero title={about.heading} />
       <section className="section pt-4 bg-cream">
         <div className="container-page max-w-2xl">
           <div className="space-y-4 prose-measure mx-auto">
-            {about.body.map((p, i) => (
+            {body.map((p, i) => (
               <Reveal key={i} delay={i * 0.05}>
                 <p className="text-ink/85">{p}</p>
               </Reveal>
@@ -27,7 +31,7 @@ export default function AboutPage() {
           <Reveal>
             <p className="mt-8 text-center">
               <Link href="/author" className="text-brand font-semibold underline">
-                Meet the author, {author.name} →
+                Meet the author, {authorName} →
               </Link>
             </p>
           </Reveal>

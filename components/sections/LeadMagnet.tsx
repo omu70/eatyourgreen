@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { leadMagnet } from "@/data/content";
 import { track } from "@/lib/analytics";
 
-export default function LeadMagnet() {
+export default function LeadMagnet({ heading, sub, cta }: { heading?: string; sub?: string; cta?: string }) {
   const [status, setStatus] = useState<"idle" | "sending" | "ok" | "error">("idle");
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -35,8 +35,8 @@ export default function LeadMagnet() {
           <div className="mx-auto h-14 w-14 rounded-full bg-leaf/15 flex items-center justify-center">
             <Gift className="h-7 w-7 text-brand" />
           </div>
-          <h2 className="mt-4 text-h2 md:text-h2-lg text-forest">{leadMagnet.heading}</h2>
-          <p className="mt-3 text-ink/75 prose-measure mx-auto">{leadMagnet.sub}</p>
+          <h2 className="mt-4 text-h2 md:text-h2-lg text-forest">{heading || leadMagnet.heading}</h2>
+          <p className="mt-3 text-ink/75 prose-measure mx-auto">{sub || leadMagnet.sub}</p>
 
           {status === "ok" ? (
             <p className="mt-6 font-heading font-semibold text-brand">
@@ -53,7 +53,7 @@ export default function LeadMagnet() {
                 className="flex-1 min-h-[48px] rounded-xl border border-mist px-4 focus:border-brand outline-none"
               />
               <Button type="submit" disabled={status === "sending"}>
-                {status === "sending" ? "Sending…" : leadMagnet.cta}
+                {status === "sending" ? "Sending…" : (cta || leadMagnet.cta)}
               </Button>
             </form>
           )}

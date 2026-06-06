@@ -29,7 +29,7 @@ export default async function Home() {
       <HomeJsonLd />
       <main>
         {/* 1. Hero (headline + subtitle + what you'll discover) */}
-        <Hero h1={c.heroH1} subhead={c.heroSubhead} />
+        <Hero h1={c.heroH1} subhead={c.heroSubhead} trust={c.heroTrust} image={c.heroImage} discoverHeading={c.discoverHeading} discover={c.discover} />
         {/* 1. CTA + trust bar */}
         <TrustBadges />
         {/* 2. Does this sound like your dinner table? */}
@@ -51,7 +51,7 @@ export default async function Home() {
         {/* 10. Getting it is simple */}
         <HowToGet />
         {/* 11. Lead magnet + sample on email */}
-        <LeadMagnet />
+        <LeadMagnet heading={c.lmHeading} sub={c.lmSub} cta={c.lmCta} />
         {/* 11. About the author */}
         <AuthorStrip />
         {/* 12. Testimonials */}
