@@ -32,18 +32,21 @@ export const offer = {
 };
 
 export const hero = {
-  h1: "Get your fussy child to happily eat greens — without fights, bribes or tears.",
+  h1: "Raise a child who enjoys greens and healthy foods — without fights, bribes or tears.",
   subhead:
-    "A simple, gentle way for Indian parents to get fussy kids (age 2–12) to start eating greens — no shouting, no bribing, no drama. It works with the everyday meals you already cook.",
+    "A simple, gentle and practical way for parents who want healthier eating habits, calmer mealtimes, and happier food experiences for their children.",
   ctaPrimary: "See the books →",
   trust: "★ 4.8/5 · Loved by 5000+ Indian parents · Instant download",
   // TODO: replace with your exact "what you'll discover" points
   discover: {
     heading: "What you'll discover inside:",
     items: [
-      "The one calm sentence to say when your child refuses a vegetable",
-      'Why "just one more bite" backfires — and the gentle thing to do instead',
-      "A 5-minute dinner habit that slowly builds curiosity about greens",
+      "Creative ways to introduce greens",
+      "Simple strategies to reduce picky eating",
+      "The 4C method — Curiosity, Creativity, Connection, Consistency — to build confidence and reduce mealtime pressure",
+      "Ideas that turn veggies into fun, play and discovery",
+      "How to build curiosity before consumption",
+      "How to create positive food experiences",
     ],
   },
 };
@@ -91,6 +94,29 @@ export const pain = {
     "It's tiring. And the harder you push, the more they refuse — because pushing makes greens feel like the enemy.",
 };
 
+export const parentsKidsPain = {
+  heading: "What parents and kids are really feeling",
+  sub: "Mealtime stress goes both ways. Naming it is the first step to easing it.",
+  parents: {
+    title: "What parents feel",
+    items: [
+      "Worry — \"Is my child even getting enough nutrition?\"",
+      "Guilt — \"Am I doing this all wrong?\"",
+      "Exhaustion — cooking separate meals and fighting every single day",
+      "Comparison — \"Why does every other child seem to eat better?\"",
+    ],
+  },
+  kids: {
+    title: "What kids feel",
+    items: [
+      "Pressure — eating starts to feel like a test they keep failing",
+      "Fear — new foods and new textures feel scary",
+      "No appetite — too full of stress (or snacks) to try anything",
+      "Control — saying \"no\" is the one choice that feels like theirs",
+    ],
+  },
+};
+
 export const empathy = {
   heading: "You're not a bad parent. You were just given the wrong way.",
   body:
@@ -102,8 +128,8 @@ export const method = {
   heading: "The simple 4C way to raise a happy green-eater.",
   steps: [
     { title: "Curiosity", icon: "Sparkles", body: "Easy, no-pressure ways to make greens look interesting." },
-    { title: "Connection", icon: "Users", body: "Make the dinner table a happy place, not a battle." },
     { title: "Creativity", icon: "Palette", body: "Playful ways to explore greens — games, colours and shapes." },
+    { title: "Connection", icon: "Users", body: "Make the dinner table a happy place, not a battle." },
     { title: "Consistency", icon: "Repeat", body: "Small, gentle repeats that turn trying into a lasting habit." },
   ],
 };

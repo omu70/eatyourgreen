@@ -18,7 +18,7 @@ export default function Hero() {
           <h1 className="text-h1 md:text-h1-lg text-forest">{hero.h1}</h1>
           <p className="mt-4 text-ink/80 prose-measure">{hero.subhead}</p>
           <p className="mt-5 font-heading font-semibold text-forest text-sm">{hero.discover.heading}</p>
-          <ul className="mt-2 space-y-2">
+          <ul className="mt-2 grid sm:grid-cols-2 gap-x-5 gap-y-2">
             {hero.discover.items.map((d, i) => (
               <li key={i} className="flex items-start gap-2 text-ink/85 text-sm md:text-base">
                 <Check className="h-5 w-5 text-leaf shrink-0 mt-0.5" />
