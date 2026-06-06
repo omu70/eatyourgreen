@@ -128,12 +128,16 @@ export async function addGalleryImage(formData: FormData) {
   if (!serviceConfigured) return;
   const db = createAdminClient();
   const slug = String(formData.get("slug"));
-  const url = await uploadToMedia(db, slug, formData.get("file"));
-  if (!url) return;
   const caption = String(formData.get("caption") || "");
+  const files = formData.getAll("file"); // supports selecting multiple images at once
   const { data } = await db.from("products").select("gallery").eq("slug", slug).single();
   const gallery = Array.isArray(data?.gallery) ? data!.gallery : [];
-  gallery.push({ img: url, caption });
+  let added = 0;
+  for (const file of files) {
+    const url = await uploadToMedia(db, slug, file);
+    if (url) { gallery.push({ img: url, caption }); added++; }
+  }
+  if (added === 0) return;
   await db.from("products").update({ gallery, updated_at: new Date().toISOString() }).eq("slug", slug);
   revalidatePublic();
 }

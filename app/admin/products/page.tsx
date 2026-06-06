@@ -126,8 +126,8 @@ export default async function ProductsPage() {
               </div>
               <form action={addGalleryImage} className="mt-3 flex flex-wrap items-end gap-3">
                 <input type="hidden" name="slug" value={p.slug} />
-                <label className="block"><span className="text-xs text-neutral-500">Add image</span>
-                  <input type="file" name="file" accept="image/*" className="mt-1 block text-xs" /></label>
+                <label className="block"><span className="text-xs text-neutral-500">Add image(s) — select several at once</span>
+                  <input type="file" name="file" accept="image/*" multiple className="mt-1 block text-xs" /></label>
                 <label className="block"><span className="text-xs text-neutral-500">Caption</span>
                   <input name="caption" placeholder="optional" className="mt-1 block rounded-md border border-neutral-300 px-3 py-2 text-sm" /></label>
                 <button className="rounded-md border border-emerald-700 px-3 py-1.5 text-sm text-emerald-700 hover:bg-emerald-50">Upload</button>
