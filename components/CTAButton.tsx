@@ -2,9 +2,6 @@
 import { Button, type ButtonProps } from "@/components/ui/button";
 import { track } from "@/lib/analytics";
 
-const RZP_KEY = process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID;
-const rzpReady = !!RZP_KEY && !RZP_KEY.startsWith("TODO");
-
 function loadRazorpay(): Promise<boolean> {
   return new Promise((resolve) => {
     if (typeof window === "undefined") return resolve(false);
@@ -43,45 +40,55 @@ export default function CTAButton({
       items: [{ item_id: contentId, item_name: contentName, price: value, quantity: 1 }],
     });
 
-    if (rzpReady) {
+    try {
+      // 1) Create the order on the server. The server returns the Razorpay key id,
+      //    so the button does NOT depend on any NEXT_PUBLIC build-time variable.
+      const res = await fetch("/api/razorpay/order", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ amount: value * 100, plan: contentId, name: contentName }),
+      });
+      const data = await res.json();
+
+      if (!data || !data.ok || !data.order?.id || !data.key) {
+        console.error("Razorpay order not created:", data);
+        alert("Payments are being set up. Please try again shortly, or message us on WhatsApp.");
+        return;
+      }
+
+      // 2) Load Razorpay Checkout.
       const ok = await loadRazorpay();
-      if (ok) {
-        try {
-          const res = await fetch("/api/razorpay/order", {
+      if (!ok) {
+        alert(
+          "We couldn't load the secure payment window. Please turn off any ad-blocker for this site (or use a normal browser window) and try again — or message us on WhatsApp."
+        );
+        return;
+      }
+
+      // 3) Open the checkout.
+      const RZP = (window as unknown as { Razorpay: new (o: unknown) => { open: () => void } }).Razorpay;
+      const rzp = new RZP({
+        key: data.key,
+        amount: data.order.amount,
+        currency: "INR",
+        name: "Eat Your Green",
+        description: contentName,
+        order_id: data.order.id,
+        theme: { color: "#1F6B3D" },
+        handler: async (resp: Record<string, string>) => {
+          await fetch("/api/razorpay/verify", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ amount: value * 100, plan: contentId, name: contentName }),
-          });
-          const data = await res.json();
-          if (data.ok && data.order?.id) {
-            const RZP = (window as unknown as { Razorpay: new (o: unknown) => { open: () => void } }).Razorpay;
-            const rzp = new RZP({
-              key: data.key,
-              amount: data.order.amount,
-              currency: "INR",
-              name: "Eat Your Green",
-              description: contentName,
-              order_id: data.order.id,
-              theme: { color: "#1F6B3D" },
-              handler: async (resp: Record<string, string>) => {
-                await fetch("/api/razorpay/verify", {
-                  method: "POST",
-                  headers: { "Content-Type": "application/json" },
-                  body: JSON.stringify({ ...resp, plan: contentId, amount: value * 100, title: contentName }),
-                }).catch(() => {});
-                window.location.href = `/thank-you?plan=${encodeURIComponent(contentId)}&value=${value}`;
-              },
-            });
-            rzp.open();
-            return;
-          }
-        } catch {
-          /* fall through to link */
-        }
-      }
+            body: JSON.stringify({ ...resp, plan: contentId, amount: value * 100, title: contentName }),
+          }).catch(() => {});
+          window.location.href = `/thank-you?plan=${encodeURIComponent(contentId)}&value=${value}`;
+        },
+      });
+      rzp.open();
+    } catch (e) {
+      console.error("Razorpay error:", e);
+      alert("Something went wrong starting the payment. Please try again, or message us on WhatsApp.");
     }
-    // Razorpay only — no external checkout. If keys aren't configured yet, tell the buyer gently.
-    alert("Payments are being set up. Please try again in a little while, or message us on WhatsApp.");
   }
 
   return (
