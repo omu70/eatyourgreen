@@ -28,7 +28,7 @@ export default function Hero({
             {discoverItems.map((d, i) => (
               <li key={i} className="flex items-start gap-2 text-ink/85 text-sm md:text-base">
                 <Check className="h-5 w-5 text-leaf shrink-0 mt-0.5" />
-                <span>{d}</span>
+                <span>{String(d)}</span>
               </li>
             ))}
           </ul>

@@ -17,9 +17,9 @@ export default async function StatsBand() {
             <Reveal key={i} delay={i * 0.08}>
               <div className="text-center bg-white rounded-card border border-mist shadow-card p-6">
                 <div className="text-4xl md:text-5xl">
-                  <StatCounter value={Number(s.value) || 0} suffix={s.suffix || ""} />
+                  <StatCounter value={Number(s.value) || 0} suffix={String(s.suffix || "")} />
                 </div>
-                <p className="mt-2 text-ink/75 text-sm">{s.label}</p>
+                <p className="mt-2 text-ink/75 text-sm">{String(s.label || "")}</p>
               </div>
             </Reveal>
           ))}
