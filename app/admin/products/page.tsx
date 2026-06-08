@@ -2,7 +2,7 @@ import { adminDb } from "@/lib/supabase/guard";
 import SetupNotice from "@/components/admin/SetupNotice";
 import RepeatableRows from "@/components/admin/RepeatableRows";
 import {
-  seedProducts, updateProduct, addProduct, deleteProduct, addGalleryImage, removeGalleryImage,
+  seedProducts, updateProduct, addProduct, deleteProduct, addGalleryImage, removeGalleryImage, uploadProductPdf,
 } from "./actions";
 
 export const dynamic = "force-dynamic";
@@ -11,7 +11,7 @@ type Gallery = { img?: string; caption?: string };
 type P = {
   slug: string; title: string; tagline: string | null; subhead: string | null;
   price: number; old_price: number; badge: string | null; cta_label: string | null;
-  for_who: string | null; pages: string | null; format: string | null; pdf: string | null;
+  for_who: string | null; pages: string | null; format: string | null; pdf: string | null; pdf_path: string | null;
   accent: string | null; meta_title: string | null; meta_description: string | null;
   sort: number; active: boolean; cover: string | null;
   whats_inside: unknown; outcomes: unknown; faqs: unknown; gallery: Gallery[] | null;
@@ -133,7 +133,7 @@ export default async function ProductsPage() {
                       </select>
                     </label>
                     <Field label="Order on page (0 = first)" name="sort" def={String(p.sort)} type="number" />
-                    <div className="sm:col-span-2"><Field label="Download file path (PDF)" name="pdf" def={p.pdf || ""} /></div>
+                    <div className="sm:col-span-2"><Field label="Legacy file path (optional — leave blank and upload the PDF lower down instead)" name="pdf" def={p.pdf || ""} /></div>
                     <Field label="Google title (SEO)" name="meta_title" def={p.meta_title || ""} />
                     <Field label="Google description (SEO)" name="meta_description" def={p.meta_description || ""} />
                   </div>
@@ -151,7 +151,7 @@ export default async function ProductsPage() {
                 {(p.gallery || []).map((g, i) => (
                   <div key={i} className="w-24">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={g.img} alt={g.caption || ""} className="w-24 h-32 object-cover rounded border border-neutral-200" />
+                    <img src={g.img} alt={g.caption || ""} className="w-24 h-32 object-contain bg-white rounded border border-neutral-200" />
                     <form action={removeGalleryImage}>
                       <input type="hidden" name="slug" value={p.slug} />
                       <input type="hidden" name="img" value={g.img} />
@@ -167,6 +167,22 @@ export default async function ProductsPage() {
                 <label className="block"><span className="text-xs text-neutral-500">Caption</span>
                   <input name="caption" placeholder="optional" className="mt-1 block rounded-md border border-neutral-300 px-3 py-2 text-sm" /></label>
                 <button className="rounded-md border border-emerald-700 px-3 py-1.5 text-sm text-emerald-700 hover:bg-emerald-50">Upload</button>
+              </form>
+            </div>
+
+            <div className="mt-6 border-t border-neutral-100 pt-4">
+              <div className="text-sm font-medium text-neutral-700">Book PDF — the file customers receive</div>
+              <p className="text-xs text-neutral-500 mt-0.5">
+                {p.pdf_path
+                  ? "✓ A PDF is uploaded. It is private — buyers can only download it on the thank-you page right after they pay. Pick a new file to replace it."
+                  : "⚠ No PDF uploaded yet. Upload the book file here. It stays private and is only delivered after a successful payment."}
+              </p>
+              <form action={uploadProductPdf} className="mt-2 flex flex-wrap items-end gap-3">
+                <input type="hidden" name="slug" value={p.slug} />
+                <input type="file" name="pdf_file" accept="application/pdf,.pdf" className="block text-xs" />
+                <button className="rounded-md bg-emerald-700 px-4 py-2 text-sm text-white hover:bg-emerald-800">
+                  {p.pdf_path ? "Replace PDF" : "Upload PDF"}
+                </button>
               </form>
             </div>
 

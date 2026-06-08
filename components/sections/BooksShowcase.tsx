@@ -39,8 +39,8 @@ export default function BooksShowcase({ books = staticBooks, offer }: { books?: 
                     </div>
                   )}
                   <div className="flex gap-4 mt-2">
-                    <div className="relative w-24 h-32 shrink-0 rounded-lg overflow-hidden shadow-card border border-mist bg-mist">
-                      <Image src={b.cover || "/images/cover-guide.jpg"} alt={`${b.title} cover`} fill sizes="96px" className="object-cover" />
+                    <div className="relative w-24 h-32 shrink-0 rounded-lg overflow-hidden border border-mist bg-white">
+                      <Image src={b.cover || "/images/cover-guide.jpg"} alt={`${b.title} cover`} fill sizes="96px" className="object-contain" />
                     </div>
                     <div className="min-w-0 flex-1">
                       <h3 className="font-heading font-semibold text-forest text-base sm:text-lg leading-snug break-words">{b.title}</h3>

@@ -27,9 +27,9 @@ export default function ParentsKidsPain() {
           <h2 className="text-h2 md:text-h2-lg text-forest text-center">{d.heading}</h2>
           <p className="mt-3 text-center text-ink/75 prose-measure mx-auto">{d.sub}</p>
         </Reveal>
-        <div className="mt-10 grid md:grid-cols-2 gap-5">
-          <Reveal><Col title={d.parents.title} items={d.parents.items} icon="parent" /></Reveal>
-          <Reveal delay={0.08}><Col title={d.kids.title} items={d.kids.items} icon="kid" /></Reveal>
+        <div className="mt-10 grid md:grid-cols-2 gap-5 items-stretch">
+          <Reveal className="h-full"><Col title={d.parents.title} items={d.parents.items} icon="parent" /></Reveal>
+          <Reveal delay={0.08} className="h-full"><Col title={d.kids.title} items={d.kids.items} icon="kid" /></Reveal>
         </div>
       </div>
     </section>

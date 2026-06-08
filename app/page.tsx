@@ -67,11 +67,11 @@ export default async function Home() {
         {/* 16. Footer is in layout */}
       </main>
       <StickyCTA
-        price={399}
-        href={CHECKOUT.guide}
-        contentId="the-eat-your-green-guide"
-        contentName="The Eat Your Green Guide"
-        label="Get the Guide"
+        price={799}
+        href={CHECKOUT.toolkit}
+        contentId="the-eat-your-green-complete-toolkit"
+        contentName="Green Explorer Bundle"
+        label="Get the Bundle"
         triggerId="hero"
         hideAtId="books"
       />

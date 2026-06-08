@@ -66,8 +66,8 @@ export default async function BookPage({ params }: { params: Promise<{ slug: str
         <section id="book-hero" className="pt-24 md:pt-28 pb-12 md:pb-16 bg-cream">
           <div className="container-page grid md:grid-cols-2 gap-8 md:gap-12 items-center">
             <Reveal>
-              <div className="relative mx-auto w-56 md:w-72 aspect-[3/4] rounded-card overflow-hidden shadow-card border border-mist bg-mist">
-                <Image src={book.cover || "/images/cover-guide.jpg"} alt={`${book.title} cover`} fill priority sizes="(max-width:768px) 224px, 288px" className="object-cover" />
+              <div className="relative mx-auto w-56 md:w-72 aspect-[3/4] rounded-card overflow-hidden shadow-card border border-mist bg-white">
+                <Image src={book.cover || "/images/cover-guide.jpg"} alt={`${book.title} cover`} fill priority sizes="(max-width:768px) 224px, 288px" className="object-contain" />
               </div>
             </Reveal>
             <Reveal delay={0.05}>
@@ -147,13 +147,12 @@ export default async function BookPage({ params }: { params: Promise<{ slug: str
                 <h2 className="text-h2 md:text-h2-lg text-forest text-center">A peek inside</h2>
                 <p className="mt-3 text-center text-ink/75 prose-measure mx-auto">Real pages from the pack — printables your child will actually want to fill in.</p>
               </Reveal>
-              <div className="mt-8 grid grid-cols-2 sm:grid-cols-3 gap-4">
+              <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4 items-start">
                 {book.gallery.filter((g) => g && g.img).map((g, i) => (
                   <Reveal key={i} delay={i * 0.06}>
-                    <figure className="rounded-card overflow-hidden border border-mist shadow-card bg-white h-full">
-                      <div className="relative aspect-[2/3] bg-cream">
-                        <Image src={g.img as string} alt={String(g.caption || book.title)} fill sizes="(max-width:640px) 50vw, 33vw" className="object-contain" />
-                      </div>
+                    <figure className="rounded-card overflow-hidden border border-mist shadow-card bg-white">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={g.img as string} alt={String(g.caption || book.title)} loading="lazy" className="w-full h-auto block" />
                       {g.caption ? (
                         <figcaption className="p-3 text-sm text-ink/75 text-center break-words">{g.caption}</figcaption>
                       ) : null}
@@ -171,16 +170,16 @@ export default async function BookPage({ params }: { params: Promise<{ slug: str
             <Reveal>
               <h2 className="text-h2 md:text-h2-lg text-white text-center">What changes for you</h2>
             </Reveal>
-            <ul className="mt-8 grid sm:grid-cols-2 gap-4">
+            <div className="mt-8 grid sm:grid-cols-2 gap-4 items-stretch">
               {book.outcomes.map((o, i) => (
-                <Reveal key={i} delay={i * 0.05}>
-                  <li className="flex items-start gap-3 rounded-card bg-white/5 border border-white/10 p-4">
+                <Reveal key={i} delay={i * 0.05} className="h-full">
+                  <div className="flex h-full items-start gap-3 rounded-card bg-white/5 border border-white/10 p-4">
                     <Check className="h-5 w-5 text-leaf shrink-0 mt-0.5" />
-                    <span className="text-white/90">{o}</span>
-                  </li>
+                    <span className="text-white/90">{String(o)}</span>
+                  </div>
                 </Reveal>
               ))}
-            </ul>
+            </div>
           </div>
         </section>
 
@@ -199,8 +198,8 @@ export default async function BookPage({ params }: { params: Promise<{ slug: str
                 {others.map((o) => (
                   <Reveal key={o.slug}>
                     <div className="rounded-card border border-mist shadow-card bg-white p-5 flex gap-4 h-full">
-                      <div className="relative w-20 h-28 shrink-0 rounded-lg overflow-hidden border border-mist bg-mist">
-                        <Image src={o.cover || "/images/cover-guide.jpg"} alt={`${o.title} cover`} fill sizes="80px" className="object-cover" />
+                      <div className="relative w-20 h-28 shrink-0 rounded-lg overflow-hidden border border-mist bg-white">
+                        <Image src={o.cover || "/images/cover-guide.jpg"} alt={`${o.title} cover`} fill sizes="80px" className="object-contain" />
                       </div>
                       <div className="flex flex-col min-w-0 flex-1">
                         <h3 className="font-heading font-semibold text-forest text-sm break-words">{o.title}</h3>

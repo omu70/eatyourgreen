@@ -24,7 +24,7 @@ export default function Hero({
           <h1 className="text-h1 md:text-h1-lg text-forest">{h1 || hero.h1}</h1>
           <p className="mt-4 text-ink/80 prose-measure">{subhead || hero.subhead}</p>
           <p className="mt-5 font-heading font-semibold text-forest text-sm">{discoverHeading || hero.discover.heading}</p>
-          <ul className="mt-2 grid sm:grid-cols-2 gap-x-5 gap-y-2">
+          <ul className="mt-2 space-y-2">
             {discoverItems.map((d, i) => (
               <li key={i} className="flex items-start gap-2 text-ink/85 text-sm md:text-base">
                 <Check className="h-5 w-5 text-leaf shrink-0 mt-0.5" />
@@ -34,10 +34,10 @@ export default function Hero({
           </ul>
           <div className="mt-6 flex flex-col sm:flex-row gap-3">
             <Button asChild size="lg" className="w-full sm:w-auto">
-              <Link href="/#books">{hero.ctaPrimary}</Link>
+              <Link href="/books/the-eat-your-green-complete-toolkit">Get the Green Explorer Bundle ₹799</Link>
             </Button>
             <Button asChild variant="outline" size="lg" className="w-full sm:w-auto">
-              <Link href="/books/the-eat-your-green-guide">Start with the Guide ₹399</Link>
+              <Link href="/#books">See all 3 books</Link>
             </Button>
           </div>
           <p className="mt-4 small text-ink/70">{trust || hero.trust}</p>

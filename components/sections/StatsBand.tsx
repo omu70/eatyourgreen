@@ -12,10 +12,10 @@ export default async function StatsBand() {
         <Reveal>
           <h2 className="text-h2 md:text-h2-lg text-forest text-center">Trusted by parents like you</h2>
         </Reveal>
-        <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-5 max-w-4xl mx-auto">
+        <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-5 max-w-4xl mx-auto items-stretch">
           {stats.map((s, i) => (
-            <Reveal key={i} delay={i * 0.08}>
-              <div className="text-center bg-white rounded-card border border-mist shadow-card p-6">
+            <Reveal key={i} delay={i * 0.08} className="h-full">
+              <div className="h-full text-center bg-white rounded-card border border-mist shadow-card p-6 flex flex-col justify-center">
                 <div className="text-4xl md:text-5xl">
                   <StatCounter value={Number(s.value) || 0} suffix={String(s.suffix || "")} />
                 </div>

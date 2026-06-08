@@ -5,7 +5,8 @@ export const nav = [
   { label: "Home", href: "/" },
   { label: "The Guide", href: "/books/the-eat-your-green-guide" },
   { label: "Green Explorer Bundle", href: "/books/the-eat-your-green-complete-toolkit" },
-  { label: "Book 2", href: "/books/raising-kids-in-a-junk-food-world" },
+  { label: "Junk Food World Guide", href: "/books/raising-kids-in-a-junk-food-world" },
+  { label: "About", href: "/about" },
   { label: "Author", href: "/author" },
   { label: "FAQ", href: "/faq" },
   { label: "Contact", href: "/contact" },
@@ -76,8 +77,8 @@ export const madeForIndia = {
 };
 
 export const booksIntro = {
-  heading: "Two books. One calmer dinner table.",
-  sub: "Start with the book that teaches the method, or go all-in with the Green Explorer Bundle. Both are simple and gentle.",
+  heading: "Three gentle books. One calmer dinner table.",
+  sub: "Pick the one that fits your family — or go all-in with the Green Explorer Bundle, which most parents choose. Each one is simple and gentle.",
 };
 
 export const pain = {
@@ -95,24 +96,28 @@ export const pain = {
 };
 
 export const parentsKidsPain = {
-  heading: "What parents and kids are really feeling",
+  heading: "Mom & kids pain points",
   sub: "Mealtime stress goes both ways. Naming it is the first step to easing it.",
   parents: {
-    title: "What parents feel",
+    title: "Why moms feel stressed",
     items: [
-      "Worry — \"Is my child even getting enough nutrition?\"",
-      "Guilt — \"Am I doing this all wrong?\"",
-      "Exhaustion — cooking separate meals and fighting every single day",
-      "Comparison — \"Why does every other child seem to eat better?\"",
+      "Your child is a picky eater",
+      "Your child hates greens",
+      "Every meal turns into a battle",
+      "Your child only wants junk or fast food",
+      "Fed up with bribing and negotiating",
+      "Always running behind them with food",
     ],
   },
   kids: {
-    title: "What kids feel",
+    title: "Why kids resist greens",
     items: [
-      "Pressure — eating starts to feel like a test they keep failing",
-      "Fear — new foods and new textures feel scary",
-      "No appetite — too full of stress (or snacks) to try anything",
-      "Control — saying \"no\" is the one choice that feels like theirs",
+      "They feel pressured every single time",
+      "Greens feel boring",
+      "Greens taste bitter or bland to them",
+      "No variety — the same food again and again",
+      "Greens are never fun",
+      "They're always compared to other kids",
     ],
   },
 };

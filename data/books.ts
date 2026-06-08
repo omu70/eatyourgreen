@@ -177,20 +177,17 @@ export function getBook(slug: string): Book | undefined {
 
 export type DownloadItem = { title: string; file: string; price: number };
 
-// Resolve which PDF(s) to deliver after payment, keyed by ?plan (a book slug or alias).
-export function getDownloads(plan?: string): DownloadItem[] {
+// Which book slug(s) a given ?plan delivers. The Bundle delivers Guide + Bundle pack.
+export function getPlanSlugs(plan?: string): string[] {
   const key = (plan || "").toLowerCase();
   const guide = books.find((b) => b.slug.includes("guide"))!;
   const toolkit = books.find((b) => b.slug.includes("toolkit"))!;
-
-  // Toolkit / complete / bundle delivers the method + the toolkit
   if (key.includes("toolkit") || key.includes("complete") || key.includes("bundle")) {
-    return [guide, toolkit].map((b) => ({ title: b.title, file: b.pdf, price: b.price }));
+    return [guide.slug, toolkit.slug];
   }
-  // Exact or loose slug match for any book
   const book =
     books.find((b) => b.slug === key) ||
     books.find((b) => key && (b.slug.includes(key) || key.includes(b.slug))) ||
     guide;
-  return [{ title: book.title, file: book.pdf, price: book.price }];
+  return [book.slug];
 }

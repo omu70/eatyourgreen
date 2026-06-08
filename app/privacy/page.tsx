@@ -9,14 +9,29 @@ export const metadata: Metadata = {
 
 export default function Privacy() {
   return (
-    <LegalPage title="Privacy Policy" updated="TODO">
-      <p>We respect your privacy. This policy explains what we collect and how we use it.</p>
+    <LegalPage title="Privacy Policy" updated="8 June 2026">
+      <p>
+        Eat Your Green (operated by Kiaan Creations) respects your privacy. This policy explains what we
+        collect and how we use it.
+      </p>
       <h2>What we collect</h2>
-      <p>Your email and any details you share at checkout or via the contact form, plus standard analytics (Meta Pixel, Google Analytics) to understand how the site is used.</p>
+      <p>
+        The email address and any details you share at checkout or via the contact form, and standard
+        analytics (such as Meta Pixel and Google Analytics) to understand how the site is used. Card and
+        UPI details are entered directly with our payment provider, Razorpay — we never see or store
+        them.
+      </p>
       <h2>How we use it</h2>
-      <p>To deliver your digital products, provide support, and improve our books and website. We do not sell your data.</p>
+      <p>
+        To deliver your digital products, send your download and order confirmation, provide support, and
+        improve our books and website. We do not sell your data.
+      </p>
       <h2>Your choices</h2>
-      <p>You can decline analytics cookies via the consent banner, and request deletion of your data by emailing us.</p>
+      <p>
+        You can decline non-essential analytics cookies via the consent banner, and you can ask us to
+        delete your data at any time by messaging us on WhatsApp at +91 89205 69272 or via the contact
+        form.
+      </p>
     </LegalPage>
   );
 }

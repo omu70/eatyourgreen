@@ -81,7 +81,16 @@ export default function CTAButton({
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ ...resp, plan: contentId, amount: value * 100, title: contentName }),
           }).catch(() => {});
-          window.location.href = `/thank-you?plan=${encodeURIComponent(contentId)}&value=${value}`;
+          // Pass the signed payment proof to the thank-you page so it can unlock the
+          // download. Without a valid signature, no download link is ever issued.
+          const qs = new URLSearchParams({
+            plan: contentId,
+            value: String(value),
+            oid: resp.razorpay_order_id || "",
+            pid: resp.razorpay_payment_id || "",
+            sig: resp.razorpay_signature || "",
+          });
+          window.location.href = `/thank-you?${qs.toString()}`;
         },
       });
       rzp.open();

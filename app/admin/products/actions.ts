@@ -26,6 +26,22 @@ async function uploadToMedia(db: DB, slug: string, file: unknown): Promise<strin
   return db.storage.from("media").getPublicUrl(path).data.publicUrl;
 }
 
+// Upload a PDF to the PRIVATE "downloads" bucket. Returns the storage PATH (never a URL):
+// the file is not public and can only be reached via a short-lived signed link after payment.
+async function uploadToDownloads(db: DB, slug: string, file: unknown): Promise<string | null> {
+  if (!file || typeof file === "string") return null;
+  const f = file as File;
+  if (!f.size || f.size === 0) return null;
+  const safeName = (f.name || "book.pdf").replace(/[^a-zA-Z0-9._-]+/g, "-");
+  const path = `${slug || "misc"}/${Date.now()}-${safeName}`;
+  const buf = Buffer.from(await f.arrayBuffer());
+  const { error } = await db.storage
+    .from("downloads")
+    .upload(path, buf, { contentType: f.type || "application/pdf", upsert: true });
+  if (error) return null;
+  return path;
+}
+
 function parseJsonOrUndefined(v: FormDataEntryValue | null): unknown | undefined {
   const s = String(v || "").trim();
   if (!s) return undefined;
@@ -125,6 +141,16 @@ export async function deleteProduct(formData: FormData) {
   if (!serviceConfigured) return;
   const db = createAdminClient();
   await db.from("products").delete().eq("slug", String(formData.get("slug")));
+  revalidatePublic();
+}
+
+export async function uploadProductPdf(formData: FormData) {
+  if (!serviceConfigured) return;
+  const db = createAdminClient();
+  const slug = String(formData.get("slug"));
+  const path = await uploadToDownloads(db, slug, formData.get("pdf_file"));
+  if (!path) return;
+  await db.from("products").update({ pdf_path: path, updated_at: new Date().toISOString() }).eq("slug", slug);
   revalidatePublic();
 }
 
