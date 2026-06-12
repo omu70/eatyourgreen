@@ -178,9 +178,13 @@ export const stats = [
 
 export const leadMagnet = {
   heading: "Not ready to buy? Start free.",
-  sub: "Get a free sample — 5 gentle phrases that stop a mealtime meltdown in seconds. Sent straight to your inbox.",
-  cta: "Send me the free sample",
-  note: "No spam. Unsubscribe anytime.",
+  sub: "Get the free Fussy-Eater Rescue cheat sheet — 10 calm things to say at the table tonight that stop the fights, without bribes or tears. Instant download.",
+  cta: "Send me the free cheat sheet",
+  note: "Free PDF + a few genuinely helpful emails. Unsubscribe anytime.",
+  file: "/lead-magnet/fussy-eater-rescue.pdf",
+  fileName: "Fussy-Eater-Rescue-Eat-Your-Green.pdf",
+  successHeading: "Here's your free cheat sheet! 🌱",
+  successBody: "Your download should start automatically. If it doesn't, tap the button below — and keep an eye on your inbox.",
 };
 
 export const guarantee = {

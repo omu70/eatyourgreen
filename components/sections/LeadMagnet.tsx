@@ -1,12 +1,23 @@
 "use client";
 import { useState } from "react";
-import { Gift } from "lucide-react";
+import { Gift, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { leadMagnet } from "@/data/content";
 import { track } from "@/lib/analytics";
 
 export default function LeadMagnet({ heading, sub, cta }: { heading?: string; sub?: string; cta?: string }) {
   const [status, setStatus] = useState<"idle" | "sending" | "ok" | "error">("idle");
+
+  function downloadNow() {
+    const a = document.createElement("a");
+    a.href = leadMagnet.file;
+    a.download = leadMagnet.fileName || "eat-your-green-free.pdf";
+    a.rel = "noopener";
+    a.target = "_blank";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  }
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -23,6 +34,8 @@ export default function LeadMagnet({ heading, sub, cta }: { heading?: string; su
       track("generate_lead", { email });
       setStatus("ok");
       form.reset();
+      // Deliver the freebie instantly — no email service required.
+      setTimeout(downloadNow, 400);
     } catch {
       setStatus("error");
     }
@@ -39,9 +52,13 @@ export default function LeadMagnet({ heading, sub, cta }: { heading?: string; su
           <p className="mt-3 text-ink/75 prose-measure mx-auto">{sub || leadMagnet.sub}</p>
 
           {status === "ok" ? (
-            <p className="mt-6 font-heading font-semibold text-brand">
-              Done! Check your inbox (and spam) for your free sample. 🌱
-            </p>
+            <div className="mt-6">
+              <p className="font-heading font-semibold text-brand text-lg">{leadMagnet.successHeading}</p>
+              <p className="mt-2 text-ink/75 text-sm prose-measure mx-auto">{leadMagnet.successBody}</p>
+              <Button onClick={downloadNow} size="lg" className="mt-4 inline-flex items-center gap-2">
+                <Download className="h-4 w-4" /> Download the cheat sheet
+              </Button>
+            </div>
           ) : (
             <form onSubmit={onSubmit} className="mt-6 flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
               <input
@@ -60,7 +77,7 @@ export default function LeadMagnet({ heading, sub, cta }: { heading?: string; su
           {status === "error" && (
             <p className="mt-3 text-sm text-cta">Something went wrong. Please try again.</p>
           )}
-          <p className="mt-3 small text-ink/55">{leadMagnet.note}</p>
+          {status !== "ok" && <p className="mt-3 small text-ink/55">{leadMagnet.note}</p>}
         </div>
       </div>
     </section>
