@@ -4,6 +4,7 @@ import "./globals.css";
 import SiteHeader from "@/components/SiteHeader";
 import Footer from "@/components/sections/Footer";
 import PageViewTracker from "@/components/PageViewTracker";
+import VisitTracker from "@/components/VisitTracker";
 import MetaPixel from "@/components/analytics/MetaPixel";
 import GA4 from "@/components/analytics/GA4";
 import GTM from "@/components/analytics/GTM";
@@ -55,6 +56,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <GA4 />
         <MetaPixel />
         <PageViewTracker />
+        <VisitTracker />
         <SiteHeader />
         {children}
         <HideOnAdmin>

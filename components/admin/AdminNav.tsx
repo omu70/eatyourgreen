@@ -1,11 +1,12 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LayoutDashboard, ShoppingBag, Mail, BookOpen, Pencil } from "lucide-react";
+import { LayoutDashboard, ShoppingBag, BarChart3, Mail, BookOpen, Pencil } from "lucide-react";
 
 const NAV = [
   { href: "/admin", label: "Home", icon: LayoutDashboard },
   { href: "/admin/orders", label: "Sales", icon: ShoppingBag },
+  { href: "/admin/visitors", label: "Visitors", icon: BarChart3 },
   { href: "/admin/leads", label: "Email sign-ups", icon: Mail },
   { href: "/admin/products", label: "Books", icon: BookOpen },
   { href: "/admin/content", label: "Website text & photos", icon: Pencil },
