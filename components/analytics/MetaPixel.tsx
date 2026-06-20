@@ -1,7 +1,8 @@
 "use client";
 import Script from "next/script";
 
-const PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID; // TODO: set in .env.local
+// Your Meta Pixel ID. Can be overridden by NEXT_PUBLIC_META_PIXEL_ID in the environment.
+const PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID || "2476879562824962";
 
 export default function MetaPixel() {
   if (!PIXEL_ID) return null;

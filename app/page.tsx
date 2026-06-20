@@ -1,4 +1,5 @@
 import Hero from "@/components/sections/Hero";
+import Discover from "@/components/sections/Discover";
 import TrustBadges from "@/components/sections/TrustBadges";
 import PainChecklist from "@/components/sections/PainChecklist";
 import ParentsKidsPain from "@/components/sections/ParentsKidsPain";
@@ -32,6 +33,8 @@ export default async function Home() {
         <Hero h1={c.heroH1} subhead={c.heroSubhead} trust={c.heroTrust} image={c.heroImage} discoverHeading={c.discoverHeading} discover={c.discover} />
         {/* 1. CTA + trust bar */}
         <TrustBadges />
+        {/* What you'll discover — icon grid */}
+        <Discover heading={c.discoverHeading} items={c.discover} />
         {/* 2. Does this sound like your dinner table? */}
         <PainChecklist />
         {/* 3. Parents and kids pain points */}
