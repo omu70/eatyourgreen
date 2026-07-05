@@ -35,7 +35,10 @@ export default function Hero({
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h1 className="text-h1 md:text-h1-lg text-forest">{h1 || hero.h1}</h1>
+          <span className="inline-flex items-center rounded-full bg-brand/10 text-brand text-xs font-semibold px-3 py-1">
+            Won&rsquo;t eat green veggies? You&rsquo;re not alone.
+          </span>
+          <h1 className="mt-3 text-h1 md:text-h1-lg text-forest">{h1 || hero.h1}</h1>
           <p className="mt-4 text-ink/80 prose-measure">{subhead || hero.subhead}</p>
 
           {/* Scannable icon benefits — replaces the long bullet list */}
@@ -61,7 +64,7 @@ export default function Hero({
               <Link href="/books/the-eat-your-green-complete-toolkit">Get the Bundle ₹{bundlePrice.toLocaleString("en-IN")}</Link>
             </Button>
             <Button asChild variant="outline" size="lg" className="w-full sm:w-auto">
-              <Link href="/#books">See all 3 books</Link>
+              <Link href="/#books">See all books</Link>
             </Button>
           </div>
           <p className="mt-4 small text-ink/70">{trust || hero.trust}</p>
@@ -75,7 +78,7 @@ export default function Hero({
         >
           <Image
             src={image || "/images/hero.jpg"}
-            alt="A mom and her child laughing together while enjoying greens"
+            alt="A mom and her child laughing together while enjoying green veggies"
             fill
             priority
             sizes="(max-width: 768px) 100vw, 50vw"

@@ -33,9 +33,9 @@ export const offer = {
 };
 
 export const hero = {
-  h1: "Raise a child who enjoys greens and healthy foods — without fights, bribes or tears.",
+  h1: "The daily fight over green veggies ends here.",
   subhead:
-    "A simple, gentle and practical way for parents who want healthier eating habits, calmer mealtimes, and happier food experiences for their children.",
+    "Tears at the table. Bribes that stop working. Cooking two separate dinners just so your child eats one green veggie. Eat Your Green is the gentle, pressure-free way to turn “no” into “yes” — and get your fussy eater (2–12) happily eating green veggies in as little as 7 days. No nagging, no guilt.",
   ctaPrimary: "See the books →",
   trust: "★ 4.8/5 · Loved by 5000+ Indian parents · Instant download",
   // TODO: replace with your exact "what you'll discover" points
