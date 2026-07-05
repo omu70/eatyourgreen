@@ -29,8 +29,7 @@ export default function Privacy() {
       <h2>Your choices</h2>
       <p>
         You can decline non-essential analytics cookies via the consent banner, and you can ask us to
-        delete your data at any time by messaging us on WhatsApp at +91 89205 69272 or via the contact
-        form.
+        delete your data at any time via the contact form.
       </p>
     </LegalPage>
   );

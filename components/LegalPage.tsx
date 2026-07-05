@@ -17,7 +17,7 @@ export default function LegalPage({
           <p className="small text-ink/55">Last updated: {updated}</p>
           {children}
           <p className="small text-ink/55 pt-6">
-            Questions about this policy? Message us on WhatsApp at +91 89205 69272 or use the{" "}
+            Questions about this policy? Reach us any time through the{" "}
             <a href="/contact" className="text-brand underline">contact form</a>.
           </p>
         </div>

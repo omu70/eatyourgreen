@@ -24,12 +24,14 @@ export default function ThankYouClient({
   oid,
   pid,
   sig,
+  token,
 }: {
   value: number;
   plan: string;
   oid: string;
   pid: string;
   sig: string;
+  token: string;
 }) {
   const [items, setItems] = useState<Item[]>([]);
   const [state, setState] = useState<"loading" | "ready" | "denied">("loading");
@@ -47,19 +49,18 @@ export default function ThankYouClient({
   // Unlock the download by presenting the signed payment proof to the server.
   useEffect(() => {
     let active = true;
-    if (!oid || !pid || !sig) {
+    const hasSig = oid && pid && sig;
+    if (!token && !hasSig) {
       setState("denied");
       return;
     }
+    const payload = token
+      ? { plan, token }
+      : { razorpay_order_id: oid, razorpay_payment_id: pid, razorpay_signature: sig, plan };
     fetch("/api/download", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        razorpay_order_id: oid,
-        razorpay_payment_id: pid,
-        razorpay_signature: sig,
-        plan,
-      }),
+      body: JSON.stringify(payload),
     })
       .then((r) => r.json())
       .then((d) => {
@@ -78,7 +79,7 @@ export default function ThankYouClient({
     return () => {
       active = false;
     };
-  }, [oid, pid, sig, plan]);
+  }, [oid, pid, sig, plan, token]);
 
   const purchased = new Set(getPlanSlugs(plan));
   const others = books.filter((b) => !purchased.has(b.slug));
@@ -96,7 +97,7 @@ export default function ThankYouClient({
               we&rsquo;ll send your book straight away.
             </p>
             <a
-              href="https://wa.me/918920569272"
+              href="https://chat.whatsapp.com/CbmN4dn73H7BBBsJkBimku"
               className="inline-block mt-6 rounded-full bg-leaf px-6 py-3 text-white font-semibold"
             >
               Message us on WhatsApp

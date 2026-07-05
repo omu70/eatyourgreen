@@ -54,7 +54,7 @@ export default function SiteHeader() {
             );
           })}
           <Button asChild size="pill">
-            <Link href="/books/the-eat-your-green-complete-toolkit">Get the Bundle ₹799</Link>
+            <Link href="/books/the-eat-your-green-complete-toolkit">Get the Bundle</Link>
           </Button>
         </nav>
 
@@ -85,7 +85,7 @@ export default function SiteHeader() {
               </Link>
             ))}
             <Button asChild className="mt-3 w-full">
-              <Link href="/books/the-eat-your-green-complete-toolkit">Get the Bundle ₹799</Link>
+              <Link href="/books/the-eat-your-green-complete-toolkit">Get the Bundle</Link>
             </Button>
           </nav>
         </div>

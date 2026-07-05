@@ -21,9 +21,9 @@ export const supportEmail = "TODO-add-your-email";
 // WhatsApp community (you'll share a QR code to join)
 export const whatsappCommunity = {
   label: "Join our free WhatsApp community",
-  number: "+91 89205 69272",
-  link: "https://wa.me/918920569272",
-  qr: "/images/whatsapp-qr.png", // TODO: drop your community QR image here
+  number: "",
+  link: "https://chat.whatsapp.com/CbmN4dn73H7BBBsJkBimku",
+  qr: "/images/whatsapp-qr.png",
 };
 
 // Early-bird scarcity offer (used instead of a countdown timer)

@@ -1,8 +1,11 @@
 import { adminDb } from "@/lib/supabase/guard";
 import SetupNotice from "@/components/admin/SetupNotice";
 import RepeatableRows from "@/components/admin/RepeatableRows";
+import { Plus, FileCheck2, FileWarning, ChevronDown } from "lucide-react";
+import FileField from "@/components/admin/FileField";
+import PdfUploadForm from "@/components/admin/PdfUploadForm";
 import {
-  seedProducts, updateProduct, addProduct, deleteProduct, addGalleryImage, removeGalleryImage, uploadProductPdf,
+  seedProducts, updateProduct, addProduct, deleteProduct, addGalleryImage, removeGalleryImage,
 } from "./actions";
 
 export const dynamic = "force-dynamic";
@@ -20,7 +23,12 @@ type P = {
 const objArr = (v: unknown) => (Array.isArray(v) ? (v as Record<string, unknown>[]) : []);
 const strArr = (v: unknown) => (Array.isArray(v) ? (v as string[]) : []);
 
-export default async function ProductsPage() {
+export default async function ProductsPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ ok?: string; msg?: string }>;
+}) {
+  const sp = await searchParams;
   const db = adminDb();
   if (!db) return <SetupNotice />;
   const { data } = await db.from("products").select("*").order("sort", { ascending: true });
@@ -28,10 +36,21 @@ export default async function ProductsPage() {
 
   return (
     <div>
+      {sp?.msg ? (
+        <div
+          className={`mb-4 rounded-lg border px-4 py-3 text-sm ${
+            sp.ok === "1"
+              ? "border-emerald-300 bg-emerald-50 text-emerald-800"
+              : "border-red-300 bg-red-50 text-red-700"
+          }`}
+        >
+          {sp.msg}
+        </div>
+      ) : null}
       <div className="flex items-center justify-between flex-wrap gap-3">
         <div>
-          <h1 className="text-xl font-semibold">Your books</h1>
-          <p className="text-sm text-neutral-500">Change prices, words and photos. Click <b>Save</b> on a book to make it live.</p>
+          <h1 className="text-2xl font-semibold tracking-tight text-neutral-900">Your books</h1>
+          <p className="mt-1 text-sm text-neutral-500">Change prices, words and photos — or add a new book below.</p>
         </div>
         <form action={seedProducts}>
           <button className="rounded-md border border-emerald-700 px-3 py-1.5 text-sm text-emerald-700 hover:bg-emerald-50">
@@ -40,15 +59,49 @@ export default async function ProductsPage() {
         </form>
       </div>
 
-      <form action={addProduct} className="mt-5 rounded-xl border border-dashed border-neutral-300 bg-white p-4 flex flex-wrap items-end gap-3">
-        <label className="block"><span className="text-xs text-neutral-500">Add a new book - short web name</span>
-          <input name="slug" placeholder="my-new-book" className="mt-1 block rounded-md border border-neutral-300 px-3 py-2 text-sm" /></label>
-        <label className="block"><span className="text-xs text-neutral-500">Title</span>
-          <input name="title" placeholder="Book title" className="mt-1 block rounded-md border border-neutral-300 px-3 py-2 text-sm" /></label>
-        <label className="block"><span className="text-xs text-neutral-500">Price ₹</span>
-          <input name="price" type="number" defaultValue={0} className="mt-1 block w-24 rounded-md border border-neutral-300 px-3 py-2 text-sm" /></label>
-        <button className="rounded-md bg-emerald-700 px-4 py-2 text-sm text-white hover:bg-emerald-800">+ Add book</button>
-      </form>
+      <div className="mt-5 rounded-2xl border border-neutral-200 bg-white p-5">
+        <h2 className="text-sm font-semibold text-neutral-800">Add a new book</h2>
+        <p className="text-xs text-neutral-500 mt-0.5">
+          Fill these in and click <b>Add book</b> — it goes live instantly. The web address is created
+          for you automatically. (You can add the longer details, FAQs and extra photos afterwards.)
+        </p>
+        <form action={addProduct} className="mt-4 grid sm:grid-cols-2 gap-4">
+          <label className="block text-sm sm:col-span-2">
+            <span className="text-neutral-600">Title</span>
+            <input name="title" required placeholder="e.g. Eat Your Green — Snack Smart" className="mt-1 w-full rounded-md border border-neutral-300 px-3 py-2 text-sm" />
+          </label>
+          <label className="block text-sm sm:col-span-2">
+            <span className="text-neutral-600">Short description (one line)</span>
+            <input name="tagline" placeholder="What this book helps with, in a sentence" className="mt-1 w-full rounded-md border border-neutral-300 px-3 py-2 text-sm" />
+          </label>
+          <label className="block text-sm">
+            <span className="text-neutral-600">Price (₹)</span>
+            <input name="price" type="number" min={0} defaultValue={0} className="mt-1 w-full rounded-md border border-neutral-300 px-3 py-2 text-sm" />
+          </label>
+          <label className="block text-sm">
+            <span className="text-neutral-600">Compare-at price (₹, optional)</span>
+            <input name="old_price" type="number" min={0} defaultValue={0} className="mt-1 w-full rounded-md border border-neutral-300 px-3 py-2 text-sm" />
+          </label>
+          <div className="block text-sm">
+            <span className="text-neutral-600">Cover photo</span>
+            <div className="mt-1.5"><FileField name="cover_file" accept="image/*" chooseLabel="Choose cover" /></div>
+          </div>
+          <div className="block text-sm">
+            <span className="text-neutral-600">Book PDF</span>
+            <p className="mt-1.5 text-xs text-neutral-500">
+              Add the book first, then upload its PDF from the book&rsquo;s row below — large PDFs upload straight to secure storage.
+            </p>
+          </div>
+          <label className="flex items-center gap-2 text-sm sm:col-span-2">
+            <input type="checkbox" name="active" defaultChecked /> Show this book on the website right away
+          </label>
+          <div className="sm:col-span-2">
+            <button className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-700 px-4 py-2.5 text-sm font-medium text-white hover:bg-emerald-800">
+              <Plus className="h-4 w-4" /> Add book
+            </button>
+          </div>
+        </form>
+      </div>
 
       {products.length === 0 && (
         <p className="mt-6 text-sm text-neutral-500">No books yet. Click &ldquo;Load my books&rdquo; to bring them in, then edit below.</p>
@@ -56,12 +109,35 @@ export default async function ProductsPage() {
 
       <div className="mt-6 space-y-8">
         {products.map((p) => (
-          <div key={p.slug} className="rounded-xl border border-neutral-200 bg-white p-5">
-            <div className="flex items-center gap-2">
-              <span className="text-sm font-semibold text-neutral-800">{p.title}</span>
-            </div>
+          <details key={p.slug} className="group rounded-xl border border-neutral-200 bg-white overflow-hidden">
+            <summary className="flex items-center gap-3 p-4 cursor-pointer list-none [&::-webkit-details-marker]:hidden hover:bg-neutral-50">
+              <span className="relative h-14 w-10 shrink-0 rounded border border-neutral-200 bg-white overflow-hidden">
+                {p.cover ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img src={p.cover} alt="" className="h-full w-full object-contain" />
+                ) : null}
+              </span>
+              <span className="flex-1 min-w-0">
+                <span className="block font-medium text-neutral-900 truncate">{p.title}</span>
+                <span className="block text-xs text-neutral-500">
+                  ₹{Number(p.price).toLocaleString("en-IN")}
+                  {p.old_price > p.price ? (
+                    <span className="text-neutral-400 line-through ml-1">₹{Number(p.old_price).toLocaleString("en-IN")}</span>
+                  ) : null}
+                </span>
+              </span>
+              <span
+                className={`hidden sm:inline-flex items-center rounded-full px-2.5 py-1 text-xs font-medium ${
+                  p.active ? "bg-emerald-50 text-emerald-700" : "bg-neutral-100 text-neutral-500"
+                }`}
+              >
+                {p.active ? "Visible" : "Hidden"}
+              </span>
+              <ChevronDown className="h-4 w-4 text-neutral-400 transition-transform group-open:rotate-180" />
+            </summary>
 
-            <form action={updateProduct} className="mt-4 grid md:grid-cols-[160px_1fr] gap-5">
+            <div className="border-t border-neutral-100 p-5">
+            <form action={updateProduct} className="grid md:grid-cols-[160px_1fr] gap-5">
               <input type="hidden" name="slug" value={p.slug} />
 
               <div>
@@ -73,7 +149,7 @@ export default async function ProductsPage() {
                   <div className="aspect-[3/4] rounded-md border border-dashed border-neutral-300 flex items-center justify-center text-xs text-neutral-400">no photo</div>
                 )}
                 <div className="mt-2 text-xs text-neutral-500">Change cover</div>
-                <input type="file" name="cover_file" accept="image/*" className="mt-1 block w-full text-xs" />
+                <div className="mt-1"><FileField name="cover_file" accept="image/*" chooseLabel="Choose photo" /></div>
               </div>
 
               <div className="grid sm:grid-cols-2 gap-3">
@@ -133,7 +209,6 @@ export default async function ProductsPage() {
                       </select>
                     </label>
                     <Field label="Order on page (0 = first)" name="sort" def={String(p.sort)} type="number" />
-                    <div className="sm:col-span-2"><Field label="Legacy file path (optional — leave blank and upload the PDF lower down instead)" name="pdf" def={p.pdf || ""} /></div>
                     <Field label="Google title (SEO)" name="meta_title" def={p.meta_title || ""} />
                     <Field label="Google description (SEO)" name="meta_description" def={p.meta_description || ""} />
                   </div>
@@ -162,8 +237,10 @@ export default async function ProductsPage() {
               </div>
               <form action={addGalleryImage} className="mt-3 flex flex-wrap items-end gap-3">
                 <input type="hidden" name="slug" value={p.slug} />
-                <label className="block"><span className="text-xs text-neutral-500">Add photo(s) - pick several at once</span>
-                  <input type="file" name="file" accept="image/*" multiple className="mt-1 block text-xs" /></label>
+                <div>
+                  <span className="text-xs text-neutral-500">Add photo(s) — pick several at once</span>
+                  <div className="mt-1"><FileField name="file" accept="image/*" multiple chooseLabel="Choose photos" /></div>
+                </div>
                 <label className="block"><span className="text-xs text-neutral-500">Caption</span>
                   <input name="caption" placeholder="optional" className="mt-1 block rounded-md border border-neutral-300 px-3 py-2 text-sm" /></label>
                 <button className="rounded-md border border-emerald-700 px-3 py-1.5 text-sm text-emerald-700 hover:bg-emerald-50">Upload</button>
@@ -172,25 +249,40 @@ export default async function ProductsPage() {
 
             <div className="mt-6 border-t border-neutral-100 pt-4">
               <div className="text-sm font-medium text-neutral-700">Book PDF — the file customers receive</div>
-              <p className="text-xs text-neutral-500 mt-0.5">
-                {p.pdf_path
-                  ? "✓ A PDF is uploaded. It is private — buyers can only download it on the thank-you page right after they pay. Pick a new file to replace it."
-                  : "⚠ No PDF uploaded yet. Upload the book file here. It stays private and is only delivered after a successful payment."}
-              </p>
-              <form action={uploadProductPdf} className="mt-2 flex flex-wrap items-end gap-3">
-                <input type="hidden" name="slug" value={p.slug} />
-                <input type="file" name="pdf_file" accept="application/pdf,.pdf" className="block text-xs" />
-                <button className="rounded-md bg-emerald-700 px-4 py-2 text-sm text-white hover:bg-emerald-800">
-                  {p.pdf_path ? "Replace PDF" : "Upload PDF"}
-                </button>
-              </form>
+              <div className="mt-2 rounded-xl border border-neutral-200 bg-neutral-50 p-4">
+                <span
+                  className={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium ${
+                    (p.pdf || "").startsWith("private:") ? "bg-emerald-50 text-emerald-700" : "bg-amber-50 text-amber-700"
+                  }`}
+                >
+                  {(p.pdf || "").startsWith("private:") ? (
+                    <>
+                      <FileCheck2 className="h-3.5 w-3.5" /> PDF uploaded
+                    </>
+                  ) : (
+                    <>
+                      <FileWarning className="h-3.5 w-3.5" /> No PDF yet
+                    </>
+                  )}
+                </span>
+                <p className="mt-2 text-xs text-neutral-500">
+                  Stays private — buyers can only download it on the thank-you page, right after a successful payment.
+                </p>
+                <div className="mt-3">
+                  <PdfUploadForm
+                    slug={p.slug}
+                    uploaded={(p.pdf || "").startsWith("private:")}
+                  />
+                </div>
+              </div>
             </div>
 
             <form action={deleteProduct} className="mt-5 border-t border-neutral-100 pt-4">
               <input type="hidden" name="slug" value={p.slug} />
               <button className="text-sm text-red-600 hover:underline">Delete this book</button>
             </form>
-          </div>
+            </div>
+          </details>
         ))}
       </div>
     </div>

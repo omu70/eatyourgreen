@@ -169,6 +169,84 @@ export const books: Book[] = [
     metaDescription:
       "Calm, realistic ways to raise healthy, confident eaters in a world of screens, snacks and ultra-processed food. Book 2 in the Eat Your Green series. Instant download.",
   },
+  {
+    slug: "beyond-the-screens",
+    title: "Beyond the Screens",
+    tagline: "Less screen time. More childhood.",
+    subhead:
+      "A calm, step-by-step guide for parents to gently cut their child's screen time — and bring back play, focus and real childhood — without daily fights or guilt.",
+    price: 199,
+    oldPrice: 499,
+    checkout: "",
+    cover: "/images/cover-beyond-the-screens.jpg",
+    pdf: "",
+    accent: "brand",
+    badge: "New",
+    forWho: "Parents of children aged 2–12 who feel their child is glued to phones, tablets or YouTube.",
+    pages: "~70 pages",
+    format: "Instant PDF download",
+    whatsInside: [
+      { name: "Why screens hook kids", desc: "The simple reason children crave screens — and why shouting or snatching never works." },
+      { name: "The gentle screen-time plan", desc: "A day-by-day path to less screen time, even for the most stubborn kids." },
+      { name: "What to say (word-for-word)", desc: "Calm lines to use when your child demands the phone — no bribing, no yelling." },
+      { name: "Screen-free activities kids love", desc: "Easy ideas your child will choose over YouTube on their own." },
+      { name: "Handling tantrums & \"I'm bored\"", desc: "How to stay calm and consistent when the meltdowns come." },
+    ],
+    outcomes: [
+      "Less screen time — without daily battles",
+      "A child who plays, reads and sleeps better",
+      "Calm evenings instead of phone fights",
+      "More talking, focus and real connection at home",
+    ],
+    faqs: [
+      { q: "Will this work for a very screen-addicted child?", a: "Yes. The plan is built for stubborn, screen-loving kids aged 2–12. It works by slowly lowering the pull of screens — not by snatching them away — so it sticks." },
+      { q: "Do I have to ban screens completely?", a: "No. This is about balance and calm boundaries, not a total ban. Your child still enjoys some screen time — just far less, and without fights." },
+      { q: "How do I get the book?", a: "Instant digital download — the PDF arrives right after payment, with a WhatsApp and email backup. Start tonight." },
+    ],
+    ctaLabel: "Get the Book",
+    metaTitle: "Beyond the Screens — Less Screen Time, More Childhood",
+    metaDescription:
+      "A calm, step-by-step guide for parents to gently reduce their child's screen time and bring back play, focus and real childhood — without daily fights. Instant download.",
+  },
+  {
+    slug: "raising-healthy-kids-in-a-digital-world",
+    title: "Raising Healthy Kids in a Digital World",
+    tagline: "Helping children thrive between screens and real life.",
+    subhead:
+      "A practical guide built on the simple 4B Framework — Boundaries, Balance, Bonding and Belonging — to help your child grow up healthy, confident and connected in a screen-filled world.",
+    price: 199,
+    oldPrice: 599,
+    checkout: "",
+    cover: "/images/cover-raising-healthy-kids.jpg",
+    pdf: "",
+    accent: "gold",
+    badge: "New",
+    forWho: "Parents who want their child to enjoy technology safely — without losing sleep, focus, health or family time.",
+    pages: "~80 pages",
+    format: "Instant PDF download",
+    whatsInside: [
+      { name: "The 4B Framework", desc: "Boundaries, Balance, Bonding and Belonging — a simple system for healthy screen habits." },
+      { name: "Boundaries that stick", desc: "How to set screen rules kids actually follow, without constant policing." },
+      { name: "Balance, not banning", desc: "Help your child enjoy screens and real life — sleep, play, study and family time." },
+      { name: "Bonding & belonging", desc: "Rebuild connection so your child turns to you, not just the screen." },
+      { name: "Age-by-age guidance", desc: "What healthy screen use looks like as your child grows." },
+    ],
+    outcomes: [
+      "Clear screen rules the whole family follows",
+      "Better sleep, focus and mood",
+      "Less conflict about phones and tablets",
+      "A closer, more connected family",
+    ],
+    faqs: [
+      { q: "What is the 4B Framework?", a: "It's a simple parenting system built on four pillars — Boundaries, Balance, Bonding and Belonging — that helps kids use screens in a healthy, balanced way." },
+      { q: "What age is this for?", a: "It's written for parents of children aged 2–12, with ideas that adapt as your child grows." },
+      { q: "How do I get the book?", a: "Instant digital download — your PDF arrives right after payment, with a WhatsApp and email backup." },
+    ],
+    ctaLabel: "Get the Book",
+    metaTitle: "Raising Healthy Kids in a Digital World — The 4B Framework",
+    metaDescription:
+      "A practical parenting guide built on the 4B Framework — Boundaries, Balance, Bonding, Belonging — to help children thrive between screens and real life. Instant download.",
+  },
 ];
 
 export function getBook(slug: string): Book | undefined {

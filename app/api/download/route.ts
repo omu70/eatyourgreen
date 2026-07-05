@@ -13,18 +13,26 @@ export async function POST(req: NextRequest) {
   try {
     const secret = process.env.RAZORPAY_KEY_SECRET;
     const body = await req.json().catch(() => ({}));
-    const { razorpay_order_id, razorpay_payment_id, razorpay_signature, plan } = body || {};
-
-    // 1) Require a real, completed payment (valid HMAC signature from Razorpay).
-    if (!secret || !razorpay_order_id || !razorpay_payment_id || !razorpay_signature) {
-      return NextResponse.json({ ok: false, error: "missing_payment" }, { status: 403 });
+    const { razorpay_order_id, razorpay_payment_id, razorpay_signature, plan, token } = body || {};
+    if (!secret) {
+      return NextResponse.json({ ok: false, error: "not_configured" }, { status: 403 });
     }
-    const expected = crypto
-      .createHmac("sha256", secret)
-      .update(`${razorpay_order_id}|${razorpay_payment_id}`)
-      .digest("hex");
-    if (expected !== razorpay_signature) {
-      return NextResponse.json({ ok: false, error: "invalid_payment" }, { status: 403 });
+
+    // Authorise via EITHER a valid Razorpay payment signature OR a valid free-coupon token
+    // (the token is issued server-side by /api/razorpay/order for a 100%-off coupon).
+    let authorized = false;
+    if (token) {
+      const expectedFree = crypto.createHmac("sha256", secret).update(`free|${plan}`).digest("hex");
+      authorized = token === expectedFree;
+    } else if (razorpay_order_id && razorpay_payment_id && razorpay_signature) {
+      const expected = crypto
+        .createHmac("sha256", secret)
+        .update(`${razorpay_order_id}|${razorpay_payment_id}`)
+        .digest("hex");
+      authorized = expected === razorpay_signature;
+    }
+    if (!authorized) {
+      return NextResponse.json({ ok: false, error: "unauthorized" }, { status: 403 });
     }
 
     // 2) Which book(s) does this plan deliver?
@@ -40,20 +48,21 @@ export async function POST(req: NextRequest) {
       if (db) {
         const { data: row } = await db
           .from("products")
-          .select("pdf_path, pdf, title")
+          .select("pdf, title")
           .eq("slug", slug)
           .maybeSingle();
 
-        // Preferred: private file → short-lived signed link (forces a download).
-        const pdfPath = (row?.pdf_path as string | null) || null;
-        if (pdfPath) {
+        const pdfVal = row?.pdf ? String(row.pdf) : "";
+        if (pdfVal.startsWith("private:")) {
+          // Private upload → short-lived signed link (forces a download, expires in 1 hour).
           const { data: signed } = await db.storage
             .from("downloads")
-            .createSignedUrl(pdfPath, 60 * 60, { download: true });
+            .createSignedUrl(pdfVal.slice(8), 60 * 60, { download: true });
           if (signed?.signedUrl) url = signed.signedUrl;
+        } else if (pdfVal) {
+          // Legacy public path / URL.
+          url = pdfVal;
         }
-        // Fallback to a legacy file path only if no private PDF has been uploaded yet.
-        if (!url && row?.pdf) url = String(row.pdf);
       }
       if (!url && meta?.pdf) url = meta.pdf;
       if (url) items.push({ title, url });

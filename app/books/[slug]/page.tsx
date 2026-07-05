@@ -211,7 +211,7 @@ export default async function BookPage({ params }: { params: Promise<{ slug: str
                           <span className="font-heading font-bold text-forest">₹{o.price.toLocaleString("en-IN")}</span>
                         </p>
                         <div className="mt-2 flex items-center gap-3">
-                          <CTAButton href={o.checkout} value={o.price} contentId={o.slug} contentName={o.title} label={`Add — ₹${o.price}`} size="pill" />
+                          <CTAButton href={o.checkout} value={o.price} contentId={o.slug} contentName={o.title} label={`Buy — ₹${o.price}`} size="pill" />
                           <Link href={`/books/${o.slug}`} className="text-brand text-xs font-medium hover:underline">Details</Link>
                         </div>
                       </div>

@@ -17,6 +17,7 @@ export default function Hero({
   subhead,
   trust,
   image,
+  bundlePrice = 799,
 }: {
   h1?: string;
   subhead?: string;
@@ -24,6 +25,7 @@ export default function Hero({
   image?: string;
   discoverHeading?: string;
   discover?: string[];
+  bundlePrice?: number;
 }) {
   return (
     <section id="hero" className="pt-24 md:pt-28 pb-12 md:pb-20 bg-cream">
@@ -56,7 +58,7 @@ export default function Hero({
 
           <div className="mt-6 flex flex-col sm:flex-row gap-3">
             <Button asChild size="lg" className="w-full sm:w-auto">
-              <Link href="/books/the-eat-your-green-complete-toolkit">Get the Bundle ₹799</Link>
+              <Link href="/books/the-eat-your-green-complete-toolkit">Get the Bundle ₹{bundlePrice.toLocaleString("en-IN")}</Link>
             </Button>
             <Button asChild variant="outline" size="lg" className="w-full sm:w-auto">
               <Link href="/#books">See all 3 books</Link>

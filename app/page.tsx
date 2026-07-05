@@ -12,6 +12,7 @@ import StatsBand from "@/components/sections/StatsBand";
 import HowToGet from "@/components/sections/HowToGet";
 import LeadMagnet from "@/components/sections/LeadMagnet";
 import AuthorStrip from "@/components/sections/AuthorStrip";
+import FounderVideo from "@/components/sections/FounderVideo";
 import Testimonials from "@/components/sections/Testimonials";
 import WhatsAppCommunity from "@/components/sections/WhatsAppCommunity";
 import Guarantee from "@/components/sections/Guarantee";
@@ -25,12 +26,17 @@ import { getProducts, getContent } from "@/lib/site-data";
 export default async function Home() {
   const products = await getProducts();
   const c = await getContent();
+  // Live bundle price from admin — never hard-coded, so price edits flow everywhere.
+  const bundle =
+    products.find((b) => b.slug.includes("toolkit") || b.slug.includes("complete")) ||
+    products.find((b) => b.accent === "gold");
+  const bundlePrice = bundle?.price ?? 799;
   return (
     <>
       <HomeJsonLd />
       <main>
         {/* 1. Hero (headline + subtitle + what you'll discover) */}
-        <Hero h1={c.heroH1} subhead={c.heroSubhead} trust={c.heroTrust} image={c.heroImage} discoverHeading={c.discoverHeading} discover={c.discover} />
+        <Hero h1={c.heroH1} subhead={c.heroSubhead} trust={c.heroTrust} image={c.heroImage} discoverHeading={c.discoverHeading} discover={c.discover} bundlePrice={bundlePrice} />
         {/* 1. CTA + trust bar */}
         <TrustBadges />
         {/* What you'll discover — icon grid */}
@@ -57,6 +63,8 @@ export default async function Home() {
         <LeadMagnet heading={c.lmHeading} sub={c.lmSub} cta={c.lmCta} />
         {/* 11. About the author */}
         <AuthorStrip />
+        {/* Founder video */}
+        <FounderVideo />
         {/* 12. Testimonials */}
         <Testimonials />
         {/* 13. WhatsApp community */}
@@ -70,10 +78,10 @@ export default async function Home() {
         {/* 16. Footer is in layout */}
       </main>
       <StickyCTA
-        price={799}
+        price={bundlePrice}
         href={CHECKOUT.toolkit}
         contentId="the-eat-your-green-complete-toolkit"
-        contentName="Green Explorer Bundle"
+        contentName={bundle?.title || "Green Explorer Bundle"}
         label="Get the Bundle"
         triggerId="hero"
         hideAtId="books"

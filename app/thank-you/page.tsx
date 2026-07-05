@@ -11,7 +11,7 @@ export const dynamic = "force-dynamic";
 export default async function ThankYouPage({
   searchParams,
 }: {
-  searchParams: Promise<{ value?: string; plan?: string; oid?: string; pid?: string; sig?: string }>;
+  searchParams: Promise<{ value?: string; plan?: string; oid?: string; pid?: string; sig?: string; token?: string }>;
 }) {
   const sp = await searchParams;
   return (
@@ -21,6 +21,7 @@ export default async function ThankYouPage({
       oid={sp.oid || ""}
       pid={sp.pid || ""}
       sig={sp.sig || ""}
+      token={sp.token || ""}
     />
   );
 }

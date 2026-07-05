@@ -26,9 +26,8 @@ export default function Refund() {
       </p>
       <h2>How to request a refund</h2>
       <p>
-        Message us on WhatsApp at +91 89205 69272 (or use the contact form) with the email address and
-        date you used at checkout. Approved refunds are processed back to your original payment method,
-        usually within 5–7 business days.
+        Use the contact form with the email address and date you used at checkout. Approved refunds are
+        processed back to your original payment method, usually within 5–7 business days.
       </p>
     </LegalPage>
   );

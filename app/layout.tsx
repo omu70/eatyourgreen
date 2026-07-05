@@ -11,6 +11,8 @@ import GTM from "@/components/analytics/GTM";
 import ConsentBanner from "@/components/analytics/ConsentBanner";
 import { SITE } from "@/lib/seo";
 import HideOnAdmin from "@/components/HideOnAdmin";
+import LeadPopup from "@/components/LeadPopup";
+import WhatsAppSupport from "@/components/WhatsAppSupport";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
@@ -62,6 +64,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <HideOnAdmin>
           <Footer />
           <ConsentBanner />
+          <LeadPopup />
+          <WhatsAppSupport />
         </HideOnAdmin>
       </body>
     </html>
