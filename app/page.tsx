@@ -23,6 +23,11 @@ import { HomeJsonLd } from "@/components/JsonLd";
 import { CHECKOUT } from "@/data/content";
 import { getProducts, getContent } from "@/lib/site-data";
 
+// Always read the latest books, prices and hero copy from the database on every
+// request — so changes made in the admin (or via scripts) appear immediately,
+// with no rebuild needed. This ends the stale-cache problem.
+export const dynamic = "force-dynamic";
+
 export default async function Home() {
   const products = await getProducts();
   const c = await getContent();
@@ -37,7 +42,9 @@ export default async function Home() {
       <main>
         {/* 1. Hero (headline + subtitle + what you'll discover) */}
         <Hero h1={c.heroH1} subhead={c.heroSubhead} trust={c.heroTrust} image={c.heroImage} discoverHeading={c.discoverHeading} discover={c.discover} bundlePrice={bundlePrice} />
-        {/* 1. CTA + trust bar */}
+        {/* Books right under the hero — visitors instantly see what we sell */}
+        <BooksShowcase books={products} offer={{ line: c.offerLine, note: c.offerNote }} />
+        {/* CTA + trust bar */}
         <TrustBadges />
         {/* What you'll discover — icon grid */}
         <Discover heading={c.discoverHeading} items={c.discover} />
@@ -51,9 +58,7 @@ export default async function Home() {
         <MethodSteps />
         {/* 6. Before and After */}
         <BeforeAfter />
-        {/* 7. Show the products */}
-        <BooksShowcase books={products} offer={{ line: c.offerLine, note: c.offerNote }} />
-        {/* 8. What changes and how soon */}
+        {/* What changes and how soon */}
         <ResultsTimeline />
         {/* 9. 5000+ families */}
         <StatsBand />

@@ -20,6 +20,10 @@ import { BookJsonLd } from "@/components/JsonLd";
 import BookView from "@/components/BookView";
 import ScarcityNote from "@/components/ScarcityNote";
 
+// Render fresh from the database on each request, so new books and price
+// changes show up immediately instead of waiting for a rebuild.
+export const revalidate = 0;
+
 export function generateStaticParams() {
   return books.map((b) => ({ slug: b.slug }));
 }

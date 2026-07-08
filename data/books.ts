@@ -237,6 +237,11 @@ export const books: Book[] = [
       "Less conflict about phones and tablets",
       "A closer, more connected family",
     ],
+    gallery: [
+      { img: "/images/rhk-sample-1.jpg", caption: "The Digital Health Check — see where your family stands today" },
+      { img: "/images/rhk-sample-2.jpg", caption: "The Reset Framework — bounce back after tough weeks" },
+      { img: "/images/rhk-sample-3.jpg", caption: "The Wise Choice Filter — raising kids who decide for themselves" },
+    ],
     faqs: [
       { q: "What is the 4B Framework?", a: "It's a simple parenting system built on four pillars — Boundaries, Balance, Bonding and Belonging — that helps kids use screens in a healthy, balanced way." },
       { q: "What age is this for?", a: "It's written for parents of children aged 2–12, with ideas that adapt as your child grows." },
