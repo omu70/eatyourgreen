@@ -215,7 +215,7 @@ export const books: Book[] = [
     subhead:
       "A practical guide built on the simple 4B Framework — Boundaries, Balance, Bonding and Belonging — to help your child grow up healthy, confident and connected in a screen-filled world.",
     price: 199,
-    oldPrice: 599,
+    oldPrice: 499,
     checkout: "",
     cover: "/images/cover-raising-healthy-kids.jpg",
     pdf: "/downloads/raising-healthy-kids-in-a-digital-world.pdf",

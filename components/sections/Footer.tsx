@@ -19,7 +19,7 @@ export default async function Footer() {
           <div>
             <Image src={logo} alt="Eat Your Green" width={200} height={64} className="h-14 w-auto" />
             <p className="mt-3 small max-w-xs">
-              Two simple, gentle books that help Indian parents get fussy kids to enjoy greens.
+              Gentle, practical books that help Indian parents raise calmer, healthier kids — from fussy eating to screen time.
             </p>
             <p className="mt-3 small flex items-center gap-2">
               <Lock className="h-4 w-4 text-leaf" /> {footer.secureNote}

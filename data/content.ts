@@ -77,8 +77,8 @@ export const madeForIndia = {
 };
 
 export const booksIntro = {
-  heading: "Three gentle books. One calmer dinner table.",
-  sub: "Pick the one that fits your family — or go all-in with the Green Explorer Bundle, which most parents choose. Each one is simple and gentle.",
+  heading: "Gentle books for calmer, healthier kids.",
+  sub: "Pick the one that fits your family — from fussy eating to screen time. Each one is simple, gentle and instant to download.",
 };
 
 export const pain = {
@@ -204,7 +204,7 @@ export const about = {
   body: [
     "Eat Your Green started at a real dinner table — with cold food, short tempers, and a parent who had tried everything.",
     "The change wasn't a new recipe or a stricter rule. It was simply removing the pressure. When greens stopped being a fight, curiosity had room to grow.",
-    "These two books are that simple approach, written down: the method, and the activity bundle that makes it easy to follow every day. No force. No bribes. No guilt.",
+    "These gentle books are that simple approach, written down — calm methods and everyday activities that make it easy to follow, from fussy eating to screen time. No force. No bribes. No guilt.",
   ],
 };
 
