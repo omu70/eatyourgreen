@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { hero } from "@/data/content";
@@ -74,16 +73,24 @@ export default function Hero({
           initial={{ opacity: 0, scale: 0.97 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="relative aspect-[4/3] rounded-card overflow-hidden shadow-card border border-mist"
+          className="mx-auto w-full max-w-[300px] sm:max-w-[340px]"
         >
-          <Image
-            src={image || "/images/hero.jpg"}
-            alt="A mom and her child laughing together while enjoying green veggies"
-            fill
-            priority
-            sizes="(max-width: 768px) 100vw, 50vw"
-            className="object-cover"
-          />
+          {/* Author reel */}
+          <div className="rounded-[26px] p-2 bg-gradient-to-br from-forest to-leaf shadow-card">
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              controls
+              preload="auto"
+              poster={image || "/images/hero.jpg"}
+              className="w-full aspect-[9/16] object-cover rounded-[18px] bg-black block"
+            >
+              <source src="/founder-clean.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <p className="mt-3 text-center text-xs text-ink/60">▶ A quick hello from the author — tap for sound</p>
         </motion.div>
       </div>
     </section>
